@@ -38,7 +38,7 @@ public class ControlAgregarUsuario {
 		List <Grupo> grupos = servicioGrupo.recuperaGrupos();
 		
 		ventana.muestra(this, grupos);
-		
+		//cambio para hacer commit
 	}
 
 	public void agregaUsuario(String nombre, String apellido, String grupo) {
