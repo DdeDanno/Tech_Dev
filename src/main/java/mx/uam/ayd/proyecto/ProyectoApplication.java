@@ -13,7 +13,7 @@ import mx.uam.ayd.proyecto.negocio.modelo.Producto;
 import mx.uam.ayd.proyecto.presentacion.principal.ControlPrincipal;
 
 /**
- * 
+ * probando el commit
  * Clase principal que arranca la aplicación 
  * construida usando el principio de 
  * inversión de control
