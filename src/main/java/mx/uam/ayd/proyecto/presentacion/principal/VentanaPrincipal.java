@@ -179,7 +179,6 @@ public class VentanaPrincipal extends JFrame {
 			bfimgn2 = ImageIO.read(new File("C:\\imagen\\producto_2.png"));
 			JLabel imgn2= new JLabel(new ImageIcon(bfimgn2));
 			imgn2.setBounds(250, 35, 200, 200);
-			contentPane.add(imgn2);
 			
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block

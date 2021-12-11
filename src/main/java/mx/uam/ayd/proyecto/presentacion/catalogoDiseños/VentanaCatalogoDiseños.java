@@ -9,9 +9,12 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.TreeUI;
+
 import java.awt.image.BufferedImage;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.*;
 
 import org.springframework.stereotype.Component;
 
@@ -27,10 +30,10 @@ import mx.uam.ayd.proyecto.presentacion.elegirCategoria.ControlElegirCategoria;
 public class VentanaCatalogoDiseños extends JFrame{
     private JPanel contentPane;
     private ControlCatalogoDiseños control;
-
+	JLabel ineg1, ineg2, ieven1, ieven2, iotr1, iotr2;
     public VentanaCatalogoDiseños (){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 300, 500, 280);
+		setBounds(500, 300, 500, 380);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -92,36 +95,148 @@ public class VentanaCatalogoDiseños extends JFrame{
 		m4.setBackground(Color.LIGHT_GRAY);
 		menuClasificacion.add(m4);
 
-
-		JButton btnAgregar = new JButton("Agrega");
-        btnAgregar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				control.carritoDeCompras();
-			}
-		});
-		btnAgregar.setBounds(100, 210, 90, 29);
-		contentPane.add(btnAgregar);
-		// Boton diseño cliente
-        JButton btnDiseñoCliente = new JButton("Deseo hacer mi propio diseño");
-		btnDiseñoCliente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				control.carritoDeCompras();;
-			}
-		});
-        btnDiseñoCliente.setBounds(273, 210, 210, 29);
-		contentPane.add(btnDiseñoCliente);
 		// Imagen
-		BufferedImage bfimgn1;
+		BufferedImage n1,n2,ev1,ev2,o1,o2;
+		
 		try {
-			bfimgn1 = ImageIO.read(new File("C:\\imagen\\diseño_1.png"));
-			JLabel imgn1= new JLabel(new ImageIcon(bfimgn1));
-			imgn1.setBounds(85, 80, 120, 120);;
-			contentPane.add(imgn1);
+			n1 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\2.jpg"));
+			Image neg1 = n1.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+			ineg1= new JLabel(new ImageIcon(neg1));
+			ineg1.setBounds(50, 85, 100, 100);
+			contentPane.add(ineg1);
+
+			n2 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\3.jpg"));
+			Image neg2 = n2.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+			ineg2= new JLabel(new ImageIcon(neg2));
+			ineg2.setBounds(200, 85, 100, 100);
+			contentPane.add(ineg2);
+
+			ev1 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\4.jpg"));
+			Image even1 = ev1.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+			ieven1= new JLabel(new ImageIcon(even1));
+			ieven1.setBounds(350, 85, 100, 100);
+			contentPane.add(ieven1);
+
+			ev2 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\5.jpg"));
+			Image even2 = ev2.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+			ieven2= new JLabel(new ImageIcon(even2));
+			ieven2.setBounds(50, 200, 100, 100);
+			contentPane.add(ieven2);
+
+			o1 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\1.jpg"));
+			Image otr1 = o1.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+			iotr1= new JLabel(new ImageIcon(otr1));
+			iotr1.setBounds(200, 200, 100, 100);
+			contentPane.add(iotr1);
+
+			o2 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\6.jpg"));
+			Image otr2 = o2.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+			iotr2= new JLabel(new ImageIcon(otr2));
+			iotr2.setBounds(350, 200, 100, 100);
+			contentPane.add(iotr2);
 			
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+
+		m1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				ineg1.setVisible(false);
+				ineg2.setVisible(false);
+				ieven1.setVisible(false);
+				ieven2.setVisible(false);
+				iotr1.setVisible(false);
+				iotr2.setVisible(false);
+
+				ineg1.setBounds(50, 85, 100, 100);
+				ineg2.setBounds(200, 85, 100, 100);
+				ieven1.setBounds(350, 85, 100, 100);
+				ieven2.setBounds(50, 200, 100, 100);
+				iotr1.setBounds(200, 200, 100, 100);
+				iotr2.setBounds(350, 200, 100, 100);
+
+				ineg1.setVisible(true);
+				ineg2.setVisible(true);
+				ieven1.setVisible(true);
+				ieven2.setVisible(true);
+				iotr1.setVisible(true);
+				iotr2.setVisible(true);
+			}
+			
+		});
+
+		m2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				ineg1.setVisible(false);
+				ineg2.setVisible(false);
+				ieven1.setVisible(false);
+				ieven2.setVisible(false);
+				iotr1.setVisible(false);
+				iotr2.setVisible(false);
+
+				ieven1.setBounds(50, 85, 100, 100);
+				ieven2.setBounds(200, 85, 100, 100);
+
+				ieven1.setVisible(true);
+				ieven2.setVisible(true);
+			}
+		});
+
+		m3.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				ineg1.setVisible(false);
+				ineg2.setVisible(false);
+				ieven1.setVisible(false);
+				ieven2.setVisible(false);
+				iotr1.setVisible(false);
+				iotr2.setVisible(false);
+
+				ineg1.setBounds(50, 85, 100, 100);
+				ineg2.setBounds(200, 85, 100, 100);
+
+				ineg1.setVisible(true);
+				ineg2.setVisible(true);
+			}
+		});
+
+		m4.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				ineg1.setVisible(false);
+				ineg2.setVisible(false);
+				ieven1.setVisible(false);
+				ieven2.setVisible(false);
+				iotr1.setVisible(false);
+				iotr2.setVisible(false);
+
+				iotr1.setBounds(50, 85, 100, 100);
+				iotr2.setBounds(200, 85, 100, 100);
+
+				iotr1.setVisible(true);
+				iotr2.setVisible(true);
+			}
+			
+		});
+
+		// Boton diseño cliente
+        JButton btnDiseñoCliente = new JButton("Deseo hacer mi propio diseño");
+		btnDiseñoCliente.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnDiseñoCliente.setBackground(Color.LIGHT_GRAY);
+		btnDiseñoCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				control.carritoDeCompras();;
+			}
+		});
+        btnDiseñoCliente.setBounds(273, 310, 210, 29);
+		contentPane.add(btnDiseñoCliente);
     }
 
     public void muestra (ControlCatalogoDiseños control){
