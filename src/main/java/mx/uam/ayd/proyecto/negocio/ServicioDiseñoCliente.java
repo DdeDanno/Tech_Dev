@@ -26,8 +26,8 @@ public class ServicioDiseñoCliente {
             if (jfc.getSelectedFile().isDirectory()) {
                 System.out.println("You selected the directory: " + jfc.getSelectedFile());
                 DiseñoCliente diseñoCliente=new DiseñoCliente();
-                diseñoCliente.setRutaArchivo(jfc.getSelectedFile().getAbsolutePath());
-                diseñoCliente.setNombreCliente("Diseño cliente: ");
+   //             diseñoCliente.setRutaArchivo(jfc.getSelectedFile().getAbsolutePath());
+   //           diseñoCliente.setNombreCliente("Diseño cliente: ");
                 diseñoClienteRepository.save(diseñoCliente);
             }
         }
