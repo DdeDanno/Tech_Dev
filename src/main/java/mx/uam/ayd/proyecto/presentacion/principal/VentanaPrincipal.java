@@ -83,7 +83,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(spinnerCant2);
 		//Menu Navegacion
 		JMenuBar menuNav= new JMenuBar ();
-		menuNav.setBounds(5, 20, 500, 30);
+		menuNav.setBounds(10, 23, 395, 30);
 		contentPane.add(menuNav);
 		JMenu menu1,menu2,menu3,menu4,menu5,menu6;
 		menu1=new JMenu("Inicio");
@@ -172,6 +172,11 @@ public class VentanaPrincipal extends JFrame {
 			e1.printStackTrace();
 		}
 		
+		
+		//Boton perfil
+		JButton btnNewButton = new JButton("Perfil");
+		btnNewButton.setBounds(414, 23, 65, 30);
+		contentPane.add(btnNewButton);
 	}
 
 	public void muestraDialogoConMensaje(String mensaje ) {
