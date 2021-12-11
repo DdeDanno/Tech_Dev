@@ -8,7 +8,6 @@ import javax.swing.border.EmptyBorder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import mx.uam.ayd.proyecto.presentacion.carritoDeCompras.ControlCarritoDeCompras;
 
 import javax.swing.JLabel;
@@ -19,9 +18,10 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
-import java.io.Console;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.SpinnerNumberModel;
@@ -85,12 +85,16 @@ public class VentanaPrincipal extends JFrame {
 		JMenuBar menuNav= new JMenuBar ();
 		menuNav.setBounds(5, 20, 500, 30);
 		contentPane.add(menuNav);
-		JMenu menu1,menu2,menu3,menu4,menu5,menu6;
+		JMenu menu1,menu2,menu4,menu5,menu6;
+		JButton menu3;
 		menu1=new JMenu("Inicio");
 		menuNav.add(menu1);
 		menu2=new JMenu("Productos");
 		menuNav.add(menu2);
-		menu3=new JMenu("Diseños Previos");
+		menu3=new JButton("Diseños");
+		menu3.setBackground(Color.GRAY);
+		menu3.setBorder(null);
+		menu3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu3);
 		menu4=new JMenu("¿Preguntas?");
 		menuNav.add(menu4);
@@ -99,6 +103,16 @@ public class VentanaPrincipal extends JFrame {
 		menu6=new JMenu("Carrito");
 		menuNav.add(menu6);
 		
+		menu3.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				try{
+					control.visualizarDiseños();
+				} catch(Exception error){
+					muestraDialogoConMensaje(error.getMessage());	
+				}
+			}
+		});
+
 		// Boton Agregar Producto 1 
 		JButton btnProducto1 = new JButton("Agrega");
 		btnProducto1.addActionListener(new ActionListener() {

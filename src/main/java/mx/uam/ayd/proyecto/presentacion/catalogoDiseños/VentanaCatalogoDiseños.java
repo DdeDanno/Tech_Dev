@@ -10,6 +10,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.image.BufferedImage;
+import java.awt.Color;
+import java.awt.Cursor;
 
 import org.springframework.stereotype.Component;
 
@@ -41,12 +43,16 @@ public class VentanaCatalogoDiseños extends JFrame{
 		JMenuBar menuNav= new JMenuBar ();
 		menuNav.setBounds(5, 20, 500, 30);
 		contentPane.add(menuNav);
-		JMenu menu1,menu2,menu3,menu4,menu5,menu6;
+		JMenu menu1,menu2,menu4,menu5,menu6;
+		JButton menu3;
 		menu1=new JMenu("Inicio");
 		menuNav.add(menu1);
 		menu2=new JMenu("Productos");
 		menuNav.add(menu2);
-		menu3=new JMenu("Diseños Previos");
+		menu3=new JButton("Diseños");
+		menu3.setBackground(Color.GRAY);
+		menu3.setBorder(null);
+		menu3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu3);
 		menu4=new JMenu("¿Preguntas?");
 		menuNav.add(menu4);
@@ -54,10 +60,37 @@ public class VentanaCatalogoDiseños extends JFrame{
 		menuNav.add(menu5);
 		menu6=new JMenu("Carrito");
 		menuNav.add(menu6);
-          
-        JLabel lblDiseño=new JLabel("DISEÑOS PREVIOS");
-        lblDiseño.setBounds(28, 39, 160, 40);
-        contentPane.add(lblDiseño);
+
+		menu3.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				try{
+					control.inicia();
+				} catch(Exception error){
+					System.out.println("Error");	
+				}
+			}
+		});
+
+		JMenuBar menuClasificacion= new JMenuBar ();
+		menuClasificacion.setBounds(90, 50, 500, 30);
+		contentPane.add(menuClasificacion);
+		JButton m1,m2,m3,m4;
+		m1=new JButton("Todos");
+		m1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		m1.setBackground(Color.LIGHT_GRAY);
+		menuClasificacion.add(m1);
+		m2=new JButton("Eventos");
+		m2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		m2.setBackground(Color.LIGHT_GRAY);
+		menuClasificacion.add(m2);
+		m3=new JButton("Negocios");
+		m3.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		m3.setBackground(Color.LIGHT_GRAY);
+		menuClasificacion.add(m3);
+		m4=new JButton("Otros");
+		m4.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		m4.setBackground(Color.LIGHT_GRAY);
+		menuClasificacion.add(m4);
 
 
 		JButton btnAgregar = new JButton("Agrega");

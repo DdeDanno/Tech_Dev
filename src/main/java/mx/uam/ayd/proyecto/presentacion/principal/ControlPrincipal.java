@@ -1,14 +1,12 @@
 package mx.uam.ayd.proyecto.presentacion.principal;
 
-import org.aspectj.internal.lang.annotation.ajcDeclareAnnotation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import mx.uam.ayd.proyecto.negocio.ServicioProducto;
 import mx.uam.ayd.proyecto.presentacion.agregarUsuario.ControlAgregarUsuario;
-import mx.uam.ayd.proyecto.presentacion.carritoDeCompras.ControlCarritoDeCompras;
 import mx.uam.ayd.proyecto.presentacion.elegirCategoria.ControlElegirCategoria;
 import mx.uam.ayd.proyecto.presentacion.listarUsuarios.ControlListarUsuarios;
+import mx.uam.ayd.proyecto.presentacion.catalogoDiseños.ControlCatalogoDiseños;
 
 /**
  * Esta clase lleva el flujo de control de la ventana principal
@@ -27,6 +25,9 @@ public class ControlPrincipal {
 
 	@Autowired
 	private ControlElegirCategoria controlElegirCategoria;
+
+	@Autowired
+	private ControlCatalogoDiseños controlCatalogoDiseños;
 
 	@Autowired
 	private VentanaPrincipal ventana;
@@ -60,5 +61,13 @@ public class ControlPrincipal {
 	 */
 	public void listarUsuarios() {
 		controlListarUsuarios.inicia();
+	}
+
+	/**
+	 * Método que arranca la historia de usuario "Visualizar diseños"
+	 * 
+	 */
+	public void visualizarDiseños() {
+		controlCatalogoDiseños.inicia();
 	}
 }
