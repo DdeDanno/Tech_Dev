@@ -173,10 +173,15 @@ public class VentanaPrincipal extends JFrame {
 		}
 		
 		
-		//Boton perfil
-		JButton btnNewButton = new JButton("Perfil");
-		btnNewButton.setBounds(414, 23, 65, 30);
-		contentPane.add(btnNewButton);
+		//Boton perfil NECESARIO PARA HU:ESTATUS DEL PEDIDO NO BORRAR
+		JButton btnPerfil = new JButton("Perfil");
+		btnPerfil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				control.perfil();
+			}
+		});
+		btnPerfil.setBounds(414, 23, 65, 30);
+		contentPane.add(btnPerfil);
 	}
 
 	public void muestraDialogoConMensaje(String mensaje ) {

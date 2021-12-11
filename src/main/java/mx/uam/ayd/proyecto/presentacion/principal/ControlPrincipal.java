@@ -9,6 +9,7 @@ import mx.uam.ayd.proyecto.presentacion.agregarUsuario.ControlAgregarUsuario;
 import mx.uam.ayd.proyecto.presentacion.carritoDeCompras.ControlCarritoDeCompras;
 import mx.uam.ayd.proyecto.presentacion.elegirCategoria.ControlElegirCategoria;
 import mx.uam.ayd.proyecto.presentacion.listarUsuarios.ControlListarUsuarios;
+import mx.uam.ayd.proyecto.presentacion.perfil.ControlPerfil;
 
 /**
  * Esta clase lleva el flujo de control de la ventana principal
@@ -29,6 +30,9 @@ public class ControlPrincipal {
 	private ControlElegirCategoria controlElegirCategoria;
 
 	@Autowired
+	private ControlPerfil controlPerfil;
+
+	@Autowired
 	private VentanaPrincipal ventana;
 	
 	/**
@@ -40,11 +44,17 @@ public class ControlPrincipal {
 		ventana.muestra(this);
 	}
 
-	//Cambia de ventana a elegirCategoria
+	//Inicia el flujo de elegir categoria
 	public void elegirCategoria(){
 		controlElegirCategoria.inicia();
 	}
-	/**
+
+	//Inicia el flujo de entrar al perfil
+	public void perfil(){
+		controlPerfil.inicia();
+	}
+
+	/** Codigo del profesor:
 	 * Método que arranca la historia de usuario "agregar usuario"
 	 * 
 	 */
@@ -61,4 +71,5 @@ public class ControlPrincipal {
 	public void listarUsuarios() {
 		controlListarUsuarios.inicia();
 	}
+	//Termina el codigo del profesor
 }

@@ -12,6 +12,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 import javax.swing.JTextArea;
 import javax.swing.JScrollBar;
 import javax.swing.SwingConstants;
@@ -25,7 +28,7 @@ public class VentanaPerfil extends JFrame {
 
 	public VentanaPerfil() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(500, 300, 500, 280);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -39,7 +42,7 @@ public class VentanaPerfil extends JFrame {
 		
 		//Menu Navegacion
 		JMenuBar menuNav= new JMenuBar ();
-		menuNav.setBounds(10, 34, 404, 30);
+		menuNav.setBounds(10, 34, 500, 30);
 		contentPane.add(menuNav);
 		JMenu menu1,menu2,menu3,menu4,menu5,menu6;
 		menu1=new JMenu("Inicio");
@@ -78,14 +81,47 @@ public class VentanaPerfil extends JFrame {
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_1_1.setBounds(10, 105, 54, 14);
 		contentPane.add(lblNewLabel_1_1);
+
+		//Comienzan a mostrarse los pedidos
+		JTextArea txtFolio1 = new JTextArea("Folio");
+		txtFolio1.setEditable(false);
+		txtFolio1.setBounds(20, 130, 35, 25);
+		contentPane.add(txtFolio1);
+
+		JTextArea txtFolio2 = new JTextArea("Folio");
+		txtFolio2.setEditable(false);
+		txtFolio2.setBounds(20, 156, 35, 25);
+		contentPane.add(txtFolio2);
+
+		//Folios de los pedidos
+		JTextArea txtPedido1_1 = new JTextArea("729878979");
+		txtPedido1_1.setEditable(false);
+		txtPedido1_1.setBounds(58, 130, 82, 25);
+		contentPane.add(txtPedido1_1);
 		
-		//Area con texto de los pedidos
-		JTextArea txtrHolaMundoXd = new JTextArea("Hola\r\nmundo\r\nPrueba");
-		txtrHolaMundoXd.setToolTipText("");
-		txtrHolaMundoXd.setEditable(false);
-		txtrHolaMundoXd.setBounds(23, 130, 174, 78);
-		contentPane.add(txtrHolaMundoXd);
+		JTextArea txtPedido1_1_1 = new JTextArea("729878950");
+		txtPedido1_1_1.setEditable(false);
+		txtPedido1_1_1.setBounds(58, 156, 82, 25);
+		contentPane.add(txtPedido1_1_1);
 		
+		//Botones de detalles
+		JButton btnDetalles1 = new JButton("Detalles");
+		btnDetalles1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				control.estatusPedido();
+			}
+		});
+		btnDetalles1.setHorizontalAlignment(SwingConstants.LEADING);
+		btnDetalles1.setBounds(140, 129, 85, 25);
+		contentPane.add(btnDetalles1);
+		
+		JButton btnDetalles2 = new JButton("Detalles");
+		btnDetalles2.setHorizontalAlignment(SwingConstants.LEADING);
+		btnDetalles2.setBounds(140, 156, 85, 25);
+		contentPane.add(btnDetalles2);
+
+		//Terminan de mostrarse los pedidos 
+
 		//Scrollbar
 		JScrollBar scrollBar = new JScrollBar();
 		scrollBar.setToolTipText("");

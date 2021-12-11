@@ -9,14 +9,16 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextPane;
+
+import org.springframework.stereotype.Component;
+
 import javax.swing.JTextField;
-import javax.swing.JToggleButton;
-import javax.swing.JProgressBar;
-import javax.swing.JList;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 
+
+@SuppressWarnings("serial")
+@Component
 public class VentanaEstatusPedido extends JFrame {
 
 	private JPanel contentPane;
@@ -24,10 +26,11 @@ public class VentanaEstatusPedido extends JFrame {
 	private JTextField txtDiseando;
 	private JTextField txtImprimiendo;
 	private JTextField txtEnviado;
+	private ControlEstatusPedido control;
 
 	public VentanaEstatusPedido() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(500, 300, 500, 280);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -156,4 +159,9 @@ public class VentanaEstatusPedido extends JFrame {
 		contentPane.add(btnNewButton);
 		
 	}
+
+	public void muestra (ControlEstatusPedido control) {
+		this.control=control;
+		setVisible(true);
+		}
 }
