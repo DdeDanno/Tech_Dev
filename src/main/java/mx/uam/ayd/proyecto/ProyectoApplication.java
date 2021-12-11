@@ -19,7 +19,7 @@ import mx.uam.ayd.proyecto.presentacion.principal.ControlPrincipal;
  * inversión de control
  * 
  * Ejemplo de cambio en Rama
- * prueba de commit
+ * prueba de commit2
  * 
  * @author humbertocervantes
  *
