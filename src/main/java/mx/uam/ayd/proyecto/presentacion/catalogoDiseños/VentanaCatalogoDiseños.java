@@ -9,7 +9,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.TreeUI;
 
 import java.awt.image.BufferedImage;
 import java.awt.Color;
@@ -23,7 +22,6 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 
-import mx.uam.ayd.proyecto.presentacion.elegirCategoria.ControlElegirCategoria;
 
 @SuppressWarnings ("serial")
 @Component
