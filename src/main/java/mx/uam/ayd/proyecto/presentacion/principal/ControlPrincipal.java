@@ -1,12 +1,9 @@
 package mx.uam.ayd.proyecto.presentacion.principal;
 
-import org.aspectj.internal.lang.annotation.ajcDeclareAnnotation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import mx.uam.ayd.proyecto.negocio.ServicioProducto;
 import mx.uam.ayd.proyecto.presentacion.agregarUsuario.ControlAgregarUsuario;
-import mx.uam.ayd.proyecto.presentacion.carritoDeCompras.ControlCarritoDeCompras;
 import mx.uam.ayd.proyecto.presentacion.elegirCategoria.ControlElegirCategoria;
 import mx.uam.ayd.proyecto.presentacion.listarUsuarios.ControlListarUsuarios;
 import mx.uam.ayd.proyecto.presentacion.perfil.ControlPerfil;

@@ -44,7 +44,7 @@ public class VentanaEstatusPedido extends JFrame {
 		
 		//Menu Navegacion
 		JMenuBar menuNav= new JMenuBar ();
-		menuNav.setBounds(10, 34, 404, 30);
+		menuNav.setBounds(10, 29, 464, 30);
 		contentPane.add(menuNav);
 		JMenu menu1,menu2,menu3,menu4,menu5,menu6;
 		menu1=new JMenu("Inicio");
@@ -60,107 +60,129 @@ public class VentanaEstatusPedido extends JFrame {
 		menu6=new JMenu("Carrito");
 		menuNav.add(menu6);
 		
-		//titulo perfil
+		//titulo estatus del pedido
 		JLabel lblNewLabel = new JLabel("Estatus del pedido");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel.setBounds(10, 69, 190, 25);
+		lblNewLabel.setBounds(10, 59, 190, 25);
 		contentPane.add(lblNewLabel);
 		
-		//Titulo de bienvenida
+		//Titulo folio
 		JLabel lblNewLabel_1 = new JLabel("Folio:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_1.setBounds(10, 105, 33, 14);
+		lblNewLabel_1.setBounds(10, 91, 33, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("729878989");
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_1_1.setBounds(50, 105, 78, 14);
-		contentPane.add(lblNewLabel_1_1);
-		
+		//Comienzan los titulos de los estatus del pedido
 		txtPagoEnviado = new JTextField();
 		txtPagoEnviado.setEditable(false);
 		txtPagoEnviado.setText("| PAGO ENVIADO |");
-		txtPagoEnviado.setBounds(10, 130, 97, 20);
+		txtPagoEnviado.setBounds(10, 116, 107, 20);
 		contentPane.add(txtPagoEnviado);
 		txtPagoEnviado.setColumns(10);
-		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("En proceso");
-		chckbxNewCheckBox.setEnabled(false);
-		chckbxNewCheckBox.setSelected(true);
-		chckbxNewCheckBox.setBounds(10, 157, 97, 23);
-		contentPane.add(chckbxNewCheckBox);
-		
-		JCheckBox chckbxRealizado = new JCheckBox("Realizado");
-		chckbxRealizado.setEnabled(false);
-		chckbxRealizado.setBounds(10, 183, 97, 23);
-		contentPane.add(chckbxRealizado);
-		
+
 		txtDiseando = new JTextField();
 		txtDiseando.setEditable(false);
 		txtDiseando.setText("| DISEÑANDO |");
 		txtDiseando.setColumns(10);
-		txtDiseando.setBounds(113, 130, 82, 20);
+		txtDiseando.setBounds(143, 116, 91, 20);
 		contentPane.add(txtDiseando);
 		
 		txtImprimiendo = new JTextField();
 		txtImprimiendo.setEditable(false);
 		txtImprimiendo.setText("| IMPRIMIENDO |");
 		txtImprimiendo.setColumns(10);
-		txtImprimiendo.setBounds(205, 130, 91, 20);
+		txtImprimiendo.setBounds(257, 116, 97, 20);
 		contentPane.add(txtImprimiendo);
 		
 		txtEnviado = new JTextField();
 		txtEnviado.setEditable(false);
-		txtEnviado.setText("| ENVIADO |");
+		txtEnviado.setText("| ENVIANDO |");
 		txtEnviado.setColumns(10);
-		txtEnviado.setBounds(306, 130, 67, 20);
+		txtEnviado.setBounds(377, 116, 78, 20);
 		contentPane.add(txtEnviado);
-		
-		JCheckBox chckbxRealizado_1 = new JCheckBox("Realizado");
-		chckbxRealizado_1.setEnabled(false);
-		chckbxRealizado_1.setBounds(109, 183, 97, 23);
-		contentPane.add(chckbxRealizado_1);
-		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("En proceso");
-		chckbxNewCheckBox_1.setSelected(true);
-		chckbxNewCheckBox_1.setEnabled(false);
-		chckbxNewCheckBox_1.setBounds(109, 157, 97, 23);
-		contentPane.add(chckbxNewCheckBox_1);
-		
-		JCheckBox chckbxNewCheckBox_1_1 = new JCheckBox("En proceso");
-		chckbxNewCheckBox_1_1.setSelected(true);
-		chckbxNewCheckBox_1_1.setEnabled(false);
-		chckbxNewCheckBox_1_1.setBounds(205, 157, 97, 23);
-		contentPane.add(chckbxNewCheckBox_1_1);
-		
-		JCheckBox chckbxRealizado_1_1 = new JCheckBox("Realizado");
-		chckbxRealizado_1_1.setEnabled(false);
-		chckbxRealizado_1_1.setBounds(205, 183, 97, 23);
-		contentPane.add(chckbxRealizado_1_1);
-		
-		JCheckBox chckbxNewCheckBox_1_2 = new JCheckBox("En proceso");
-		chckbxNewCheckBox_1_2.setSelected(true);
-		chckbxNewCheckBox_1_2.setEnabled(false);
-		chckbxNewCheckBox_1_2.setBounds(306, 157, 97, 23);
-		contentPane.add(chckbxNewCheckBox_1_2);
-		
-		JCheckBox chckbxRealizado_1_2 = new JCheckBox("Realizado");
-		chckbxRealizado_1_2.setEnabled(false);
-		chckbxRealizado_1_2.setBounds(306, 183, 97, 23);
-		contentPane.add(chckbxRealizado_1_2);
-		
+		//Terminan los titulos del estatus del pedido
+
 		JLabel lblNewLabel_1_2 = new JLabel("Adjuntar comprobante de pago");
 		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_1_2.setBounds(10, 202, 213, 25);
+		lblNewLabel_1_2.setBounds(10, 196, 213, 25);
 		contentPane.add(lblNewLabel_1_2);
 		
 		JButton btnNewButton = new JButton("Enviar");
-		btnNewButton.setBounds(50, 227, 89, 23);
+		btnNewButton.setBounds(234, 199, 89, 23);
 		contentPane.add(btnNewButton);
 		
 	}
 
-	public void muestra (ControlEstatusPedido control) {
+	public void muestra (ControlEstatusPedido control, int i) {
+		//Obtenemos el FOLIO
+		JLabel lblNewLabel_1_1 = new JLabel(control.conseguirFolio(i));
+		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1_1.setBounds(50, 91, 78, 14);
+		contentPane.add(lblNewLabel_1_1);
+		
+		//Obtenemos el ESTADO DEL PAGO
+		boolean pago=control.EstatusPago(i);
+		//Checkbox PAGO ENVIADO
+		JCheckBox chckbxEnviandoP = new JCheckBox("En proceso");
+		chckbxEnviandoP.setEnabled(false);
+		chckbxEnviandoP.setSelected(!pago);
+		chckbxEnviandoP.setBounds(10, 143, 97, 23);
+		contentPane.add(chckbxEnviandoP);
+		
+		JCheckBox chckbxEnviandoR = new JCheckBox("Realizado");
+		chckbxEnviandoR.setEnabled(false);
+		chckbxEnviandoR.setSelected(pago);
+		chckbxEnviandoR.setBounds(10, 169, 97, 23);
+		contentPane.add(chckbxEnviandoR);
+		//Terminan checkbox PAGO ENVIADO
+
+		//Obtenemos el ESTADO DEL ESTADO DEL DISEÑO
+		boolean diseño=control.EstatusDisieño(i);
+		//Checkbox DISEÑANDO
+		JCheckBox chckbxDisP = new JCheckBox("En proceso");
+		chckbxDisP.setEnabled(false);
+		chckbxDisP.setSelected(!diseño);
+		chckbxDisP.setBounds(137, 143, 97, 23);
+		contentPane.add(chckbxDisP);
+
+		JCheckBox chckbxDisR = new JCheckBox("Realizado");
+		chckbxDisR.setEnabled(false);
+		chckbxDisR.setSelected(diseño);
+		chckbxDisR.setBounds(137, 169, 97, 23);
+		contentPane.add(chckbxDisR);
+		//Terminan checkbox DISEÑANDO
+
+		//Obtenemos el ESTADO DE LA IMPRESION
+		boolean impresion=control.EstatusImprimiendo(i);
+		//Checkbox IMPRIMIENDO
+		JCheckBox chckbxImpP = new JCheckBox("En proceso");
+		chckbxImpP.setSelected(!impresion);
+		chckbxImpP.setEnabled(false);
+		chckbxImpP.setBounds(257, 143, 97, 23);
+		contentPane.add(chckbxImpP);
+		
+		JCheckBox chckbxImpR = new JCheckBox("Realizado");
+		chckbxImpR.setEnabled(false);
+		chckbxImpR.setSelected(impresion);
+		chckbxImpR.setBounds(257, 169, 97, 23);
+		contentPane.add(chckbxImpR);
+		//Terminan checkBox IMPRIMIENDO
+
+		//Obtenemos el ESTADO DE EL ENVIO
+		boolean envio=control.EstatusEnvio(i);
+		//Checkbox ENVIANDO
+		JCheckBox chckbxEnvP = new JCheckBox("En proceso");
+		chckbxEnvP.setSelected(!envio);
+		chckbxEnvP.setEnabled(false);
+		chckbxEnvP.setBounds(377, 143, 97, 23);
+		contentPane.add(chckbxEnvP);
+		
+		JCheckBox chckbxEnvR = new JCheckBox("Realizado");
+		chckbxEnvR.setEnabled(false);
+		chckbxEnvR.setSelected(envio);
+		chckbxEnvR.setBounds(377, 169, 97, 23);
+		contentPane.add(chckbxEnvR);
+		//Terminan checkbox ENVIANDO
 		this.control=control;
 		setVisible(true);
 		}

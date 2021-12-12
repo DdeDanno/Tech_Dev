@@ -6,6 +6,8 @@ import javax.swing.border.EmptyBorder;
 
 import org.springframework.stereotype.Component;
 
+import lombok.var;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -25,7 +27,7 @@ public class VentanaPerfil extends JFrame {
 
 	private JPanel contentPane;
 	private ControlPerfil control;
-
+	public int btnIncremento=1;
 	public VentanaPerfil() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 300, 500, 280);
@@ -70,57 +72,11 @@ public class VentanaPerfil extends JFrame {
 		lblNewLabel_1.setBounds(74, 76, 46, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		//Titulo de nombre
-		JLabel lblNewLabel_2 = new JLabel("Carlos!");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_2.setBounds(110, 76, 46, 14);
-		contentPane.add(lblNewLabel_2);
-		
 		//Titulo pedidos
 		JLabel lblNewLabel_1_1 = new JLabel("Pedidos");
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_1_1.setBounds(10, 105, 54, 14);
 		contentPane.add(lblNewLabel_1_1);
-
-		//Comienzan a mostrarse los pedidos
-		JTextArea txtFolio1 = new JTextArea("Folio");
-		txtFolio1.setEditable(false);
-		txtFolio1.setBounds(20, 130, 35, 25);
-		contentPane.add(txtFolio1);
-
-		JTextArea txtFolio2 = new JTextArea("Folio");
-		txtFolio2.setEditable(false);
-		txtFolio2.setBounds(20, 156, 35, 25);
-		contentPane.add(txtFolio2);
-
-		//Folios de los pedidos
-		JTextArea txtPedido1_1 = new JTextArea("729878979");
-		txtPedido1_1.setEditable(false);
-		txtPedido1_1.setBounds(58, 130, 82, 25);
-		contentPane.add(txtPedido1_1);
-		
-		JTextArea txtPedido1_1_1 = new JTextArea("729878950");
-		txtPedido1_1_1.setEditable(false);
-		txtPedido1_1_1.setBounds(58, 156, 82, 25);
-		contentPane.add(txtPedido1_1_1);
-		
-		//Botones de detalles
-		JButton btnDetalles1 = new JButton("Detalles");
-		btnDetalles1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				control.estatusPedido();
-			}
-		});
-		btnDetalles1.setHorizontalAlignment(SwingConstants.LEADING);
-		btnDetalles1.setBounds(140, 129, 85, 25);
-		contentPane.add(btnDetalles1);
-		
-		JButton btnDetalles2 = new JButton("Detalles");
-		btnDetalles2.setHorizontalAlignment(SwingConstants.LEADING);
-		btnDetalles2.setBounds(140, 156, 85, 25);
-		contentPane.add(btnDetalles2);
-
-		//Terminan de mostrarse los pedidos 
 
 		//Scrollbar
 		JScrollBar scrollBar = new JScrollBar();
@@ -145,11 +101,52 @@ public class VentanaPerfil extends JFrame {
 		btnInformacionDeLa.setBounds(235, 170, 174, 23);
 		contentPane.add(btnInformacionDeLa);
 		//Terminan botones de informacion
-
 	}
 
 	public void muestra (ControlPerfil control) {
 	this.control=control;
+	//Recupera el nombre del cliente y lo escribe
+	JLabel lblNewLabel_2 = new JLabel(control.conseguirNombre());
+	lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+	lblNewLabel_2.setBounds(110, 76, 70, 14);
+	
+	//Recupera el numero de pedidos existentes
+	int existentes=control.pedidosExistentes();
+	int aumento1=129, aumento2=130;
+	JButton[] btnDetalles = new JButton[existentes];
+	//CREAMOS LOS BOTONES DE DETALLES Y LOS FOLIOS DE LOS PEDIDOS
+	for (int i=0;i<existentes;i++){
+		//CREAMOS BOTONES DE DETALLES
+		btnDetalles[i]=new JButton("Detalles");
+		btnDetalles[i].addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			control.estatusPedido(1);
+		}
+	});
+	btnDetalles[i].setHorizontalAlignment(SwingConstants.LEADING);
+	btnDetalles[i].setBounds(140, aumento1, 85, 25);
+	contentPane.add(btnDetalles[i]);
+	//Folios de los pedidos
+	//Recupera el numero de FOLIO
+	JTextArea txtPedido1_1 = new JTextArea(control.recuperaFolio(i+1));
+	txtPedido1_1.setEditable(false);
+	txtPedido1_1.setBounds(58, aumento2, 82, 25);
+	contentPane.add(txtPedido1_1);
+
+	//Comienzan a mostrarse los pedidos
+	JTextArea txtFolio1 = new JTextArea("Folio");
+	txtFolio1.setEditable(false);
+	txtFolio1.setBounds(20, aumento2, 35, 25);
+	contentPane.add(txtFolio1);
+
+	//Incrementamos las variables
+	aumento1=aumento1+27;
+	aumento2=aumento2+26;
+	btnIncremento++;
+	}
+
+	//Terminan de mostrarse los pedidos 
+	contentPane.add(lblNewLabel_2);
 	setVisible(true);
 	}
 }

@@ -21,7 +21,6 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
-import java.io.Console;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.SpinnerNumberModel;

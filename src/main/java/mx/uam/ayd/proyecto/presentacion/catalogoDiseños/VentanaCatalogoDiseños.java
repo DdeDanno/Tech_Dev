@@ -18,7 +18,6 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 
-import mx.uam.ayd.proyecto.presentacion.elegirCategoria.ControlElegirCategoria;
 
 @SuppressWarnings ("serial")
 @Component
