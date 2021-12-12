@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import mx.uam.ayd.proyecto.presentacion.carritoDeCompras.ControlCarritoDeCompras;
 
 import javax.swing.JLabel;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.imageio.ImageIO;
@@ -85,23 +84,24 @@ public class VentanaPrincipal extends JFrame {
 		JMenuBar menuNav= new JMenuBar ();
 		menuNav.setBounds(10, 23, 395, 30);
 		contentPane.add(menuNav);
-		JMenu menu1,menu2,menu4,menu5,menu6;
-		JButton menu3;
-		menu1=new JMenu("Inicio");
+		JButton menu1,menu2,menu3,menu4;
+		
+		menu1=new JButton("Inicio");
+		menu1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menu1.setBackground(Color.CYAN);
 		menuNav.add(menu1);
-		menu2=new JMenu("Productos");
+		menu2=new JButton("Productos");
+		menu2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menu2.setBackground(Color.CYAN);
 		menuNav.add(menu2);
 		menu3=new JButton("Diseños");
-		menu3.setBackground(Color.GRAY);
-		menu3.setBorder(null);
+		menu3.setBackground(Color.CYAN);
 		menu3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu3);
-		menu4=new JMenu("¿Preguntas?");
+		menu4=new JButton("Carrito");
+		menu4.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menu4.setBackground(Color.CYAN);
 		menuNav.add(menu4);
-		menu5=new JMenu("Perfil");
-		menuNav.add(menu5);
-		menu6=new JMenu("Carrito");
-		menuNav.add(menu6);
 		
 		menu3.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
@@ -194,6 +194,8 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 		btnPerfil.setBounds(414, 23, 65, 30);
+		btnPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnPerfil.setBackground(Color.CYAN);
 		contentPane.add(btnPerfil);
 	}
 

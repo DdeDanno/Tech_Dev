@@ -5,7 +5,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -42,25 +41,26 @@ public class VentanaCatalogoDiseños extends JFrame{
 		contentPane.add(lblMiAplicacin);
 
 		JMenuBar menuNav= new JMenuBar ();
-		menuNav.setBounds(5, 20, 500, 30);
+		menuNav.setBounds(10, 23, 395, 30);
 		contentPane.add(menuNav);
-		JMenu menu1,menu2,menu4,menu5,menu6;
-		JButton menu3;
-		menu1=new JMenu("Inicio");
+		JButton menu1,menu2,menu3,menu4;
+		
+		menu1=new JButton("Inicio");
+		menu1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menu1.setBackground(Color.CYAN);
 		menuNav.add(menu1);
-		menu2=new JMenu("Productos");
+		menu2=new JButton("Productos");
+		menu2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menu2.setBackground(Color.CYAN);
 		menuNav.add(menu2);
 		menu3=new JButton("Diseños");
-		menu3.setBackground(Color.GRAY);
-		menu3.setBorder(null);
+		menu3.setBackground(Color.CYAN);
 		menu3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu3);
-		menu4=new JMenu("¿Preguntas?");
+		menu4=new JButton("Carrito");
+		menu4.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menu4.setBackground(Color.CYAN);
 		menuNav.add(menu4);
-		menu5=new JMenu("Perfil");
-		menuNav.add(menu5);
-		menu6=new JMenu("Carrito");
-		menuNav.add(menu6);
 
 		menu3.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
@@ -71,6 +71,17 @@ public class VentanaCatalogoDiseños extends JFrame{
 				}
 			}
 		});
+
+		JButton btnPerfil = new JButton("Perfil");
+		btnPerfil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				control.perfil();
+			}
+		});
+		btnPerfil.setBounds(414, 23, 65, 30);
+		btnPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnPerfil.setBackground(Color.CYAN);
+		contentPane.add(btnPerfil);
 
 		JMenuBar menuClasificacion= new JMenuBar ();
 		menuClasificacion.setBounds(90, 50, 500, 30);
@@ -134,14 +145,14 @@ public class VentanaCatalogoDiseños extends JFrame{
 			contentPane.add(iotr2);
 			
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 
 		m1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
 				ineg1.setVisible(false);
 				ineg2.setVisible(false);
 				ieven1.setVisible(false);
@@ -169,7 +180,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 		m2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+			
 				ineg1.setVisible(false);
 				ineg2.setVisible(false);
 				ieven1.setVisible(false);
@@ -188,7 +199,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 		m3.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
 				ineg1.setVisible(false);
 				ineg2.setVisible(false);
 				ieven1.setVisible(false);
@@ -207,7 +218,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 		m4.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
 				ineg1.setVisible(false);
 				ineg2.setVisible(false);
 				ieven1.setVisible(false);

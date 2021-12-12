@@ -6,14 +6,17 @@ import javax.swing.border.EmptyBorder;
 
 import org.springframework.stereotype.Component;
 
-import lombok.var;
+/* import lombok.var;
+import mx.uam.ayd.proyecto.presentacion.principal.ControlPrincipal; */
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 
+import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -44,21 +47,26 @@ public class VentanaPerfil extends JFrame {
 		
 		//Menu Navegacion
 		JMenuBar menuNav= new JMenuBar ();
-		menuNav.setBounds(10, 34, 500, 30);
+		menuNav.setBounds(10, 30, 395, 30);
 		contentPane.add(menuNav);
-		JMenu menu1,menu2,menu3,menu4,menu5,menu6;
-		menu1=new JMenu("Inicio");
+		JButton menu1,menu2,menu3,menu4;
+		
+		menu1=new JButton("Inicio");
+		menu1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menu1.setBackground(Color.CYAN);
 		menuNav.add(menu1);
-		menu2=new JMenu("Productos");
+		menu2=new JButton("Productos");
+		menu2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menu2.setBackground(Color.CYAN);
 		menuNav.add(menu2);
-		menu3=new JMenu("Diseños Previos");
+		menu3=new JButton("Diseños");
+		menu3.setBackground(Color.CYAN);
+		menu3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu3);
-		menu4=new JMenu("¿Preguntas?");
+		menu4=new JButton("Carrito");
+		menu4.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menu4.setBackground(Color.CYAN);
 		menuNav.add(menu4);
-		menu5=new JMenu("Perfil");
-		menuNav.add(menu5);
-		menu6=new JMenu("Carrito");
-		menuNav.add(menu6);
 		
 		//titulo perfil
 		JLabel lblNewLabel = new JLabel("Perfil");
@@ -100,7 +108,24 @@ public class VentanaPerfil extends JFrame {
 		btnInformacionDeLa.setHorizontalAlignment(SwingConstants.LEFT);
 		btnInformacionDeLa.setBounds(235, 170, 174, 23);
 		contentPane.add(btnInformacionDeLa);
+
+		//Botón que lleva a la pantalla de Diseños
+		menu3.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				try{
+					control.visualizarDiseños();
+				} catch(Exception error){
+					muestraDialogoConMensaje(error.getMessage());	
+				}
+			}
+		});
+
+
 		//Terminan botones de informacion
+	}
+
+	public void muestraDialogoConMensaje(String mensaje ) {
+		JOptionPane.showMessageDialog(this , mensaje);
 	}
 
 	public void muestra (ControlPerfil control) {

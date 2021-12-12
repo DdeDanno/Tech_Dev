@@ -2,13 +2,19 @@ package mx.uam.ayd.proyecto.presentacion.estatusPedido;
 
 
 import java.awt.Font;
+import java.awt.Color;
+import java.awt.Cursor;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
+
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import org.springframework.stereotype.Component;
 
@@ -44,21 +50,49 @@ public class VentanaEstatusPedido extends JFrame {
 		
 		//Menu Navegacion
 		JMenuBar menuNav= new JMenuBar ();
-		menuNav.setBounds(10, 29, 464, 30);
+		menuNav.setBounds(10, 23, 395, 30);
 		contentPane.add(menuNav);
-		JMenu menu1,menu2,menu3,menu4,menu5,menu6;
-		menu1=new JMenu("Inicio");
+		JButton menu1,menu2,menu3,menu4;
+		
+		menu1=new JButton("Inicio");
+		menu1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menu1.setBackground(Color.CYAN);
 		menuNav.add(menu1);
-		menu2=new JMenu("Productos");
+		menu2=new JButton("Productos");
+		menu2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menu2.setBackground(Color.CYAN);
 		menuNav.add(menu2);
-		menu3=new JMenu("Diseños Previos");
+		menu3=new JButton("Diseños");
+		menu3.setBackground(Color.CYAN);
+		menu3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu3);
-		menu4=new JMenu("¿Preguntas?");
+		menu4=new JButton("Carrito");
+		menu4.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menu4.setBackground(Color.CYAN);
 		menuNav.add(menu4);
-		menu5=new JMenu("Perfil");
-		menuNav.add(menu5);
-		menu6=new JMenu("Carrito");
-		menuNav.add(menu6);
+
+		//Botón para entrar al perfil
+		JButton btnPerfil = new JButton("Perfil");
+		btnPerfil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				control.perfil();
+			}
+		});
+		btnPerfil.setBounds(414, 23, 65, 30);
+		btnPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnPerfil.setBackground(Color.CYAN);
+		contentPane.add(btnPerfil);
+
+		//Botón para entrar a visualizar los diseños
+		menu3.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				try{
+					control.visualizarDiseños();
+				} catch(Exception error){
+					muestraDialogoConMensaje(error.getMessage());	
+				}
+			}
+		});
 		
 		//titulo estatus del pedido
 		JLabel lblNewLabel = new JLabel("Estatus del pedido");
@@ -111,6 +145,10 @@ public class VentanaEstatusPedido extends JFrame {
 		btnNewButton.setBounds(234, 199, 89, 23);
 		contentPane.add(btnNewButton);
 		
+	}
+
+	public void muestraDialogoConMensaje(String mensaje ) {
+		JOptionPane.showMessageDialog(this , mensaje);
 	}
 
 	public void muestra (ControlEstatusPedido control, int i) {

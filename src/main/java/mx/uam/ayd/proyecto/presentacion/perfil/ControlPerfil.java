@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import mx.uam.ayd.proyecto.negocio.ServicioCliente;
 import mx.uam.ayd.proyecto.negocio.ServicioPedido;
+import mx.uam.ayd.proyecto.presentacion.catalogoDiseños.ControlCatalogoDiseños;
 import mx.uam.ayd.proyecto.presentacion.estatusPedido.ControlEstatusPedido;
 
 @Component
@@ -18,6 +19,8 @@ public class ControlPerfil {
 	private ServicioCliente servicioCliente;
 	@Autowired
 	private ServicioPedido servicioPedido;
+	@Autowired
+	private ControlCatalogoDiseños controlCatalogoDiseños;
 
 	public void inicia() {
 		ventana.muestra(this);
@@ -37,5 +40,13 @@ public class ControlPerfil {
 	//Recupera el FOLIO
 	public String recuperaFolio(int i){
 		return servicioPedido.numFolio(i);
+	}
+
+	/**
+	 * Método que arranca la historia de usuario "Visualizar diseños"
+	 * 
+	 */
+	public void visualizarDiseños() {
+		controlCatalogoDiseños.inicia();
 	}
 }
