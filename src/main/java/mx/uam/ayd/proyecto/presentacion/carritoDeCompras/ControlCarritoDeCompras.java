@@ -1,6 +1,5 @@
 package mx.uam.ayd.proyecto.presentacion.carritoDeCompras;
 
-import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -34,11 +33,5 @@ public class ControlCarritoDeCompras {
     public void SubirArchivo(){
         servicioDiseñoCliente.SubirArchivo();
     }
-
-    //muestra ventana carrito
-    public void muestraCarrito(){
-
-    }
-
 }
 

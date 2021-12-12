@@ -3,10 +3,8 @@ package mx.uam.ayd.proyecto.presentacion.carritoDeCompras;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
@@ -99,6 +97,7 @@ public class VentanaCarritoDeCompras extends JFrame{
 
     public void muestra (ControlCarritoDeCompras control){
         this.control=control;
+        
         // Texto descripcion carrito de compras
         JTextArea Cotizacion=new JTextArea(control.muestraCarritodeCompra());
         Cotizacion.setBounds(270, 130, 200, 100);;
