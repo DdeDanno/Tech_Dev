@@ -1,7 +1,10 @@
 package mx.uam.ayd.proyecto.presentacion.estatusPedido;
 
 
+import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -44,21 +47,57 @@ public class VentanaEstatusPedido extends JFrame {
 		
 		//Menu Navegacion
 		JMenuBar menuNav= new JMenuBar ();
-		menuNav.setBounds(10, 29, 464, 30);
+		menuNav.setBounds(10, 23, 500, 30);
 		contentPane.add(menuNav);
-		JMenu menu1,menu2,menu3,menu4,menu5,menu6;
-		menu1=new JMenu("Inicio");
+		JButton menu1,menu2,menu3,menu4,iniSesion;
+		
+		menu1=new JButton("Inicio");
+		menu1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu1);
-		menu2=new JMenu("Productos");
+		menu2=new JButton("Productos");
+		menu2.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu2);
-		menu3=new JMenu("Diseños Previos");
+		menu3=new JButton("Diseños");
+		menu3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu3);
-		menu4=new JMenu("¿Preguntas?");
+		iniSesion = new JButton("Registrarse");
+		iniSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menuNav.add(iniSesion);
+		menu4=new JButton("Carrito");
+		menu4.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu4);
-		menu5=new JMenu("Perfil");
-		menuNav.add(menu5);
-		menu6=new JMenu("Carrito");
-		menuNav.add(menu6);
+
+		//Boto que abre el catalogo de diseños
+		menu3.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				try{
+					control.visualizarDiseños();
+				} catch(Exception error){
+					System.out.println("Error");	
+				}
+			}
+		});
+
+
+		//Boton perfil NECESARIO PARA HU:ESTATUS DEL PEDIDO NO BORRAR
+		JButton btnPerfil = new JButton("Perfil");
+		btnPerfil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				control.perfil();
+			}
+		});
+		btnPerfil.setBounds(414, 23, 65, 30);
+		btnPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menuNav.add(btnPerfil);
+
+		// Listenes para mandar a llamar al controlAgregarUsuario
+		iniSesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				control.agregarUsuario();
+
+			}
+		});
 		
 		//titulo estatus del pedido
 		JLabel lblNewLabel = new JLabel("Estatus del pedido");

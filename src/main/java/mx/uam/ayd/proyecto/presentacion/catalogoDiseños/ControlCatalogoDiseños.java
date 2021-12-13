@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import mx.uam.ayd.proyecto.negocio.ServicioDiseñoCliente;
 import mx.uam.ayd.proyecto.presentacion.carritoDeCompras.ControlCarritoDeCompras;
+import mx.uam.ayd.proyecto.presentacion.perfil.ControlPerfil;
 
 @Component
 public class ControlCatalogoDiseños {
@@ -16,6 +17,9 @@ public class ControlCatalogoDiseños {
 
     @Autowired
     private ServicioDiseñoCliente servicioDiseñoCliente;
+
+    @Autowired
+	private ControlPerfil controlPerfil;
 
     public void inicia (){
         ventana.muestra(this);
@@ -29,4 +33,9 @@ public class ControlCatalogoDiseños {
     public void SubirArchivo() throws Exception{
         servicioDiseñoCliente.SubirArchivo();
     }
+
+    //Inicia el flujo de entrar al perfil
+	public void perfil(){
+		controlPerfil.inicia();
+	}
 }

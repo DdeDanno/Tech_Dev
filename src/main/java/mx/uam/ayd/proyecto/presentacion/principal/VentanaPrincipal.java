@@ -6,6 +6,8 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
 import javax.swing.border.EmptyBorder;
 
+import com.fasterxml.jackson.annotation.ObjectIdGenerators.None;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,17 +15,15 @@ import mx.uam.ayd.proyecto.presentacion.agregarUsuario.ControlAgregarUsuario;
 import mx.uam.ayd.proyecto.presentacion.carritoDeCompras.ControlCarritoDeCompras;
 
 import javax.swing.JLabel;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Cursor;
 import java.awt.image.BufferedImage;
-import java.io.Console;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.SpinnerNumberModel;
@@ -89,26 +89,49 @@ public class VentanaPrincipal extends JFrame {
 		spinnerCant2.setBounds(265, 210, 60, 29);
 		contentPane.add(spinnerCant2);
 		// Menu Navegacion
-		JMenuBar menuNav = new JMenuBar();
-		menuNav.setBounds(5, 20, 500, 30);
+		JMenuBar menuNav= new JMenuBar ();
+		menuNav.setBounds(10, 23, 500, 30);
 		contentPane.add(menuNav);
-		JMenu menu1, menu2, menu3, menu4, menu5, menu6;
-		JMenuItem iniSesion = new JMenuItem(" Registrarse ");
-
-		menu1 = new JMenu(" Inicio ");
+		JButton menu1,menu2,menu3,menu4,iniSesion;
+		
+		menu1=new JButton("Inicio");
+		menu1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu1);
-		menu2 = new JMenu(" Productos");
+		menu2=new JButton("Productos");
+		menu2.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu2);
-		menu3 = new JMenu(" Diseños ");
+		menu3=new JButton("Diseños");
+		menu3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu3);
-		menu4 = new JMenu(" Nosotros ");
+		iniSesion = new JButton("Registrarse");
+		iniSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menuNav.add(iniSesion);
+		menu4=new JButton("Carrito");
+		menu4.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu4);
-		menu5 = new JMenu(" Registrarse ");
-		menuNav.add(menu5);
-		menu6 = new JMenu("Carrito");
-		menuNav.add(menu6);
 
-		menu5.add(iniSesion);
+		//Boto que abre el catalogo de diseños
+		menu3.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				try{
+					control.visualizarDiseños();
+				} catch(Exception error){
+					muestraDialogoConMensaje(error.getMessage());	
+				}
+			}
+		});
+
+
+		//Boton perfil NECESARIO PARA HU:ESTATUS DEL PEDIDO NO BORRAR
+		JButton btnPerfil = new JButton("Perfil");
+		btnPerfil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				control.perfil();
+			}
+		});
+		btnPerfil.setBounds(414, 23, 65, 30);
+		btnPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menuNav.add(btnPerfil);
 
 		// Boton Agregar Producto 1
 		JButton btnProducto1 = new JButton("Agrega");
@@ -116,7 +139,7 @@ public class VentanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					controlCarritoDeCompras.agregaCarrito((Integer) spinnerCant1.getValue(), "Volante");
-					control.elegirCategoria();
+					control.visualizarDiseños();
 				} catch (Exception error) {
 					muestraDialogoConMensaje(error.getMessage());
 				}
@@ -131,7 +154,7 @@ public class VentanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					controlCarritoDeCompras.agregaCarrito((Integer) spinnerCant2.getValue(), "Lona");
-					control.elegirCategoria();
+					control.visualizarDiseños();
 				} catch (Exception error) {
 					muestraDialogoConMensaje(error.getMessage());
 				}
