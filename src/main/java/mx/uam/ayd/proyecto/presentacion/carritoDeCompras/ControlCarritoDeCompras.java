@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import mx.uam.ayd.proyecto.negocio.ServicioCarrito;
 import mx.uam.ayd.proyecto.negocio.ServicioDiseñoCliente;
 import mx.uam.ayd.proyecto.negocio.modelo.Carrito;
+import mx.uam.ayd.proyecto.presentacion.generarTicket.ControlGenerarTicket;
 
 @Component
 public class ControlCarritoDeCompras {
@@ -17,6 +18,8 @@ public class ControlCarritoDeCompras {
     private ServicioCarrito servicioCarrito;
     @Autowired
     private ServicioDiseñoCliente servicioDiseñoCliente;
+    @Autowired
+    private ControlGenerarTicket controlGenerarTicket;
 
     public void inicia (){
         ventana.muestra(this);
@@ -33,6 +36,11 @@ public class ControlCarritoDeCompras {
 
     public void SubirArchivo(){
         servicioDiseñoCliente.SubirArchivo();
+    }
+
+    //Muestra la ventana para generar el ticket
+    public void generarTicket(){
+        controlGenerarTicket.inicia();
     }
 
     //muestra ventana carrito

@@ -54,7 +54,7 @@ public class ServicioCarrito {
                 carrito = element;
             }
         }
-        String carrito_compra=("Tipo: "+carrito.getTipo_producto().toString()+"\n"+"Catidad :"+carrito.getCantidad_producto()+"\n"+"Precio individual"+carrito.getPrecio_ind()+"\n"+"Precio total: "+carrito.getPrecio_tot());
+        String carrito_compra=("Tipo: "+carrito.getTipo_producto().toString()+"\n"+"Cantidad: "+carrito.getCantidad_producto()+"\n"+"Precio individual: "+carrito.getPrecio_ind()+"\n"+"Precio total: "+carrito.getPrecio_tot());
         return carrito_compra;
     }
     
