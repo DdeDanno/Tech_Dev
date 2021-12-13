@@ -11,17 +11,18 @@ import mx.uam.ayd.proyecto.datos.GrupoRepository;
 import mx.uam.ayd.proyecto.datos.UsuarioRepository;
 import mx.uam.ayd.proyecto.negocio.modelo.Grupo;
 import mx.uam.ayd.proyecto.negocio.modelo.Usuario;
+import mx.uam.ayd.proyecto.presentacion.agregarUsuario.VentanaAgregarUsuario;
 
 @Slf4j
 @Service
 public class ServicioUsuario {
-	
-	@Autowired 
+
+	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
+
 	@Autowired
 	private GrupoRepository grupoRepository;
-	
+
 	/**
 	 * 
 	 * Permite agregar un usuario
@@ -31,38 +32,43 @@ public class ServicioUsuario {
 	 * @param grupo
 	 * @return
 	 */
-	public Usuario agregaUsuario(String nombre, String apellido, String nombreGrupo) {
-		
-		// Regla de negocio: No se permite agregar dos usuarios con el mismo nombre y apellido
-		
-		
-		Usuario usuario = usuarioRepository.findByNombreAndApellido(nombre, apellido);
-		
-		if(usuario != null) {
-			throw new IllegalArgumentException("Ese usuario ya existe");
+	public Usuario agregaUsuario(String nombre, String apellido, String nombreGrupo, String correo, String Contraseña,
+			String Contraseña2) {
+
+		// Regla de negocio: No se permite agregar dos usuarios con el mismo
+		// nombre,apellido y correo.
+		// Regla de negocio: La contraseña2 (de confirmación) debe ser igual a la
+		// contraseña original.
+
+		Usuario usuario = usuarioRepository.findByCorreo(correo);
+
+		if (usuario != null) {
+			throw new IllegalArgumentException("Este Correo ya esta asociado a un Usuario existente");
 		}
-		
+
 		Grupo grupo = grupoRepository.findByNombre(nombreGrupo);
-		
-		if(grupo == null) {
+
+		if (grupo == null) {
 			throw new IllegalArgumentException("No se encontró el grupo");
 		}
-		
-		log.info("Agregando usuario nombre: "+nombre+" apellido:"+apellido);
-		
+
+		log.info("Agregando usuario nombre: " + nombre + " apellido:  " + apellido + "  correo: " + correo +
+				"  Contrasena: " + Contraseña + " Confirmacion: " + Contraseña2);
+
 		usuario = new Usuario();
 		usuario.setNombre(nombre);
 		usuario.setApellido(apellido);
-		
+		usuario.setCorreo(correo);
+		usuario.setContraseña(Contraseña);
+		usuario.setContraseña2(Contraseña2);
+
 		usuarioRepository.save(usuario);
-		
+
 		grupo.addUsuario(usuario);
-		
-		
+
 		grupoRepository.save(grupo);
-		
+
 		return usuario;
-		
 
 	}
 
@@ -71,17 +77,16 @@ public class ServicioUsuario {
 	 * 
 	 * @return Una lista con los usuarios (o lista vacía)
 	 */
-	public List <Usuario> recuperaUsuarios() {
+	public List<Usuario> recuperaUsuarios() {
 
-		
-		System.out.println("usuarioRepository = "+usuarioRepository);
-		
-		List <Usuario> usuarios = new ArrayList<>();
-		
-		for(Usuario usuario:usuarioRepository.findAll()) {
+		System.out.println("usuarioRepository = " + usuarioRepository);
+
+		List<Usuario> usuarios = new ArrayList<>();
+
+		for (Usuario usuario : usuarioRepository.findAll()) {
 			usuarios.add(usuario);
 		}
-				
+
 		return usuarios;
 	}
 

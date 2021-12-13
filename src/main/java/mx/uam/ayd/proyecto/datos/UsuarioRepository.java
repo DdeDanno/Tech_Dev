@@ -13,11 +13,14 @@ import mx.uam.ayd.proyecto.negocio.modelo.Usuario;
  * @author humbertocervantes
  *
  */
-public interface UsuarioRepository extends CrudRepository <Usuario, Long> {
-	
+public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
+
 	public Usuario findByNombreAndApellido(String nombre, String apellido);
-	
-	public List <Usuario> findByEdadBetween(int edad1, int edad2);
-	
+
+	public Usuario findByCorreo(String correo);
+
+	// public Usuario findByContraseñas(String contraseña, String contraseña2);
+
+	public List<Usuario> findByEdadBetween(int edad1, int edad2);
 
 }
