@@ -137,7 +137,7 @@ public class ServicioVenta {
             //Notas de importancia
             Paragraph notas = new Paragraph();
             notas.add(Chunk.NEWLINE);
-            notas.add("\n\n\n       I M P O R T A N T E"
+            notas.add("\n\n\n       I M P O R T A N T E\n"
             + "- El pago lo debes realizar por la cantidad que se indica, antes de la fecha límite.\n"
             + "- Los pagos realizados después de esta fecha no serán válidos.\n"
             + "- El pago deberá realizarse en una sola exhibición.\n"

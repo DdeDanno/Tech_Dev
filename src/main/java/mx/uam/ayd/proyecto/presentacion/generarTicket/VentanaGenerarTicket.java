@@ -31,7 +31,7 @@ public class VentanaGenerarTicket extends JFrame{
     public VentanaGenerarTicket(){
 
         //Para que la ventana anterior no se cierre al cerrar esta ventana
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         //Panel
         setBounds(500, 300, 500, 280);
@@ -102,8 +102,14 @@ public class VentanaGenerarTicket extends JFrame{
     //Método para mostrar la vista previa del total de la compra
     public void muestra (ControlGenerarTicket control){
         this.control=control;
-        JTextArea Cotizacion=new JTextArea(control.muestraCarrito());
-        Cotizacion.setBounds(270, 80, 200, 100);;
+        JTextArea Cotizacion=new JTextArea("Folio: \n"
+        +"Nombre: \n"
+        +"Télefono: \n"
+        +"E-mail: \n"
+        +"             Cotización\n" +control.muestraCarrito());
+
+        Cotizacion.setBounds(270, 60, 200, 300);
+        Cotizacion.setEditable(false);
         contentPane.add(Cotizacion);
         setVisible(true);
     }//Fin del método muestra

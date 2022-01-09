@@ -106,8 +106,9 @@ public class VentanaCarritoDeCompras extends JFrame{
 
     public void muestra (ControlCarritoDeCompras control){
         this.control=control;
-        JTextArea Cotizacion=new JTextArea(control.muestraCarritodeCompra());
-        Cotizacion.setBounds(270, 80, 200, 100);;
+        JTextArea Cotizacion=new JTextArea("            Cotización\n"+control.muestraCarritodeCompra());
+        Cotizacion.setBounds(270, 80, 200, 100);
+        Cotizacion.setEditable(false);
         contentPane.add(Cotizacion);
         setVisible(true);
     }
