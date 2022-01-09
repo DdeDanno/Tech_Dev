@@ -1,6 +1,5 @@
 package mx.uam.ayd.proyecto.presentacion.diseñadorPrincipal;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,11 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.SystemColor;
-import javax.swing.JTextArea;
-import javax.swing.JTextPane;
 import java.awt.FlowLayout;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
