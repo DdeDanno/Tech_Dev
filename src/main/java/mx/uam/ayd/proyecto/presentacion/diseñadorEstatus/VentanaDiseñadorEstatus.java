@@ -13,31 +13,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import org.springframework.stereotype.Component;
+
 import javax.swing.JComboBox;
 
+@Component
 public class VentanaDiseñadorEstatus extends JFrame {
 
 	private JPanel contentPane;
+	private ControlDiseñadorEstatus control;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaDiseñadorEstatus frame = new VentanaDiseñadorEstatus();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public VentanaDiseñadorEstatus() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 300, 500, 280);
@@ -125,5 +111,9 @@ public class VentanaDiseñadorEstatus extends JFrame {
 		btnTerminar.setBounds(163, 192, 117, 24);
 		contentPane.add(btnTerminar);
 		
+	}
+	public void muestra(ControlDiseñadorEstatus control){
+		this.control=control;
+		setVisible(true);
 	}
 	}

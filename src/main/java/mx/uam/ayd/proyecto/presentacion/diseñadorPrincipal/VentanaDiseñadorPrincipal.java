@@ -1,10 +1,11 @@
 package mx.uam.ayd.proyecto.presentacion.diseñadorPrincipal;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import org.springframework.stereotype.Component;
+
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.FlowLayout;
@@ -14,29 +15,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+@Component
 public class VentanaDiseñadorPrincipal extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaDiseñadorPrincipal frame = new VentanaDiseñadorPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
+	private ControlDiseñadorPrincipal control;
 	public VentanaDiseñadorPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 300, 500, 280);
@@ -90,9 +73,15 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				control.diseñadorPedidos();
 			}
 		});
 		btnNewButton.setBounds(20, 139, 117, 35);
 		contentPane.add(btnNewButton);
+	}
+
+	public void muestra(ControlDiseñadorPrincipal control){
+		this.control=control;
+		setVisible(true);
 	}
 }

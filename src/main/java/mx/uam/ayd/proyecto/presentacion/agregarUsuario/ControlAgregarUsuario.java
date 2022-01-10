@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import mx.uam.ayd.proyecto.negocio.ServicioGrupo;
 import mx.uam.ayd.proyecto.negocio.ServicioUsuario;
 import mx.uam.ayd.proyecto.negocio.modelo.Grupo;
+import mx.uam.ayd.proyecto.presentacion.diseñadorPrincipal.ControlDiseñadorPrincipal;
 
 /**
  * 
@@ -28,6 +29,9 @@ public class ControlAgregarUsuario {
 	@Autowired
 	private VentanaAgregarUsuario ventana;
 
+	@Autowired
+	private ControlDiseñadorPrincipal controlDiseñadorPrincipal;
+
 	/**
 	 * Inicia la historia de usuario
 	 * 
@@ -38,6 +42,10 @@ public class ControlAgregarUsuario {
 
 		ventana.muestra(this, grupos);
 
+	}
+	//Inicia la HU 5
+	public void diseñadorPrincipal(){
+		controlDiseñadorPrincipal.inicia();
 	}
 
 	public void agregaUsuario(String nombre, String apellido, String grupo, String correo, String Contraseña,

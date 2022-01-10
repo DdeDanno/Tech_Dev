@@ -5,13 +5,20 @@ import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import org.springframework.stereotype.Component;
+
 import javax.swing.JTextField;
 
+@Component
 public class VentanaDiseñadorPedidos extends JFrame {
 
 	private JPanel contentPane;
@@ -24,25 +31,7 @@ public class VentanaDiseñadorPedidos extends JFrame {
 	private JTextField textField_5;
 	private JTextField textField_6;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaDiseñadorPedidos frame = new VentanaDiseñadorPedidos();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
+	private ControlDiseñadorPedidos control;
 	public VentanaDiseñadorPedidos() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 300, 500, 280);
@@ -104,10 +93,6 @@ public class VentanaDiseñadorPedidos extends JFrame {
 		lblDiseador_1_2_1.setBounds(292, 74, 144, 24);
 		contentPane.add(lblDiseador_1_2_1);
 		
-		JButton btnNewButton = new JButton("Abrir");
-		btnNewButton.setBounds(407, 102, 63, 24);
-		contentPane.add(btnNewButton);
-		
 		textField = new JTextField();
 		textField.setText("12315315");
 		textField.setBounds(4, 102, 63, 24);
@@ -155,9 +140,28 @@ public class VentanaDiseñadorPedidos extends JFrame {
 		textField_6.setColumns(10);
 		textField_6.setBounds(316, 137, 81, 24);
 		contentPane.add(textField_6);
+
+		JButton btnNewButton = new JButton("Abrir");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				control.diseñadorEstatus();
+			}
+		});
+		btnNewButton.setBounds(407, 102, 63, 24);
+		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Abrir");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				control.diseñadorEstatus();
+			}
+		});
 		btnNewButton_1.setBounds(407, 137, 63, 24);
 		contentPane.add(btnNewButton_1);
+	}
+
+	public void muestra(ControlDiseñadorPedidos control){
+		this.control=control;
+		setVisible(true);
 	}
 }
