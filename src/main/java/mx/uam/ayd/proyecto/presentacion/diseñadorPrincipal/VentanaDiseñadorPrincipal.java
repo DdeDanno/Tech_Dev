@@ -28,17 +28,20 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//Nombre del personal
 		JLabel lblName = new JLabel("Name");
 		lblName.setForeground(Color.WHITE);
 		lblName.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblName.setBounds(330, 1, 144, 35);
 		contentPane.add(lblName);
 		
+		//Nombre de la empresa
 		JLabel lblMiAplicacin = new JLabel("Diseños JEHC");
 		lblMiAplicacin.setBounds(172, 0, 134, 36);
 		contentPane.add(lblMiAplicacin);
 		lblMiAplicacin.setFont(new Font("Tahoma", Font.BOLD, 20));
 		
+		//Panel de color y titulos
 		JPanel panel = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
@@ -68,7 +71,9 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 		lblDiseador_2.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblDiseador_2.setBounds(10, 109, 256, 24);
 		contentPane.add(lblDiseador_2);
+		//Terminan 
 		
+		//Boton para ver los pedidos de la sucursal
 		JButton btnNewButton = new JButton("Ver pedidos");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.addActionListener(new ActionListener() {

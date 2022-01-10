@@ -1,7 +1,6 @@
 package mx.uam.ayd.proyecto.presentacion.diseñadorPedidos;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -40,17 +39,20 @@ public class VentanaDiseñadorPedidos extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//Nombre del personal
 		JLabel lblName = new JLabel("Name");
 		lblName.setForeground(Color.WHITE);
 		lblName.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblName.setBounds(330, 1, 144, 35);
 		contentPane.add(lblName);
 		
+		//Nombre de la empresa
 		JLabel lblMiAplicacin = new JLabel("Diseños JEHC");
 		lblMiAplicacin.setBounds(172, 0, 134, 36);
 		contentPane.add(lblMiAplicacin);
 		lblMiAplicacin.setFont(new Font("Tahoma", Font.BOLD, 20));
 		
+		//Panel de color y titulos
 		JPanel panel = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
@@ -141,6 +143,9 @@ public class VentanaDiseñadorPedidos extends JFrame {
 		textField_6.setBounds(316, 137, 81, 24);
 		contentPane.add(textField_6);
 
+		//Terminan
+
+		//Botones para abrir los pedidos
 		JButton btnNewButton = new JButton("Abrir");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

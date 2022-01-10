@@ -131,6 +131,8 @@ public class VentanaAgregarUsuario extends JFrame {
 		// creación de los botones
 
 		JButton btnInicioSesion = new JButton(" Iniciar Sesión ");
+		/*Listener para comenzar la HU 5, Tiene que validar si el usuario es un
+		   Administrador o diseñador. */
 		btnInicioSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				control.diseñadorPrincipal();

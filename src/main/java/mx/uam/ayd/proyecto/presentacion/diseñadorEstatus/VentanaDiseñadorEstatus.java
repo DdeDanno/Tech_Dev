@@ -1,7 +1,6 @@
 package mx.uam.ayd.proyecto.presentacion.diseñadorEstatus;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -32,17 +31,20 @@ public class VentanaDiseñadorEstatus extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//Nombre del personal
 		JLabel lblName = new JLabel("Name");
 		lblName.setForeground(Color.WHITE);
 		lblName.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblName.setBounds(330, 1, 144, 35);
 		contentPane.add(lblName);
 		
+		//Nombre de la empresa
 		JLabel lblMiAplicacin = new JLabel("Diseños JEHC");
 		lblMiAplicacin.setBounds(172, 0, 134, 36);
 		contentPane.add(lblMiAplicacin);
 		lblMiAplicacin.setFont(new Font("Tahoma", Font.BOLD, 20));
 		
+		//Panel de color y titulos
 		JPanel panel = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
@@ -72,7 +74,9 @@ public class VentanaDiseñadorEstatus extends JFrame {
 		lblDiseador_2.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblDiseador_2.setBounds(10, 109, 256, 24);
 		contentPane.add(lblDiseador_2);
-		
+		//Terminan 
+
+		//Boton para subir diseño
 		JButton btnNewButton = new JButton("Subir diseño");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -82,6 +86,7 @@ public class VentanaDiseñadorEstatus extends JFrame {
 		btnNewButton.setBounds(267, 110, 117, 24);
 		contentPane.add(btnNewButton);
 		
+		//Titulos para modificar los estatus de los pedidos
 		JLabel lblDiseador_2_1 = new JLabel("Modificar estatus de la impresión");
 		lblDiseador_2_1.setForeground(Color.BLACK);
 		lblDiseador_2_1.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -94,18 +99,21 @@ public class VentanaDiseñadorEstatus extends JFrame {
 		lblDiseador_2_2.setBounds(10, 188, 154, 24);
 		contentPane.add(lblDiseador_2_2);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.addItem("En curso");
-		comboBox.addItem("Completado");
-		comboBox.setBounds(394, 110, 80, 23);
-		contentPane.add(comboBox);
+		//Para cambiar el estatus del pedido dos botones
+		JComboBox estatus_diseño = new JComboBox();
+		estatus_diseño.addItem("En curso");
+		estatus_diseño.addItem("Completado");
+		estatus_diseño.setBounds(394, 110, 80, 23);
+		contentPane.add(estatus_diseño);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.addItem("En curso");
-		comboBox_1.addItem("Completado");
-		comboBox_1.setBounds(267, 147, 80, 23);
-		contentPane.add(comboBox_1);
+		JComboBox estatus_Impresion = new JComboBox();
+		estatus_Impresion.addItem("En curso");
+		estatus_Impresion.addItem("Completado");
+		estatus_Impresion.setBounds(267, 147, 80, 23);
+		contentPane.add(estatus_Impresion);
+		//Termina para modificar los estatus de los botones
 		
+		//Boton para terminar el pedido
 		JButton btnTerminar = new JButton("Terminar");
 		btnTerminar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnTerminar.setBounds(163, 192, 117, 24);
