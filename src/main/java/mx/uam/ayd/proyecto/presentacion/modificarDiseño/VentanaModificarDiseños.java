@@ -1,4 +1,4 @@
-package mx.uam.ayd.proyecto.presentacion.catalogoDiseños;
+package mx.uam.ayd.proyecto.presentacion.modificarDiseño;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -22,20 +22,17 @@ import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 import mx.uam.ayd.proyecto.presentacion.agregarUsuario.ControlAgregarUsuario;
-import mx.uam.ayd.proyecto.presentacion.modificarDiseño.ControlModificarDiseños;
 
 @SuppressWarnings ("serial")
 @Component
-public class VentanaCatalogoDiseños extends JFrame{
+public class VentanaModificarDiseños extends JFrame{
     private JPanel contentPane;
-    private ControlCatalogoDiseños control;
+    private ControlModificarDiseños control;
 	@Autowired
 	private ControlAgregarUsuario controlAgregarUsuario;
-	@Autowired
-	private ControlModificarDiseños controlModificarDiseño;
 	JLabel ineg1, ineg2, ieven1, ieven2, iotr1, iotr2;
 
-    public VentanaCatalogoDiseños (){
+    public VentanaModificarDiseños (){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 300, 500, 380);
 		contentPane = new JPanel();
@@ -43,7 +40,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblMiAplicacin = new JLabel("Diseños JEHC");
+		JLabel lblMiAplicacin = new JLabel("Modificar Diseño");
 		lblMiAplicacin.setBounds(200, 5, 440, 16);
 		contentPane.add(lblMiAplicacin);
 
@@ -126,7 +123,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 		btnDiseñoCliente.setBackground(Color.LIGHT_GRAY);
 		btnDiseñoCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controlModificarDiseño.inicia();
+				control.carritoDeCompras();
 			}
 		});
         btnDiseñoCliente.setBounds(273, 310, 210, 29);
@@ -169,7 +166,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 			ineg2= new JLabel(new ImageIcon(neg2));
 			ineg2.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			ineg2.setBounds(200, 85, 100, 100);
-			contentPane.add(ineg2);
+			// contentPane.add(ineg2);
 			ineg2.addMouseListener(new MouseListener() {
 				@Override
 				public void mouseClicked(java.awt.event.MouseEvent e) {
@@ -197,7 +194,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 			ieven1= new JLabel(new ImageIcon(even1));
 			ieven1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			ieven1.setBounds(350, 85, 100, 100);
-			contentPane.add(ieven1);
+			// contentPane.add(ieven1);
 			ieven1.addMouseListener(new MouseListener() {
 				@Override
 				public void mouseClicked(java.awt.event.MouseEvent e) {
@@ -225,7 +222,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 			ieven2= new JLabel(new ImageIcon(even2));
 			ieven2.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			ieven2.setBounds(50, 200, 100, 100);
-			contentPane.add(ieven2);
+			// contentPane.add(ieven2);
 			ieven2.addMouseListener(new MouseListener() {
 				@Override
 				public void mouseClicked(java.awt.event.MouseEvent e) {
@@ -253,7 +250,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 			iotr1= new JLabel(new ImageIcon(otr1));
 			iotr1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			iotr1.setBounds(200, 200, 100, 100);
-			contentPane.add(iotr1);
+			// contentPane.add(iotr1);
 			iotr1.addMouseListener(new MouseListener() {
 				@Override
 				public void mouseClicked(java.awt.event.MouseEvent e) {
@@ -281,7 +278,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 			iotr2= new JLabel(new ImageIcon(otr2));
 			iotr2.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			iotr2.setBounds(350, 200, 100, 100);
-			contentPane.add(iotr2);
+			// contentPane.add(iotr2);
 			iotr2.addMouseListener(new MouseListener() {
 				@Override
 				public void mouseClicked(java.awt.event.MouseEvent e) {
@@ -396,7 +393,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 		});
     }
 
-    public void muestra (ControlCatalogoDiseños control){
+    public void muestra (ControlModificarDiseños control){
         this.control=control;
         setVisible(true);
     }
