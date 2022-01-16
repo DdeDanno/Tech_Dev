@@ -77,6 +77,7 @@ public class VentanaDiseñadorEstatus extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				control.subirArchivo();
 			}
 		});
 		btnNewButton.setBounds(267, 110, 117, 24);
@@ -94,14 +95,9 @@ public class VentanaDiseñadorEstatus extends JFrame {
 		lblDiseador_2_2.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblDiseador_2_2.setBounds(10, 188, 154, 24);
 		contentPane.add(lblDiseador_2_2);
-		
-		//Boton para terminar el pedido
-		JButton btnTerminar = new JButton("Terminar");
-		btnTerminar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnTerminar.setBounds(163, 192, 117, 24);
-		contentPane.add(btnTerminar);
-		
+
 	}
+	
 	public void muestra(ControlDiseñadorEstatus control, int i){
 		JLabel lblFolio = new JLabel("Folio num de folio: "+control.numpedido(i));
 		lblFolio.setForeground(Color.BLACK);
@@ -132,7 +128,7 @@ public class VentanaDiseñadorEstatus extends JFrame {
 			}
 		});
 		btnActualizar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnActualizar.setBounds(310, 192, 117, 24);
+		btnActualizar.setBounds(163, 192, 117, 24);
 		contentPane.add(btnActualizar);
 
 		this.contentPane.updateUI();

@@ -39,7 +39,7 @@ class ServicioPedidoTest {
         Pedido pedido1=new Pedido();
         pedido1.setFolio("1111111");
         pedido1.setEstatus_pago(true);
-        pedido1.setEstatus_diseño(true);
+        pedido1.setEstatus_diseño(false);
         pedido1.setEstatus_imprimiendo(false);
         pedido1.setEstatus_enviado(false);
         
@@ -49,7 +49,7 @@ class ServicioPedidoTest {
         Pedido pedido2=new Pedido();
         pedido2.setFolio("2222222");
         pedido2.setEstatus_pago(true);
-        pedido2.setEstatus_diseño(false);
+        pedido2.setEstatus_diseño(true);
         pedido2.setEstatus_imprimiendo(false);
         pedido2.setEstatus_enviado(false);
         
