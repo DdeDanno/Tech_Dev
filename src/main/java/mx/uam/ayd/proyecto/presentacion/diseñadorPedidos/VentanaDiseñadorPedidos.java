@@ -16,19 +16,20 @@ import javax.swing.border.EmptyBorder;
 import org.springframework.stereotype.Component;
 
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 @Component
 public class VentanaDiseñadorPedidos extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField txtCompletado;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
+	private JTextField txtFolio1;
+	private JTextField txtEstatusDiseño1;
+	private JTextField txtEstatusPago1;
+	private JTextField txtEstatusImpresion1;
+	private JTextField txtFolio2;
+	private JTextField txtEstatusDiseño2;
+	private JTextField txtEstatusPago2;
+	private JTextField txtEstatusImpresion2;
 
 	private ControlDiseñadorPedidos control;
 	public VentanaDiseñadorPedidos() {
@@ -94,54 +95,6 @@ public class VentanaDiseñadorPedidos extends JFrame {
 		lblDiseador_1_2_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblDiseador_1_2_1.setBounds(292, 74, 144, 24);
 		contentPane.add(lblDiseador_1_2_1);
-		
-		textField = new JTextField();
-		textField.setText("12315315");
-		textField.setBounds(4, 102, 63, 24);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		txtCompletado = new JTextField();
-		txtCompletado.setText("Completado");
-		txtCompletado.setColumns(10);
-		txtCompletado.setBounds(199, 102, 81, 24);
-		contentPane.add(txtCompletado);
-		
-		textField_1 = new JTextField();
-		textField_1.setText("Completado");
-		textField_1.setColumns(10);
-		textField_1.setBounds(87, 102, 81, 24);
-		contentPane.add(textField_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setText("Completado");
-		textField_2.setColumns(10);
-		textField_2.setBounds(316, 102, 81, 24);
-		contentPane.add(textField_2);
-		
-		textField_3 = new JTextField();
-		textField_3.setText("12315315");
-		textField_3.setColumns(10);
-		textField_3.setBounds(4, 137, 63, 24);
-		contentPane.add(textField_3);
-		
-		textField_4 = new JTextField();
-		textField_4.setText("Completado");
-		textField_4.setColumns(10);
-		textField_4.setBounds(87, 137, 81, 24);
-		contentPane.add(textField_4);
-		
-		textField_5 = new JTextField();
-		textField_5.setText("Completado");
-		textField_5.setColumns(10);
-		textField_5.setBounds(199, 137, 81, 24);
-		contentPane.add(textField_5);
-		
-		textField_6 = new JTextField();
-		textField_6.setText("Completado");
-		textField_6.setColumns(10);
-		textField_6.setBounds(316, 137, 81, 24);
-		contentPane.add(textField_6);
 
 		//Terminan
 
@@ -149,7 +102,7 @@ public class VentanaDiseñadorPedidos extends JFrame {
 		JButton btnNewButton = new JButton("Abrir");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				control.diseñadorEstatus();
+				control.diseñadorEstatus(1);
 			}
 		});
 		btnNewButton.setBounds(407, 102, 63, 24);
@@ -158,7 +111,7 @@ public class VentanaDiseñadorPedidos extends JFrame {
 		JButton btnNewButton_1 = new JButton("Abrir");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				control.diseñadorEstatus();
+				control.diseñadorEstatus(2);
 			}
 		});
 		btnNewButton_1.setBounds(407, 137, 63, 24);
@@ -166,7 +119,72 @@ public class VentanaDiseñadorPedidos extends JFrame {
 	}
 
 	public void muestra(ControlDiseñadorPedidos control){
+
+		//PEDIDOS HU 5
+		//PEDIDO 1
+		txtFolio1 = new JTextField();
+		// Econtramos el folio y lo escribimos
+		txtFolio1.setText(control.numpedido(1));
+		txtFolio1.setEditable(false);
+		txtFolio1.setBounds(4, 102, 70, 24);
+		contentPane.add(txtFolio1);
+		txtFolio1.setColumns(10);
+
+		//Ponemos el estatus del pago 1
+		txtEstatusPago1 = new JTextField();
+		txtEstatusPago1.setEditable(false);
+		txtEstatusPago1.setText(control.estatusPago(1));
+		txtEstatusPago1.setColumns(10);
+		txtEstatusPago1.setBounds(78, 102, 90, 24);
+		contentPane.add(txtEstatusPago1);
+
+		//Ponemos el estatus del diseño 1
+		txtEstatusDiseño1 = new JTextField();
+		txtEstatusDiseño1.setEditable(false);
+		txtEstatusDiseño1.setText(control.estatusDis(1));
+		txtEstatusDiseño1.setColumns(10);
+		txtEstatusDiseño1.setBounds(190, 102, 90, 24);
+		contentPane.add(txtEstatusDiseño1);
+	
+		//Ponemos el estauts de impresion
+		txtEstatusImpresion1 = new JTextField();
+		txtEstatusImpresion1.setEditable(false);
+		txtEstatusImpresion1.setText(control.estatusImpresion(1));
+		txtEstatusImpresion1.setColumns(10);
+		txtEstatusImpresion1.setBounds(307, 102, 90, 24);
+		contentPane.add(txtEstatusImpresion1);
+		
+		//PEDIDO 2
+		txtFolio2 = new JTextField();
+		txtFolio2.setEditable(false);
+		txtFolio2.setText(control.numpedido(2));
+		txtFolio2.setColumns(10);
+		txtFolio2.setBounds(4, 137, 70, 24);
+		contentPane.add(txtFolio2);
+		
+		txtEstatusPago2 = new JTextField();
+		txtEstatusPago2.setEditable(false);
+		txtEstatusPago2.setText(control.estatusPago(2));
+		txtEstatusPago2.setColumns(10);
+		txtEstatusPago2.setBounds(78, 137, 90, 24);
+		contentPane.add(txtEstatusPago2);
+		
+		txtEstatusDiseño2 = new JTextField();
+		txtEstatusDiseño2.setEditable(false);
+		txtEstatusDiseño2.setText(control.estatusDis(2));
+		txtEstatusDiseño2.setColumns(10);
+		txtEstatusDiseño2.setBounds(190, 137, 90, 24);
+		contentPane.add(txtEstatusDiseño2);
+		
+		txtEstatusImpresion2 = new JTextField();
+		txtEstatusImpresion2.setEditable(false);
+		txtEstatusImpresion2.setText(control.estatusImpresion(2));
+		txtEstatusImpresion2.setColumns(10);
+		txtEstatusImpresion2.setBounds(307, 137, 90, 24);
+		contentPane.add(txtEstatusImpresion2);
+
 		this.control=control;
 		setVisible(true);
 	}
+
 }

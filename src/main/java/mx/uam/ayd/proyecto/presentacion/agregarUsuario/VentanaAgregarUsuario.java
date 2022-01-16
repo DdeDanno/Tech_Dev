@@ -135,7 +135,7 @@ public class VentanaAgregarUsuario extends JFrame {
 		   Administrador o diseñador. */
 		btnInicioSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				control.diseñadorPrincipal();
+			control.EncontrarAdmin(lblCorreoInicioSesion.getText());
 			}
 		});
 		btnInicioSesion.setBounds(120, 110, 140, 29);

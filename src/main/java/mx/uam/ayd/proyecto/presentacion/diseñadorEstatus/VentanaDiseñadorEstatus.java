@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 import org.springframework.stereotype.Component;
@@ -24,7 +25,7 @@ public class VentanaDiseñadorEstatus extends JFrame {
 	private ControlDiseñadorEstatus control;
 
 	public VentanaDiseñadorEstatus() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(500, 300, 500, 280);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -63,12 +64,6 @@ public class VentanaDiseñadorEstatus extends JFrame {
 		lblDiseador.setBounds(10, 42, 73, 35);
 		contentPane.add(lblDiseador);
 		
-		JLabel lblDiseador_1 = new JLabel("Folio num de folio");
-		lblDiseador_1.setForeground(Color.BLACK);
-		lblDiseador_1.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblDiseador_1.setBounds(10, 74, 174, 24);
-		contentPane.add(lblDiseador_1);
-		
 		JLabel lblDiseador_2 = new JLabel("Modificar estatus del diseño");
 		lblDiseador_2.setForeground(Color.BLACK);
 		lblDiseador_2.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -99,6 +94,20 @@ public class VentanaDiseñadorEstatus extends JFrame {
 		lblDiseador_2_2.setBounds(10, 188, 154, 24);
 		contentPane.add(lblDiseador_2_2);
 		
+		//Boton para terminar el pedido
+		JButton btnTerminar = new JButton("Terminar");
+		btnTerminar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnTerminar.setBounds(163, 192, 117, 24);
+		contentPane.add(btnTerminar);
+		
+	}
+	public void muestra(ControlDiseñadorEstatus control, int i){
+		JLabel lblFolio = new JLabel("Folio num de folio: "+control.numpedido(i));
+		lblFolio.setForeground(Color.BLACK);
+		lblFolio.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblFolio.setBounds(10, 74, 190, 24);
+		contentPane.add(lblFolio);
+
 		//Para cambiar el estatus del pedido dos botones
 		JComboBox estatus_diseño = new JComboBox();
 		estatus_diseño.addItem("En curso");
@@ -112,16 +121,21 @@ public class VentanaDiseñadorEstatus extends JFrame {
 		estatus_Impresion.setBounds(267, 147, 80, 23);
 		contentPane.add(estatus_Impresion);
 		//Termina para modificar los estatus de los botones
-		
-		//Boton para terminar el pedido
-		JButton btnTerminar = new JButton("Terminar");
-		btnTerminar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnTerminar.setBounds(163, 192, 117, 24);
-		contentPane.add(btnTerminar);
-		
-	}
-	public void muestra(ControlDiseñadorEstatus control){
+
+		JButton btnActualizar = new JButton("Actualizar");
+		btnActualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				control.actualizarDiseño(estatus_diseño.getSelectedItem().toString(),i);
+				control.actualizarImpresion(estatus_Impresion.getSelectedItem().toString(),i);
+			}
+		});
+		btnActualizar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnActualizar.setBounds(310, 192, 117, 24);
+		contentPane.add(btnActualizar);
+
+		this.contentPane.updateUI();
 		this.control=control;
 		setVisible(true);
 	}
+
 	}
