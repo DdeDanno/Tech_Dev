@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
@@ -127,6 +128,7 @@ public class VentanaDiseñadorEstatus extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				control.actualizarDiseño(estatus_diseño.getSelectedItem().toString(),i);
 				control.actualizarImpresion(estatus_Impresion.getSelectedItem().toString(),i);
+				JOptionPane.showMessageDialog(null,"Se actualizo con exito");
 			}
 		});
 		btnActualizar.setFont(new Font("Tahoma", Font.PLAIN, 14));
