@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
+import mx.uam.ayd.proyecto.datos.DiseñadorRepository;
 import mx.uam.ayd.proyecto.datos.GrupoRepository;
 import mx.uam.ayd.proyecto.datos.UsuarioRepository;
+import mx.uam.ayd.proyecto.negocio.modelo.Diseñador;
 import mx.uam.ayd.proyecto.negocio.modelo.Grupo;
 import mx.uam.ayd.proyecto.negocio.modelo.Usuario;
 import mx.uam.ayd.proyecto.presentacion.agregarUsuario.VentanaAgregarUsuario;
@@ -22,6 +24,9 @@ public class ServicioUsuario {
 
 	@Autowired
 	private GrupoRepository grupoRepository;
+
+	@Autowired
+	private DiseñadorRepository diseñadorRepository;
 
 	/**
 	 * 
@@ -90,4 +95,16 @@ public class ServicioUsuario {
 		return usuarios;
 	}
 
+	//Encontramos al admin HU 5
+	public boolean EncontrarAdmin (String correo){ 
+		boolean verificador=true;
+        for(Diseñador element:diseñadorRepository.findAll()){
+            if (element.getCorreo()==correo){
+            verificador=true;
+            }
+			else
+			verificador=false;
+        }
+        return verificador;
+    }
 }

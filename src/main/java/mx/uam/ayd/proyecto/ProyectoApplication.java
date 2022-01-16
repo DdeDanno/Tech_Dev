@@ -11,6 +11,7 @@ import mx.uam.ayd.proyecto.datos.GrupoRepository;
 import mx.uam.ayd.proyecto.datos.PedidoRepository;
 import mx.uam.ayd.proyecto.datos.ProductoRepository;
 import mx.uam.ayd.proyecto.negocio.modelo.Cliente;
+import mx.uam.ayd.proyecto.negocio.modelo.Diseñador;
 import mx.uam.ayd.proyecto.negocio.modelo.Grupo;
 import mx.uam.ayd.proyecto.negocio.modelo.Pedido;
 import mx.uam.ayd.proyecto.negocio.modelo.Producto;
@@ -110,7 +111,7 @@ public class ProyectoApplication {
 		pedido1.setFolio("11111111");
 		pedido1.setEstatus_pago(true);
 		pedido1.setEstatus_diseño(false);
-		pedido1.setEstatus_imprimiendo(true);
+		pedido1.setEstatus_imprimiendo(false);
 		pedido1.setEstatus_enviado(false);
 		pedidoRepository.save(pedido1);
 
@@ -138,6 +139,11 @@ public class ProyectoApplication {
 		Grupo grupoOps = new Grupo();
 		grupoOps.setNombre("Operadores");
 		grupoRepository.save(grupoOps);
+
+		//Creamos un diseñador
+		Diseñador diseñador=new Diseñador();
+		diseñador.setCorreo("Carlos@JEHC.mx");
+		diseñador.setContraseña("123");
 
 	}
 }

@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import org.springframework.context.event.ApplicationListenerMethodAdapter;
 import org.springframework.stereotype.Component;
 
 import javax.swing.JLabel;
@@ -130,6 +131,13 @@ public class VentanaAgregarUsuario extends JFrame {
 		// creación de los botones
 
 		JButton btnInicioSesion = new JButton(" Iniciar Sesión ");
+		/*Listener para comenzar la HU 5, Tiene que validar si el usuario es un
+		   Administrador o diseñador. */
+		btnInicioSesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			control.EncontrarAdmin(lblCorreoInicioSesion.getText());
+			}
+		});
 		btnInicioSesion.setBounds(120, 110, 140, 29);
 		contentPane.add(btnInicioSesion);
 

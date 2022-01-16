@@ -62,5 +62,33 @@ public class ServicioPedido {
             }
         }
         return pedido.isEstatus_enviado();
-    }        
+    } 
+    
+    //Actualizar el Estatus del diseño
+    public void actualizarDis(String estatus, int i){
+        Pedido pedido=null;
+        for(Pedido element:pedidoRepository.findAll()){
+            if (element.getId_pedido()==i){
+            pedido = element;
+            }
+        }
+        if (estatus=="Completado")
+        pedido.setEstatus_diseño(true);
+        else
+        pedido.setEstatus_diseño(false); 
+    }
+
+        //Actualizar el Estatus de la impresion
+        public void actualizarImp(String estatus, int i){
+            Pedido pedido=null;
+            for(Pedido element:pedidoRepository.findAll()){
+                if (element.getId_pedido()==i){
+                pedido = element;
+                }
+            }
+            if (estatus=="Completado")
+            pedido.setEstatus_diseño(true);
+            else
+            pedido.setEstatus_diseño(false); 
+        }
 }

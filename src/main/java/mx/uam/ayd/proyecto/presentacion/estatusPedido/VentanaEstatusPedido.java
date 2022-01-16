@@ -67,7 +67,7 @@ public class VentanaEstatusPedido extends JFrame {
 		menu4.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu4);
 
-		//Boto que abre el catalogo de diseños
+		//Boton que abre el catalogo de diseños
 		menu3.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				try{
