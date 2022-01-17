@@ -19,6 +19,10 @@ public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
 
 	public Usuario findByCorreo(String correo);
 
+	// public Usuario findByContraseña(String contraseña);
+
+	// public Usuario findByCorreoAndContraseña(String correo, String Contraseña);
+
 	// public Usuario findByContraseñas(String contraseña, String contraseña2);
 
 	public List<Usuario> findByEdadBetween(int edad1, int edad2);
