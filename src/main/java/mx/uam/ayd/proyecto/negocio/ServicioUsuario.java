@@ -95,16 +95,40 @@ public class ServicioUsuario {
 		return usuarios;
 	}
 
-	//Encontramos al admin HU 5
-	public boolean EncontrarAdmin (String correo){ 
-		boolean verificador=true;
-        for(Diseñador element:diseñadorRepository.findAll()){
-            if (element.getCorreo()==correo){
-            verificador=true;
-            }
-			else
-			verificador=false;
-        }
-        return verificador;
-    }
+	// iniciar sesión HU 6
+	public boolean EncontrarAdmin(String correo, String Contraseña) {
+		boolean verificador = true;
+
+		Usuario usuario = usuarioRepository.findByCorreo(correo);
+
+		if (usuario != null) {
+			verificador = false;
+			throw new IllegalArgumentException("Este Usuario NO existe");
+		} else {
+			verificador = true;
+		}
+
+		/*
+		 * Usuario usuario = usuarioRepository.findByCorreo(correo);
+		 * 
+		 * if (usuario.getCorreo() == correo) {
+		 * verificador = true;
+		 * } else {
+		 * verificador = false;
+		 * // throw new IllegalArgumentException("Este Usuario NO existe");
+		 * 
+		 * }
+		 */
+
+		/*
+		 * for (Diseñador element : diseñadorRepository.findAll()) {
+		 * if (element.getCorreo() == correo) {
+		 * verificador = true;
+		 * } else
+		 * verificador = false;
+		 * }
+		 */
+		return verificador;
+		// return usuario;
+	}
 }
