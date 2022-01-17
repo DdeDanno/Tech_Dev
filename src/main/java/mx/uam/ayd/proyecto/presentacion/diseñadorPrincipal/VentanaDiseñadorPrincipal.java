@@ -106,6 +106,7 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				// Aqui poner el control para llamar a la ventana de los Diseños
+				control.modificarDiseño();
 			}
 		});
 		btnDiseños.setBounds(340, 139, 117, 35);
@@ -143,13 +144,6 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 		});
 		btnCompras.setBounds(340, 195, 117, 35);
 		contentPane.add(btnCompras);
-
-
-					control.modificarDiseño();
-			}
-		});
-		btnDiseños.setBounds(294, 139, 117, 35);
-		contentPane.add(btnDiseños);
 	}
 
 	public void muestra(ControlDiseñadorPrincipal control) {
