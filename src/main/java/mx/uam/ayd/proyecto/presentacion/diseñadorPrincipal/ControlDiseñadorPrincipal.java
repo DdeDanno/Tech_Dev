@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import mx.uam.ayd.proyecto.presentacion.diseñadorPedidos.ControlDiseñadorPedidos;
+import mx.uam.ayd.proyecto.presentacion.modificarDiseño.ControlModificarDiseños;
 
 @Component
 public class ControlDiseñadorPrincipal {
@@ -12,6 +13,8 @@ public class ControlDiseñadorPrincipal {
     private VentanaDiseñadorPrincipal ventana;
     @Autowired
     private ControlDiseñadorPedidos controlDiseñadorPedidos;
+    @Autowired
+    private ControlModificarDiseños controlModificarDiseño;
 
     public void inicia(){
         ventana.muestra(this);
@@ -19,5 +22,9 @@ public class ControlDiseñadorPrincipal {
     
     public void diseñadorPedidos(){
         controlDiseñadorPedidos.inicia();
+    }
+
+    public void modificarDiseño(){
+        controlModificarDiseño.inicia();
     }
 }

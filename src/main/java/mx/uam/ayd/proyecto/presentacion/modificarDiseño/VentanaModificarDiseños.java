@@ -5,7 +5,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -104,18 +103,23 @@ public class VentanaModificarDiseños extends JFrame{
 			}
 		});
        
-		// Boton diseño cliente
-        JButton btnDiseñoCliente = new JButton("Añadir diseño");
-		btnDiseñoCliente.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		btnDiseñoCliente.setBackground(Color.LIGHT_GRAY);
-		btnDiseñoCliente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				control.carritoDeCompras();
-			}
-		});
-        btnDiseñoCliente.setBounds(330, 320, 130, 20);	
-		contentPane.add(btnDiseñoCliente);	
 		try {
+			// Boton diseño cliente
+			JButton btnDiseñoCliente = new JButton("Añadir diseño");
+			btnDiseñoCliente.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			btnDiseñoCliente.setBackground(Color.LIGHT_GRAY);
+			btnDiseñoCliente.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						control.SubirArchivo();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			});
+			btnDiseñoCliente.setBounds(330, 320, 130, 20);	
+			contentPane.add(btnDiseñoCliente);	
 			
 			for( int i = 0; i < 6; i++ ){
 				img.add(ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\"+(i+1)+".png")));
@@ -144,9 +148,9 @@ public class VentanaModificarDiseños extends JFrame{
 			// contentPane.add(ieven1);
 
 			
-		} catch (IOException e1) {
+		} catch (IOException e) {
 			
-			e1.printStackTrace();
+			e.printStackTrace();
 		}
 
     }

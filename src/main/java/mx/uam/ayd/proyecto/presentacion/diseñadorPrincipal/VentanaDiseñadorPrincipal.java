@@ -17,9 +17,9 @@ import java.awt.event.ActionEvent;
 
 @Component
 public class VentanaDiseñadorPrincipal extends JFrame {
-
 	private JPanel contentPane;
 	private ControlDiseñadorPrincipal control;
+
 	public VentanaDiseñadorPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 300, 500, 280);
@@ -83,6 +83,17 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 		});
 		btnNewButton.setBounds(20, 139, 117, 35);
 		contentPane.add(btnNewButton);
+
+		//Boton para modificar los diseños
+		JButton btnDiseños = new JButton("Diseños");
+		btnDiseños.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnDiseños.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					control.modificarDiseño();
+			}
+		});
+		btnDiseños.setBounds(294, 139, 117, 35);
+		contentPane.add(btnDiseños);
 	}
 
 	public void muestra(ControlDiseñadorPrincipal control){
