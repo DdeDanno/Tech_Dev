@@ -131,13 +131,11 @@ public class VentanaAgregarUsuario extends JFrame {
 		// creación de los botones
 
 		JButton btnInicioSesion = new JButton(" Iniciar Sesión ");
-		/*Listener para comenzar la HU 5, Tiene que validar si el usuario es un
-		   Administrador o diseñador. */
-		btnInicioSesion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			control.EncontrarAdmin(lblCorreoInicioSesion.getText());
-			}
-		});
+		/*
+		 * Listener para comenzar la HU 5, Tiene que validar si el usuario es un
+		 * Administrador o diseñador.
+		 */
+
 		btnInicioSesion.setBounds(120, 110, 140, 29);
 		contentPane.add(btnInicioSesion);
 
@@ -189,6 +187,20 @@ public class VentanaAgregarUsuario extends JFrame {
 							(String) comboBoxGrupo.getSelectedItem(), textFieldCorreo.getText(),
 							textFieldContraseña.getText(), textFieldContraseña2.getText());
 				}
+			}
+		});
+		btnInicioSesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				if (textFieldCorreoInicioSesion.getText().equals("")
+						|| textFieldContraseñaInicioSesion.getText().equals("")) {
+					muestraDialogoConMensaje("Los campos de texto NO deben estar vacios");
+
+				} else {
+					control.EncontrarAdmin(lblCorreoInicioSesion.getText(), lblContraseñaInicioSesion.getText());
+				}
+
+				// control.EncontrarAdmin(lblCorreoInicioSesion.getText());
 			}
 		});
 

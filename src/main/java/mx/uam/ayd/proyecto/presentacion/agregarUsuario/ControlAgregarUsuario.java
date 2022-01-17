@@ -32,7 +32,6 @@ public class ControlAgregarUsuario {
 	@Autowired
 	private ControlDiseñadorPrincipal controlDiseñadorPrincipal;
 
-
 	/**
 	 * Inicia la historia de usuario
 	 * 
@@ -44,10 +43,11 @@ public class ControlAgregarUsuario {
 		ventana.muestra(this, grupos);
 
 	}
-	//Inicia la HU 5
-	public void EncontrarAdmin(String correo){
-		if (servicioUsuario.EncontrarAdmin(correo)==true)
-		controlDiseñadorPrincipal.inicia();
+
+	// Inicia la HU 6
+	public void EncontrarAdmin(String correo, String Contraseña) {
+		if (servicioUsuario.EncontrarAdmin(correo, Contraseña) == true)
+			controlDiseñadorPrincipal.inicia();
 	}
 
 	public void agregaUsuario(String nombre, String apellido, String grupo, String correo, String Contraseña,
