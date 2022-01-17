@@ -15,6 +15,8 @@ import javax.swing.border.EmptyBorder;
 
 import org.springframework.stereotype.Component;
 
+import mx.uam.ayd.proyecto.presentacion.diseñadorEstatus.VentanaDiseñadorEstatus;
+
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
@@ -102,7 +104,15 @@ public class VentanaDiseñadorPedidos extends JFrame {
 		JButton btnNewButton = new JButton("Abrir");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				control.diseñadorEstatus(1);
+				VentanaDiseñadorEstatus ventana = control.diseñadorEstatus(1);
+				ventana.addWindowListener(new java.awt.event.WindowAdapter() {
+					@Override
+					public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+						txtEstatusDiseño1.setText(control.estatusDis(1));
+						txtEstatusImpresion1.setText(control.estatusImpresion(1));
+						
+					}
+				});
 			}
 		});
 		btnNewButton.setBounds(407, 102, 63, 24);
@@ -111,7 +121,15 @@ public class VentanaDiseñadorPedidos extends JFrame {
 		JButton btnNewButton_1 = new JButton("Abrir");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				control.diseñadorEstatus(2);
+				VentanaDiseñadorEstatus ventana = control.diseñadorEstatus(2);
+				ventana.addWindowListener(new java.awt.event.WindowAdapter() {
+					@Override
+					public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+						txtEstatusDiseño2.setText(control.estatusDis(2));
+						txtEstatusImpresion2.setText(control.estatusImpresion(2));
+						
+					}
+				});
 			}
 		});
 		btnNewButton_1.setBounds(407, 137, 63, 24);

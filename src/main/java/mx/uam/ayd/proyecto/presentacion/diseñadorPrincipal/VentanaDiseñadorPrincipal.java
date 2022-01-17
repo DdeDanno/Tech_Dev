@@ -17,7 +17,6 @@ import java.awt.event.ActionEvent;
 
 @Component
 public class VentanaDiseñadorPrincipal extends JFrame {
-
 	private JPanel contentPane;
 	private ControlDiseñadorPrincipal control;
 
@@ -85,6 +84,7 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 		btnNewButton.setBounds(20, 139, 117, 35);
 		contentPane.add(btnNewButton);
 
+    // HU-06-iniciar-sesión
 		// Boton para ver el Inventario de la sucursal
 		JButton btnInventario = new JButton("Inventario");
 		btnInventario.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -97,10 +97,14 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 		contentPane.add(btnInventario);
 
 		// Boton para ver los Diseños de la sucursal
+
+		//Boton para modificar los diseños
+ 
 		JButton btnDiseños = new JButton("Diseños");
 		btnDiseños.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnDiseños.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				// Aqui poner el control para llamar a la ventana de los Diseños
 			}
 		});
@@ -140,6 +144,12 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 		btnCompras.setBounds(340, 195, 117, 35);
 		contentPane.add(btnCompras);
 
+
+					control.modificarDiseño();
+			}
+		});
+		btnDiseños.setBounds(294, 139, 117, 35);
+		contentPane.add(btnDiseños);
 	}
 
 	public void muestra(ControlDiseñadorPrincipal control) {

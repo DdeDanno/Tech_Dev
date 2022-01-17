@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import mx.uam.ayd.proyecto.presentacion.agregarUsuario.ControlAgregarUsuario;
 import mx.uam.ayd.proyecto.presentacion.carritoDeCompras.ControlCarritoDeCompras;
+import mx.uam.ayd.proyecto.presentacion.mostrarOfertas.ControlMostrarOfertas;
 
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
@@ -41,6 +42,8 @@ public class VentanaPrincipal extends JFrame {
 	@Autowired
 	private ControlAgregarUsuario controlAgregarUsuario;
 
+	@Autowired ControlMostrarOfertas controlMostrarOfertas;
+
 	/**
 	 * Launch the application.
 	 *
@@ -64,7 +67,7 @@ public class VentanaPrincipal extends JFrame {
 	public VentanaPrincipal() {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 300, 500, 280);
+		setBounds(450, 300, 600, 280);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -90,9 +93,9 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(spinnerCant2);
 		// Menu Navegacion
 		JMenuBar menuNav= new JMenuBar ();
-		menuNav.setBounds(10, 23, 500, 30);
+		menuNav.setBounds(10, 23, 600, 30);
 		contentPane.add(menuNav);
-		JButton menu1,menu2,menu3,menu4,iniSesion;
+		JButton menu1,menu2,menu3,menu4,menu5,iniSesion;
 		
 		menu1=new JButton("Inicio");
 		menu1.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -109,6 +112,9 @@ public class VentanaPrincipal extends JFrame {
 		menu4=new JButton("Carrito");
 		menu4.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu4);
+		menu5=new JButton("Ofertas");
+		menu5.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menuNav.add(menu5);
 
 		//Boto que abre el catalogo de diseños
 		menu3.addActionListener(new ActionListener(){
@@ -183,10 +189,23 @@ public class VentanaPrincipal extends JFrame {
 		btnListarUsuarios.setBounds(15, 250, 178, 29);
 		contentPane.add(btnListarUsuarios);
 
+		/*
+		*	Botón que despliega las ofertas actuales
+		*/
+		menu5.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				try{
+					controlMostrarOfertas.inicia();
+				} catch(Exception error){
+					muestraDialogoConMensaje(error.getMessage());	
+				}
+			}
+		});
+
 		// Inserta imagen producto 1
 		BufferedImage bfimgn1;
 		try {
-			bfimgn1 = ImageIO.read(new File("lona.jpg"));
+			bfimgn1 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\lona.jpg"));
 			JLabel imgn1 = new JLabel(new ImageIcon(bfimgn1));
 			imgn1.setBounds(50, 100, 200, 100);
 			contentPane.add(imgn1);
@@ -198,7 +217,7 @@ public class VentanaPrincipal extends JFrame {
 
 		BufferedImage bfimgn2;
 		try {
-			bfimgn2 = ImageIO.read(new File("tazas-impresas.jpg"));
+			bfimgn2 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\tazas-impresas.jpg"));
 			JLabel imgn2 = new JLabel(new ImageIcon(bfimgn2));
 			imgn2.setBounds(250, 100, 200, 100);
 			contentPane.add(imgn2);
