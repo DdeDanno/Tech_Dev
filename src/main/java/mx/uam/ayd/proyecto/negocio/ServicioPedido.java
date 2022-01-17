@@ -75,7 +75,9 @@ public class ServicioPedido {
         if (estatus=="Completado")
         pedido.setEstatus_diseño(true);
         else
-        pedido.setEstatus_diseño(false); 
+        pedido.setEstatus_diseño(false);
+
+        pedidoRepository.save(pedido);
     }
 
         //Actualizar el Estatus de la impresion
@@ -87,8 +89,10 @@ public class ServicioPedido {
                 }
             }
             if (estatus=="Completado")
-            pedido.setEstatus_diseño(true);
+            pedido.setEstatus_imprimiendo(true);
             else
-            pedido.setEstatus_diseño(false); 
+            pedido.setEstatus_imprimiendo(false); 
+
+            pedidoRepository.save(pedido);
         }
 }
