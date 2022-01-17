@@ -81,6 +81,21 @@ public class VentanaModificarDiseños extends JFrame{
 				}
 			}
 		});
+		// Boton diseño cliente
+		JButton btnDiseñoCliente = new JButton("Añadir diseño");
+		btnDiseñoCliente.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnDiseñoCliente.setBackground(Color.LIGHT_GRAY);
+		btnDiseñoCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					control.SubirArchivo();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnDiseñoCliente.setBounds(330, 320, 130, 20);	
+		contentPane.add(btnDiseñoCliente);
           
 
 		//Boton perfil NECESARIO PARA HU:ESTATUS DEL PEDIDO NO BORRAR
@@ -103,23 +118,7 @@ public class VentanaModificarDiseños extends JFrame{
 			}
 		});
        
-		try {
-			// Boton diseño cliente
-			JButton btnDiseñoCliente = new JButton("Añadir diseño");
-			btnDiseñoCliente.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			btnDiseñoCliente.setBackground(Color.LIGHT_GRAY);
-			btnDiseñoCliente.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					try {
-						control.SubirArchivo();
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
-			});
-			btnDiseñoCliente.setBounds(330, 320, 130, 20);	
-			contentPane.add(btnDiseñoCliente);	
+		try {	
 			
 			for( int i = 0; i < 6; i++ ){
 				img.add(ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\"+(i+1)+".png")));
@@ -129,24 +128,6 @@ public class VentanaModificarDiseños extends JFrame{
 			inciaJlabel();
 			btnBorrar();
 			btnCambiar();
-			// Image neg1 = n1.getScaledInstance(130, 100, Image.SCALE_DEFAULT);
-			// ineg1= new JLabel(new ImageIcon(neg1));
-			// ineg1.setBounds(30, 60, 130, 100);
-			// contentPane.add(ineg1);
-			// btnDiseñoCliente.setBounds(30, 160, 60, 18);
-			// btnDiseñoCliente.setFont(new Font("Tahoma", Font.PLAIN, 9));
-			// contentPane.add(btnDiseñoCliente);
-			// boton1.setBounds(90, 160, 70, 18);
-			// boton1.setFont(new Font("Tahoma", Font.PLAIN, 9));
-			// contentPane.add(boton1);
-
-			// ev1 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\5.png"));
-			// Image even2 = ev1.getScaledInstance(130, 100, Image.SCALE_DEFAULT);
-			// ieven1= new JLabel(new ImageIcon(even2));
-			// ieven1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			// ieven1.setBounds(30, 190, 130, 100);
-			// contentPane.add(ieven1);
-
 			
 		} catch (IOException e) {
 			
@@ -186,6 +167,10 @@ public class VentanaModificarDiseños extends JFrame{
 
 	public void acomodaDiseños(){
 		int cuenta = 0;
+		int cuenta1 = 0;
+		int cuenta2 = 0;
+		labelX = 30; borrarX = 30; cambiarX = 90;
+		labelY = 60; borrarY = 160; cambiarY = 160;
 		for( int i = 0; i < img.size(); i++){
 			cuenta = cuenta + 1;
 			p.get(i).setBounds(labelX, labelY, 130, 100);
@@ -196,8 +181,43 @@ public class VentanaModificarDiseños extends JFrame{
 				if((cuenta % 3) == 0)
 					labelY = labelY + 138;
 			}
+		}
+
+		for( int i = 0; i < img.size(); i++){
+			cuenta1 = cuenta1 + 1;
+			borrar.get(i).setBounds(borrarX, borrarY, 60, 18);
+			borrar.get(i).setFont(new Font("Tahoma", Font.PLAIN, 9));
+			contentPane.add(borrar.get(i));
+			borrarX = borrarX + 150;
+			if(borrarX == 480){
+				borrarX = 30;
+				if((cuenta1 % 3) == 0)
+					borrarY = borrarY + 138;
+			}
+			borrar.get(i).addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					int elemento = borrar.indexOf(e.getSource());
+					borrarElemento(elemento);
+				}});
+		}
+
+		for( int i = 0; i < img.size(); i++){
+			cuenta2 = cuenta2 + 1;
+			cambiar.get(i).setBounds(cambiarX, cambiarY, 70, 18);
+			cambiar.get(i).setFont(new Font("Tahoma", Font.PLAIN, 9));
+			contentPane.add(cambiar.get(i));
+			cambiarX = cambiarX + 150;
+			if(cambiarX == 540){
+				cambiarX = 90;
+				if((cuenta2 % 3) == 0)
+					cambiarY = cambiarY + 138;
+			}
 			
 		}
+
+		
 	}
 
 	public void btnBorrar() {
@@ -215,7 +235,14 @@ public class VentanaModificarDiseños extends JFrame{
 				if((cuenta % 3) == 0)
 					borrarY = borrarY + 138;
 			}
-			
+
+			borrar.get(i).addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					int elemento = borrar.indexOf(e.getSource());
+					borrarElemento(elemento);
+				}});
 		}	
 	}
 
@@ -236,6 +263,24 @@ public class VentanaModificarDiseños extends JFrame{
 			}
 			
 		}	
+	}
+
+
+	public void borrarElemento(int elemento){
+		
+		System.out.println(img.size());
+		cambiar.remove(elemento);
+		borrar.remove(elemento);
+		img.remove(elemento);
+		p.remove(elemento);
+		image.remove(elemento);
+		acomodaDiseños();
+		System.out.println(elemento);
+		System.out.println(cambiar.size());
+		System.out.println(borrar.size());
+		System.out.println(img.size());
+		System.out.println(p.size());
+		System.out.println(image.size());
 	}
 
 }
