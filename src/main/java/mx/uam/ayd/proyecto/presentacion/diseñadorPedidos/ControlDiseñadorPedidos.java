@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import ch.qos.logback.core.joran.conditional.ElseAction;
 import mx.uam.ayd.proyecto.negocio.ServicioPedido;
 import mx.uam.ayd.proyecto.presentacion.diseñadorEstatus.ControlDiseñadorEstatus;
+import mx.uam.ayd.proyecto.presentacion.diseñadorEstatus.VentanaDiseñadorEstatus;
 
 @Component
 public class ControlDiseñadorPedidos {
@@ -51,7 +52,7 @@ public class ControlDiseñadorPedidos {
         return estatus;
     }
 
-    public void diseñadorEstatus(int i){
-        controlDiseñadorEstatus.inicia(i);
+    public VentanaDiseñadorEstatus diseñadorEstatus(int i){
+        return controlDiseñadorEstatus.inicia(i);
     }
 }
