@@ -5,7 +5,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -126,7 +125,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 		btnDiseñoCliente.setBackground(Color.LIGHT_GRAY);
 		btnDiseñoCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controlModificarDiseño.inicia();
+				control.carritoDeCompras();
 			}
 		});
         btnDiseñoCliente.setBounds(273, 310, 210, 29);
