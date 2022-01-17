@@ -19,6 +19,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 import mx.uam.ayd.proyecto.presentacion.agregarUsuario.ControlAgregarUsuario;
@@ -30,7 +31,14 @@ public class VentanaModificarDiseños extends JFrame{
     private ControlModificarDiseños control;
 	@Autowired
 	private ControlAgregarUsuario controlAgregarUsuario;
-	JLabel ineg1, ineg2, ieven1, ieven2, iotr1, iotr2;
+
+	ArrayList<BufferedImage> img = new ArrayList<BufferedImage>();
+	ArrayList<JLabel> p = new ArrayList<JLabel>();
+	ArrayList<JButton> cambiar = new ArrayList<JButton>();
+	ArrayList<JButton> borrar = new ArrayList<JButton>();
+	ArrayList<Image> image = new ArrayList<Image>();
+	int labelX = 30, borrarX = 30, cambiarX = 90;
+	int labelY = 60, borrarY = 160, cambiarY = 160;
 
     public VentanaModificarDiseños (){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,27 +73,6 @@ public class VentanaModificarDiseños extends JFrame{
 		menu4.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu4);
 
-		JMenuBar menuClasificacion= new JMenuBar ();
-		menuClasificacion.setBounds(90, 50, 500, 30);
-		contentPane.add(menuClasificacion);
-		JButton m1,m2,m3,m4;
-		m1=new JButton("Todos");
-		m1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		m1.setBackground(Color.LIGHT_GRAY);
-		menuClasificacion.add(m1);
-		m2=new JButton("Eventos");
-		m2.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		m2.setBackground(Color.LIGHT_GRAY);
-		menuClasificacion.add(m2);
-		m3=new JButton("Negocios");
-		m3.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		m3.setBackground(Color.LIGHT_GRAY);
-		menuClasificacion.add(m3);
-		m4=new JButton("Otros");
-		m4.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		m4.setBackground(Color.LIGHT_GRAY);
-		menuClasificacion.add(m4);
-
 		menu3.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				try{
@@ -118,7 +105,7 @@ public class VentanaModificarDiseños extends JFrame{
 		});
        
 		// Boton diseño cliente
-        JButton btnDiseñoCliente = new JButton("Deseo hacer mi propio diseño");
+        JButton btnDiseñoCliente = new JButton("Añadir diseño");
 		btnDiseñoCliente.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnDiseñoCliente.setBackground(Color.LIGHT_GRAY);
 		btnDiseñoCliente.addActionListener(new ActionListener() {
@@ -126,275 +113,125 @@ public class VentanaModificarDiseños extends JFrame{
 				control.carritoDeCompras();
 			}
 		});
-        btnDiseñoCliente.setBounds(273, 310, 210, 29);
-		contentPane.add(btnDiseñoCliente);
-
-        // Imagen
-		BufferedImage n1,n2,ev1,ev2,o1,o2;
-		
+        btnDiseñoCliente.setBounds(330, 320, 130, 20);	
+		contentPane.add(btnDiseñoCliente);	
 		try {
-			n1 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\2.png"));
-			Image neg1 = n1.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-			ineg1= new JLabel(new ImageIcon(neg1));
-			ineg1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			ineg1.setBounds(50, 85, 100, 100);
-			contentPane.add(ineg1);
-			ineg1.addMouseListener(new MouseListener() {
-				@Override
-				public void mouseClicked(java.awt.event.MouseEvent e) {
-					control.carritoDeCompras();		
-				}
-				@Override
-				public void mousePressed(java.awt.event.MouseEvent e) {
-				}
+			
+			for( int i = 0; i < 6; i++ ){
+				img.add(ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\"+(i+1)+".png")));
+			}
+			
+			reescalarImagen();
+			inciaJlabel();
+			btnBorrar();
+			btnCambiar();
+			// Image neg1 = n1.getScaledInstance(130, 100, Image.SCALE_DEFAULT);
+			// ineg1= new JLabel(new ImageIcon(neg1));
+			// ineg1.setBounds(30, 60, 130, 100);
+			// contentPane.add(ineg1);
+			// btnDiseñoCliente.setBounds(30, 160, 60, 18);
+			// btnDiseñoCliente.setFont(new Font("Tahoma", Font.PLAIN, 9));
+			// contentPane.add(btnDiseñoCliente);
+			// boton1.setBounds(90, 160, 70, 18);
+			// boton1.setFont(new Font("Tahoma", Font.PLAIN, 9));
+			// contentPane.add(boton1);
 
-				@Override
-				public void mouseReleased(java.awt.event.MouseEvent e) {
-				}
-
-				@Override
-				public void mouseEntered(java.awt.event.MouseEvent e) {
-				}
-
-				@Override
-				public void mouseExited(java.awt.event.MouseEvent e) {
-				}
-			});
-
-			n2 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\3.png"));
-			Image neg2 = n2.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-			ineg2= new JLabel(new ImageIcon(neg2));
-			ineg2.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			ineg2.setBounds(200, 85, 100, 100);
-			// contentPane.add(ineg2);
-			ineg2.addMouseListener(new MouseListener() {
-				@Override
-				public void mouseClicked(java.awt.event.MouseEvent e) {
-					control.carritoDeCompras();		
-				}
-				@Override
-				public void mousePressed(java.awt.event.MouseEvent e) {
-				}
-
-				@Override
-				public void mouseReleased(java.awt.event.MouseEvent e) {
-				}
-
-				@Override
-				public void mouseEntered(java.awt.event.MouseEvent e) {
-				}
-
-				@Override
-				public void mouseExited(java.awt.event.MouseEvent e) {
-				}
-			});
-
-			ev1 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\4.png"));
-			Image even1 = ev1.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-			ieven1= new JLabel(new ImageIcon(even1));
-			ieven1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			ieven1.setBounds(350, 85, 100, 100);
+			// ev1 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\5.png"));
+			// Image even2 = ev1.getScaledInstance(130, 100, Image.SCALE_DEFAULT);
+			// ieven1= new JLabel(new ImageIcon(even2));
+			// ieven1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			// ieven1.setBounds(30, 190, 130, 100);
 			// contentPane.add(ieven1);
-			ieven1.addMouseListener(new MouseListener() {
-				@Override
-				public void mouseClicked(java.awt.event.MouseEvent e) {
-					control.carritoDeCompras();		
-				}
-				@Override
-				public void mousePressed(java.awt.event.MouseEvent e) {
-				}
 
-				@Override
-				public void mouseReleased(java.awt.event.MouseEvent e) {
-				}
-
-				@Override
-				public void mouseEntered(java.awt.event.MouseEvent e) {
-				}
-
-				@Override
-				public void mouseExited(java.awt.event.MouseEvent e) {
-				}
-			});
-
-			ev2 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\5.png"));
-			Image even2 = ev2.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-			ieven2= new JLabel(new ImageIcon(even2));
-			ieven2.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			ieven2.setBounds(50, 200, 100, 100);
-			// contentPane.add(ieven2);
-			ieven2.addMouseListener(new MouseListener() {
-				@Override
-				public void mouseClicked(java.awt.event.MouseEvent e) {
-					control.carritoDeCompras();		
-				}
-				@Override
-				public void mousePressed(java.awt.event.MouseEvent e) {
-				}
-
-				@Override
-				public void mouseReleased(java.awt.event.MouseEvent e) {
-				}
-
-				@Override
-				public void mouseEntered(java.awt.event.MouseEvent e) {
-				}
-
-				@Override
-				public void mouseExited(java.awt.event.MouseEvent e) {
-				}
-			});
-
-			o1 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\1.png"));
-			Image otr1 = o1.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-			iotr1= new JLabel(new ImageIcon(otr1));
-			iotr1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			iotr1.setBounds(200, 200, 100, 100);
-			// contentPane.add(iotr1);
-			iotr1.addMouseListener(new MouseListener() {
-				@Override
-				public void mouseClicked(java.awt.event.MouseEvent e) {
-					control.carritoDeCompras();		
-				}
-				@Override
-				public void mousePressed(java.awt.event.MouseEvent e) {
-				}
-
-				@Override
-				public void mouseReleased(java.awt.event.MouseEvent e) {
-				}
-
-				@Override
-				public void mouseEntered(java.awt.event.MouseEvent e) {
-				}
-
-				@Override
-				public void mouseExited(java.awt.event.MouseEvent e) {
-				}
-			});
-
-			o2 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\6.png"));
-			Image otr2 = o2.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-			iotr2= new JLabel(new ImageIcon(otr2));
-			iotr2.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			iotr2.setBounds(350, 200, 100, 100);
-			// contentPane.add(iotr2);
-			iotr2.addMouseListener(new MouseListener() {
-				@Override
-				public void mouseClicked(java.awt.event.MouseEvent e) {
-					control.carritoDeCompras();		
-				}
-				@Override
-				public void mousePressed(java.awt.event.MouseEvent e) {
-				}
-
-				@Override
-				public void mouseReleased(java.awt.event.MouseEvent e) {
-				}
-
-				@Override
-				public void mouseEntered(java.awt.event.MouseEvent e) {
-				}
-
-				@Override
-				public void mouseExited(java.awt.event.MouseEvent e) {
-				}
-			});
 			
 		} catch (IOException e1) {
 			
 			e1.printStackTrace();
 		}
 
-		m1.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				ineg1.setVisible(false);
-				ineg2.setVisible(false);
-				ieven1.setVisible(false);
-				ieven2.setVisible(false);
-				iotr1.setVisible(false);
-				iotr2.setVisible(false);
-
-				ineg1.setBounds(50, 85, 100, 100);
-				ineg2.setBounds(200, 85, 100, 100);
-				ieven1.setBounds(350, 85, 100, 100);
-				ieven2.setBounds(50, 200, 100, 100);
-				iotr1.setBounds(200, 200, 100, 100);
-				iotr2.setBounds(350, 200, 100, 100);
-
-				ineg1.setVisible(true);
-				ineg2.setVisible(true);
-				ieven1.setVisible(true);
-				ieven2.setVisible(true);
-				iotr1.setVisible(true);
-				iotr2.setVisible(true);
-			}
-			
-		});
-
-		m2.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-			
-				ineg1.setVisible(false);
-				ineg2.setVisible(false);
-				ieven1.setVisible(false);
-				ieven2.setVisible(false);
-				iotr1.setVisible(false);
-				iotr2.setVisible(false);
-
-				ieven1.setBounds(50, 85, 100, 100);
-				ieven2.setBounds(200, 85, 100, 100);
-
-				ieven1.setVisible(true);
-				ieven2.setVisible(true);
-			}
-		});
-
-		m3.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				ineg1.setVisible(false);
-				ineg2.setVisible(false);
-				ieven1.setVisible(false);
-				ieven2.setVisible(false);
-				iotr1.setVisible(false);
-				iotr2.setVisible(false);
-
-				ineg1.setBounds(50, 85, 100, 100);
-				ineg2.setBounds(200, 85, 100, 100);
-
-				ineg1.setVisible(true);
-				ineg2.setVisible(true);
-			}
-		});
-
-		m4.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				ineg1.setVisible(false);
-				ineg2.setVisible(false);
-				ieven1.setVisible(false);
-				ieven2.setVisible(false);
-				iotr1.setVisible(false);
-				iotr2.setVisible(false);
-
-				iotr1.setBounds(50, 85, 100, 100);
-				iotr2.setBounds(200, 85, 100, 100);
-
-				iotr1.setVisible(true);
-				iotr2.setVisible(true);
-			}
-			
-		});
     }
 
     public void muestra (ControlModificarDiseños control){
         this.control=control;
         setVisible(true);
     }
+
+	public void reescalarImagen(){
+		for( int i = 0; i < img.size(); i++){
+			image.add(img.get(i).getScaledInstance(130, 100, Image.SCALE_DEFAULT));
+		}
+	}
+
+	public void inciaJlabel(){
+		int	cuenta = 0;
+		for( int i = 0; i < img.size(); i++){
+			cuenta = cuenta + 1;
+			JLabel jlablel = new JLabel(new ImageIcon(image.get(i)));
+			p.add(jlablel);
+			p.get(i).setBounds(labelX, labelY, 130, 100);
+			contentPane.add(p.get(i));
+			labelX = labelX + 150;
+			if(labelX == 480){
+				labelX = 30;
+				if((cuenta % 3) == 0)
+					labelY = labelY + 138;
+			}
+			
+		}
+	}
+
+	public void acomodaDiseños(){
+		int cuenta = 0;
+		for( int i = 0; i < img.size(); i++){
+			cuenta = cuenta + 1;
+			p.get(i).setBounds(labelX, labelY, 130, 100);
+			contentPane.add(p.get(i));
+			labelX = labelX + 150;
+			if(labelX == 480){
+				labelX = 30;
+				if((cuenta % 3) == 0)
+					labelY = labelY + 138;
+			}
+			
+		}
+	}
+
+	public void btnBorrar() {
+		int	cuenta = 0;
+		for( int i = 0; i < img.size(); i++){
+			cuenta = cuenta + 1;
+			JButton btnBorrar = new JButton("Borrar");
+			borrar.add(btnBorrar);
+			borrar.get(i).setBounds(borrarX, borrarY, 60, 18);
+			borrar.get(i).setFont(new Font("Tahoma", Font.PLAIN, 9));
+			contentPane.add(borrar.get(i));
+			borrarX = borrarX + 150;
+			if(borrarX == 480){
+				borrarX = 30;
+				if((cuenta % 3) == 0)
+					borrarY = borrarY + 138;
+			}
+			
+		}	
+	}
+
+	public void btnCambiar() {
+		int	cuenta = 0;
+		for( int i = 0; i < img.size(); i++){
+			cuenta = cuenta + 1;
+			JButton btnCambiar = new JButton("Cambiar");
+			cambiar.add(btnCambiar);
+			cambiar.get(i).setBounds(cambiarX, cambiarY, 70, 18);
+			cambiar.get(i).setFont(new Font("Tahoma", Font.PLAIN, 9));
+			contentPane.add(cambiar.get(i));
+			cambiarX = cambiarX + 150;
+			if(cambiarX == 540){
+				cambiarX = 90;
+				if((cuenta % 3) == 0)
+					cambiarY = cambiarY + 138;
+			}
+			
+		}	
+	}
+
 }
