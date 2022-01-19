@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import java.awt.image.BufferedImage;
 
@@ -18,6 +19,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
@@ -36,11 +38,11 @@ public class VentanaModificarDiseños extends JFrame{
 	ArrayList<JButton> cambiar = new ArrayList<JButton>();
 	ArrayList<JButton> borrar = new ArrayList<JButton>();
 	ArrayList<Image> image = new ArrayList<Image>();
-	int labelX = 30, borrarX = 30, cambiarX = 90;
-	int labelY = 60, borrarY = 160, cambiarY = 160;
+	int labelX, borrarX, cambiarX;
+	int labelY, borrarY, cambiarY;
 
     public VentanaModificarDiseños (){
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(500, 300, 500, 380);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -81,6 +83,21 @@ public class VentanaModificarDiseños extends JFrame{
 				}
 			}
 		});
+		// Boton diseño cliente
+		JButton btnDiseñoCliente = new JButton("Añadir diseño");
+		btnDiseñoCliente.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnDiseñoCliente.setBackground(Color.LIGHT_GRAY);
+		btnDiseñoCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					control.SubirArchivo();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnDiseñoCliente.setBounds(330, 320, 130, 20);	
+		contentPane.add(btnDiseñoCliente);
           
 
 		//Boton perfil NECESARIO PARA HU:ESTATUS DEL PEDIDO NO BORRAR
@@ -103,50 +120,13 @@ public class VentanaModificarDiseños extends JFrame{
 			}
 		});
        
-		try {
-			// Boton diseño cliente
-			JButton btnDiseñoCliente = new JButton("Añadir diseño");
-			btnDiseñoCliente.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			btnDiseñoCliente.setBackground(Color.LIGHT_GRAY);
-			btnDiseñoCliente.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					try {
-						control.SubirArchivo();
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
-			});
-			btnDiseñoCliente.setBounds(330, 320, 130, 20);	
-			contentPane.add(btnDiseñoCliente);	
-			
-			for( int i = 0; i < 6; i++ ){
-				img.add(ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\"+(i+1)+".png")));
-			}
-			
+		try {	
+
+			leeImagen();
 			reescalarImagen();
 			inciaJlabel();
 			btnBorrar();
 			btnCambiar();
-			// Image neg1 = n1.getScaledInstance(130, 100, Image.SCALE_DEFAULT);
-			// ineg1= new JLabel(new ImageIcon(neg1));
-			// ineg1.setBounds(30, 60, 130, 100);
-			// contentPane.add(ineg1);
-			// btnDiseñoCliente.setBounds(30, 160, 60, 18);
-			// btnDiseñoCliente.setFont(new Font("Tahoma", Font.PLAIN, 9));
-			// contentPane.add(btnDiseñoCliente);
-			// boton1.setBounds(90, 160, 70, 18);
-			// boton1.setFont(new Font("Tahoma", Font.PLAIN, 9));
-			// contentPane.add(boton1);
-
-			// ev1 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\5.png"));
-			// Image even2 = ev1.getScaledInstance(130, 100, Image.SCALE_DEFAULT);
-			// ieven1= new JLabel(new ImageIcon(even2));
-			// ieven1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			// ieven1.setBounds(30, 190, 130, 100);
-			// contentPane.add(ieven1);
-
 			
 		} catch (IOException e) {
 			
@@ -155,18 +135,26 @@ public class VentanaModificarDiseños extends JFrame{
 
     }
 
-    public void muestra (ControlModificarDiseños control){
-        this.control=control;
-        setVisible(true);
-    }
+	public void leeImagen() throws IOException{
+		img.clear();
+		File carpeta = new File("src\\main\\resources\\imagenesDiseños"); 
+		File[] lista = carpeta.listFiles();
+		for( int i = 0; i < lista.length; i++ ){
+			img.add(ImageIO.read(new File(lista[i].getPath())));
+		}
+	}
+
 
 	public void reescalarImagen(){
+		image.clear();
 		for( int i = 0; i < img.size(); i++){
 			image.add(img.get(i).getScaledInstance(130, 100, Image.SCALE_DEFAULT));
 		}
 	}
 
 	public void inciaJlabel(){
+		p.clear();
+		labelX = 30; labelY = 60;
 		int	cuenta = 0;
 		for( int i = 0; i < img.size(); i++){
 			cuenta = cuenta + 1;
@@ -184,23 +172,9 @@ public class VentanaModificarDiseños extends JFrame{
 		}
 	}
 
-	public void acomodaDiseños(){
-		int cuenta = 0;
-		for( int i = 0; i < img.size(); i++){
-			cuenta = cuenta + 1;
-			p.get(i).setBounds(labelX, labelY, 130, 100);
-			contentPane.add(p.get(i));
-			labelX = labelX + 150;
-			if(labelX == 480){
-				labelX = 30;
-				if((cuenta % 3) == 0)
-					labelY = labelY + 138;
-			}
-			
-		}
-	}
-
 	public void btnBorrar() {
+		borrar.clear();	
+		borrarX = 30; borrarY = 160;
 		int	cuenta = 0;
 		for( int i = 0; i < img.size(); i++){
 			cuenta = cuenta + 1;
@@ -215,11 +189,24 @@ public class VentanaModificarDiseños extends JFrame{
 				if((cuenta % 3) == 0)
 					borrarY = borrarY + 138;
 			}
-			
+
+			borrar.get(i).addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					int elemento = borrar.indexOf(e.getSource());
+					try {
+						borrarElemento(elemento);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+				}});
 		}	
 	}
 
 	public void btnCambiar() {
+		cambiar.clear();
+		cambiarX = 90; cambiarY = 160;
 		int	cuenta = 0;
 		for( int i = 0; i < img.size(); i++){
 			cuenta = cuenta + 1;
@@ -237,5 +224,70 @@ public class VentanaModificarDiseños extends JFrame{
 			
 		}	
 	}
+
+	public void acomodaDiseños() throws IOException{
+		leeImagen();
+		reescalarImagen();
+		inciaJlabel();
+		btnBorrar();
+		btnCambiar();
+	}
+	
+    public void borraImagen(int elemento){
+
+        try{
+
+            File archivo = new File("src\\main\\resources\\imagenesDiseños\\"+"diseño"+(elemento+1)+".png");
+
+            boolean estatus = archivo.delete();
+
+            if (!estatus) {
+
+                System.out.println("Error no se ha podido eliminar el  archivo");
+
+           }else{
+
+                System.out.println("Se ha eliminado el diseño exitosamente");
+
+           }
+
+        }catch(Exception e){
+
+           System.out.println(e);
+
+        }
+
+    }
+
+	public void renombrarImagenes(){
+		File carpeta = new File("src\\main\\resources\\imagenesDiseños"); 
+		File[] lista = carpeta.listFiles();
+		for( int i = 0 ; i < lista.length ; i++ ){
+			File archivo = new File(lista[i].getPath());
+			File nuevoNombre = new File("src\\main\\resources\\imagenesDiseños\\diseño"+(i+1)+".png");
+			archivo.renameTo(nuevoNombre);	
+		}
+	}
+
+
+	public void borrarElemento(int elemento) throws IOException{
+		File carpeta = new File("src\\main\\resources\\imagenesDiseños"); 
+		File[] lista = carpeta.listFiles();
+		for( int i = 0 ; i < lista.length ; i++ ){	
+			contentPane.remove(p.get(i));
+			contentPane.remove(cambiar.get(i));
+			contentPane.remove(borrar.get(i));
+		}
+		borraImagen(elemento);
+		renombrarImagenes();
+		acomodaDiseños();
+		SwingUtilities.updateComponentTreeUI(this);
+		this.validateTree();
+	}
+
+	public void muestra (ControlModificarDiseños control){
+        this.control=control;
+        setVisible(true);
+    }
 
 }
