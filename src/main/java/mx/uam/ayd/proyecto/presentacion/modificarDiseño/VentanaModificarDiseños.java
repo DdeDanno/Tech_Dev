@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import java.awt.image.BufferedImage;
 
@@ -18,6 +19,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
@@ -36,11 +38,11 @@ public class VentanaModificarDiseños extends JFrame{
 	ArrayList<JButton> cambiar = new ArrayList<JButton>();
 	ArrayList<JButton> borrar = new ArrayList<JButton>();
 	ArrayList<Image> image = new ArrayList<Image>();
-	int labelX = 30, borrarX = 30, cambiarX = 90;
-	int labelY = 60, borrarY = 160, cambiarY = 160;
+	int labelX, borrarX, cambiarX;
+	int labelY, borrarY, cambiarY;
 
     public VentanaModificarDiseños (){
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(500, 300, 500, 380);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -119,11 +121,8 @@ public class VentanaModificarDiseños extends JFrame{
 		});
        
 		try {	
-			
-			for( int i = 0; i < 6; i++ ){
-				img.add(ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\"+(i+1)+".png")));
-			}
-			
+
+			leeImagen();
 			reescalarImagen();
 			inciaJlabel();
 			btnBorrar();
@@ -136,18 +135,26 @@ public class VentanaModificarDiseños extends JFrame{
 
     }
 
-    public void muestra (ControlModificarDiseños control){
-        this.control=control;
-        setVisible(true);
-    }
+	public void leeImagen() throws IOException{
+		img.clear();
+		File carpeta = new File("src\\main\\resources\\imagenesDiseños"); 
+		File[] lista = carpeta.listFiles();
+		for( int i = 0; i < lista.length; i++ ){
+			img.add(ImageIO.read(new File(lista[i].getPath())));
+		}
+	}
+
 
 	public void reescalarImagen(){
+		image.clear();
 		for( int i = 0; i < img.size(); i++){
 			image.add(img.get(i).getScaledInstance(130, 100, Image.SCALE_DEFAULT));
 		}
 	}
 
 	public void inciaJlabel(){
+		p.clear();
+		labelX = 30; labelY = 60;
 		int	cuenta = 0;
 		for( int i = 0; i < img.size(); i++){
 			cuenta = cuenta + 1;
@@ -165,62 +172,9 @@ public class VentanaModificarDiseños extends JFrame{
 		}
 	}
 
-	public void acomodaDiseños(){
-		int cuenta = 0;
-		int cuenta1 = 0;
-		int cuenta2 = 0;
-		labelX = 30; borrarX = 30; cambiarX = 90;
-		labelY = 60; borrarY = 160; cambiarY = 160;
-		for( int i = 0; i < img.size(); i++){
-			cuenta = cuenta + 1;
-			p.get(i).setBounds(labelX, labelY, 130, 100);
-			contentPane.add(p.get(i));
-			labelX = labelX + 150;
-			if(labelX == 480){
-				labelX = 30;
-				if((cuenta % 3) == 0)
-					labelY = labelY + 138;
-			}
-		}
-
-		for( int i = 0; i < img.size(); i++){
-			cuenta1 = cuenta1 + 1;
-			borrar.get(i).setBounds(borrarX, borrarY, 60, 18);
-			borrar.get(i).setFont(new Font("Tahoma", Font.PLAIN, 9));
-			contentPane.add(borrar.get(i));
-			borrarX = borrarX + 150;
-			if(borrarX == 480){
-				borrarX = 30;
-				if((cuenta1 % 3) == 0)
-					borrarY = borrarY + 138;
-			}
-			borrar.get(i).addActionListener(new ActionListener() {
-
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					int elemento = borrar.indexOf(e.getSource());
-					borrarElemento(elemento);
-				}});
-		}
-
-		for( int i = 0; i < img.size(); i++){
-			cuenta2 = cuenta2 + 1;
-			cambiar.get(i).setBounds(cambiarX, cambiarY, 70, 18);
-			cambiar.get(i).setFont(new Font("Tahoma", Font.PLAIN, 9));
-			contentPane.add(cambiar.get(i));
-			cambiarX = cambiarX + 150;
-			if(cambiarX == 540){
-				cambiarX = 90;
-				if((cuenta2 % 3) == 0)
-					cambiarY = cambiarY + 138;
-			}
-			
-		}
-
-		
-	}
-
 	public void btnBorrar() {
+		borrar.clear();	
+		borrarX = 30; borrarY = 160;
 		int	cuenta = 0;
 		for( int i = 0; i < img.size(); i++){
 			cuenta = cuenta + 1;
@@ -241,12 +195,18 @@ public class VentanaModificarDiseños extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					int elemento = borrar.indexOf(e.getSource());
-					borrarElemento(elemento);
+					try {
+						borrarElemento(elemento);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				}});
 		}	
 	}
 
 	public void btnCambiar() {
+		cambiar.clear();
+		cambiarX = 90; cambiarY = 160;
 		int	cuenta = 0;
 		for( int i = 0; i < img.size(); i++){
 			cuenta = cuenta + 1;
@@ -265,22 +225,69 @@ public class VentanaModificarDiseños extends JFrame{
 		}	
 	}
 
-
-	public void borrarElemento(int elemento){
-		
-		System.out.println(img.size());
-		cambiar.remove(elemento);
-		borrar.remove(elemento);
-		img.remove(elemento);
-		p.remove(elemento);
-		image.remove(elemento);
-		acomodaDiseños();
-		System.out.println(elemento);
-		System.out.println(cambiar.size());
-		System.out.println(borrar.size());
-		System.out.println(img.size());
-		System.out.println(p.size());
-		System.out.println(image.size());
+	public void acomodaDiseños() throws IOException{
+		leeImagen();
+		reescalarImagen();
+		inciaJlabel();
+		btnBorrar();
+		btnCambiar();
 	}
+	
+    public void borraImagen(int elemento){
+
+        try{
+
+            File archivo = new File("src\\main\\resources\\imagenesDiseños\\"+"diseño"+(elemento+1)+".png");
+
+            boolean estatus = archivo.delete();
+
+            if (!estatus) {
+
+                System.out.println("Error no se ha podido eliminar el  archivo");
+
+           }else{
+
+                System.out.println("Se ha eliminado el diseño exitosamente");
+
+           }
+
+        }catch(Exception e){
+
+           System.out.println(e);
+
+        }
+
+    }
+
+	public void renombrarImagenes(){
+		File carpeta = new File("src\\main\\resources\\imagenesDiseños"); 
+		File[] lista = carpeta.listFiles();
+		for( int i = 0 ; i < lista.length ; i++ ){
+			File archivo = new File(lista[i].getPath());
+			File nuevoNombre = new File("src\\main\\resources\\imagenesDiseños\\diseño"+(i+1)+".png");
+			archivo.renameTo(nuevoNombre);	
+		}
+	}
+
+
+	public void borrarElemento(int elemento) throws IOException{
+		File carpeta = new File("src\\main\\resources\\imagenesDiseños"); 
+		File[] lista = carpeta.listFiles();
+		for( int i = 0 ; i < lista.length ; i++ ){	
+			contentPane.remove(p.get(i));
+			contentPane.remove(cambiar.get(i));
+			contentPane.remove(borrar.get(i));
+		}
+		borraImagen(elemento);
+		renombrarImagenes();
+		acomodaDiseños();
+		SwingUtilities.updateComponentTreeUI(this);
+		this.validateTree();
+	}
+
+	public void muestra (ControlModificarDiseños control){
+        this.control=control;
+        setVisible(true);
+    }
 
 }
