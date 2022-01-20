@@ -3,9 +3,11 @@ package mx.uam.ayd.proyecto.presentacion.modificarDiseño;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
@@ -13,12 +15,18 @@ import java.awt.image.BufferedImage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.FileSystemUtils;
 
 import java.awt.event.ActionListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -90,7 +98,7 @@ public class VentanaModificarDiseños extends JFrame{
 		btnDiseñoCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					control.SubirArchivo();
+					subirImagen();
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -221,6 +229,18 @@ public class VentanaModificarDiseños extends JFrame{
 				if((cuenta % 3) == 0)
 					cambiarY = cambiarY + 138;
 			}
+
+			cambiar.get(i).addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					int elemento = cambiar.indexOf(e.getSource());
+					try {
+						actualizarImagen(elemento);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+				}});
 			
 		}	
 	}
@@ -269,6 +289,86 @@ public class VentanaModificarDiseños extends JFrame{
 		}
 	}
 
+	
+	public void subirImagen() throws IOException{
+		JFileChooser elegirArchivo = new JFileChooser();
+		elegirArchivo.showOpenDialog(elegirArchivo);
+		File carpeta = new File("src\\main\\resources\\imagenesDiseños"); 
+		File[] lista = carpeta.listFiles();
+		try {
+            String ruta = elegirArchivo.getSelectedFile().getAbsolutePath();
+			if(elegirArchivo.getSelectedFile().getName().endsWith(".png")){
+				InputStream in = new FileInputStream(ruta);
+				OutputStream out = new FileOutputStream("src\\main\\resources\\imagenesDiseños\\diseño"+(lista.length+1)+".png"); 
+				byte[] buf = new byte[1024];
+				int len;
+	
+				while ((len = in.read(buf)) > 0) {
+					out.write(buf, 0, len);
+				}     
+				
+				in.close();
+				out.close();
+			}else{
+				JOptionPane.showMessageDialog(null, "El archivo debe ser .png", "Diferente formato", JOptionPane.WARNING_MESSAGE);
+			}
+			
+        } 
+		catch (NullPointerException e) {
+            System.out.println("No se ha seleccionado ningún fichero");
+        } 
+		catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+		for( int i = 0 ; i < lista.length ; i++ ){	
+			contentPane.remove(p.get(i));
+			contentPane.remove(cambiar.get(i));
+			contentPane.remove(borrar.get(i));
+		}
+		acomodaDiseños();
+		this.repaint();
+	}
+
+	public void actualizarImagen(int elemento) throws IOException{
+		JFileChooser elegirArchivo = new JFileChooser();
+		elegirArchivo.showOpenDialog(elegirArchivo);
+		try {
+            String ruta = elegirArchivo.getSelectedFile().getAbsolutePath();
+			if(elegirArchivo.getSelectedFile().getName().endsWith(".png")){
+				borraImagen(elemento);
+				InputStream in = new FileInputStream(ruta);
+				OutputStream out = new FileOutputStream("src\\main\\resources\\imagenesDiseños\\diseño"+(elemento+1)+".png"); 
+				byte[] buf = new byte[1024];
+				int len;
+	
+				while ((len = in.read(buf)) > 0) {
+					out.write(buf, 0, len);
+				}     
+				
+				in.close();
+				out.close();
+			}else{
+				JOptionPane.showMessageDialog(null, "El archivo debe ser .png", "Diferente formato", JOptionPane.WARNING_MESSAGE);
+			}
+			
+        } 
+		catch (NullPointerException e) {
+            System.out.println("No se ha seleccionado ningún fichero");
+        } 
+		catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+		File carpeta = new File("src\\main\\resources\\imagenesDiseños"); 
+		File[] lista = carpeta.listFiles();
+		for( int i = 0 ; i < lista.length ; i++ ){	
+			contentPane.remove(p.get(i));
+			contentPane.remove(cambiar.get(i));
+			contentPane.remove(borrar.get(i));
+		}
+		acomodaDiseños();
+		this.repaint();
+	}
+
 
 	public void borrarElemento(int elemento) throws IOException{
 		File carpeta = new File("src\\main\\resources\\imagenesDiseños"); 
@@ -279,10 +379,10 @@ public class VentanaModificarDiseños extends JFrame{
 			contentPane.remove(borrar.get(i));
 		}
 		borraImagen(elemento);
+		this.repaint();
 		renombrarImagenes();
 		acomodaDiseños();
-		SwingUtilities.updateComponentTreeUI(this);
-		this.validateTree();
+		this.repaint();
 	}
 
 	public void muestra (ControlModificarDiseños control){
