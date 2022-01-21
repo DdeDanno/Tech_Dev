@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 import mx.uam.ayd.proyecto.presentacion.agregarUsuario.ControlAgregarUsuario;
-import mx.uam.ayd.proyecto.presentacion.modificarDiseño.ControlModificarDiseños;
 
 @SuppressWarnings ("serial")
 @Component
@@ -30,8 +29,6 @@ public class VentanaCatalogoDiseños extends JFrame{
     private ControlCatalogoDiseños control;
 	@Autowired
 	private ControlAgregarUsuario controlAgregarUsuario;
-	@Autowired
-	private ControlModificarDiseños controlModificarDiseño;
 	JLabel ineg1, ineg2, ieven1, ieven2, iotr1, iotr2;
 
     public VentanaCatalogoDiseños (){
