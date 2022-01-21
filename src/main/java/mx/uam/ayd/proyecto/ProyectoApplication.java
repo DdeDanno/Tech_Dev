@@ -17,6 +17,8 @@ import mx.uam.ayd.proyecto.negocio.modelo.Pedido;
 import mx.uam.ayd.proyecto.negocio.modelo.Producto;
 import mx.uam.ayd.proyecto.presentacion.principal.ControlPrincipal;
 
+//Prueba
+
 /**
  * probando el commit
  * Clase principal que arranca la aplicación
