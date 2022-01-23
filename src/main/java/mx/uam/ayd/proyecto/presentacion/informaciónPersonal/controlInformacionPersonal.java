@@ -26,4 +26,13 @@ public class controlInformacionPersonal {
     public String obtenerNombre(){
         return servicioCliente.nombreCliente();
     }
+    public String obtenerApellido(){
+        return servicioCliente.apellidoCliente();
+    }
+    public String obtenerCorreo(){
+        return servicioCliente.correoCliente();
+    }
+    public String obtenerTelefono(){
+        return servicioCliente.telefonoCliente();
+    }
 }

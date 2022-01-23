@@ -23,9 +23,9 @@ import javax.swing.JTextField;
 public class ventanaInformacionPersonal extends JFrame{
     private JPanel contentPane;
 	private controlInformacionPersonal control;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField nombre;
+	private JTextField correo;
+	private JTextField telefono;
     
     public ventanaInformacionPersonal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,21 +83,6 @@ public class ventanaInformacionPersonal extends JFrame{
 		lblDatosDeContacto_1_2.setBounds(10, 154, 187, 36);
 		contentPane.add(lblDatosDeContacto_1_2);
 		
-		textField = new JTextField();
-		textField.setBounds(95, 117, 164, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(95, 141, 164, 20);
-		contentPane.add(textField_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(95, 164, 164, 20);
-		contentPane.add(textField_2);
-		
 		JButton btnNewButton = new JButton("Actualizar información");
 		btnNewButton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -109,10 +94,30 @@ public class ventanaInformacionPersonal extends JFrame{
 	}
 	
 	public void muestra (controlInformacionPersonal control){
+		//Recupera el nombre del usuario y lo pinta como encabezado
 		JLabel lblInformacinPersonal = new JLabel("Información Personal ¡Hola "+control.obtenerNombre()+"!");
 		lblInformacinPersonal.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblInformacinPersonal.setBounds(10, 47, 361, 36);
 		contentPane.add(lblInformacinPersonal);
+
+		//Recupera el nombre del usuario
+		nombre = new JTextField(control.obtenerNombre()+" "+control.obtenerApellido());
+		nombre.setBounds(95, 117, 164, 20);
+		contentPane.add(nombre);
+		nombre.setEditable(false);
+		nombre.setColumns(10);
+		//Recupera el correo del usuario
+		correo = new JTextField(control.obtenerCorreo());
+		correo.setEditable(false);
+		correo.setColumns(10);
+		correo.setBounds(95, 141, 164, 20);
+		contentPane.add(correo);
+		//Recupera el telefono del cliente
+		telefono = new JTextField(control.obtenerTelefono());
+		telefono.setEditable(false);
+		telefono.setColumns(10);
+		telefono.setBounds(95, 164, 164, 20);
+		contentPane.add(telefono);
 
 		this.control=control;
 		setVisible(true);

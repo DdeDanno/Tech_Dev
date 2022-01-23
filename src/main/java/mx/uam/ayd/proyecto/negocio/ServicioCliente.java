@@ -20,14 +20,40 @@ public class ServicioCliente {
         String nombre_cliente=cliente.getNombre();
         return nombre_cliente;
     }
-
-       //Conseguimos el numero de pedidos
-       public int numPedidos (){
+    //Conseguimos el apellido del cliente
+    public String apellidoCliente (){
         Cliente cliente=null;
-        for(Cliente element:clienteRepository.findAll()){
+       for(Cliente element:clienteRepository.findAll()){
             cliente = element;
-        }
-        int num=cliente.getNum_pedidos();
-        return num;
-        }
+    }
+        String apellido_cliente=cliente.getApellido();
+        return apellido_cliente;
+    }
+    //Conseguimos el correo del cliente
+    public String correoCliente (){
+        Cliente cliente=null;
+       for(Cliente element:clienteRepository.findAll()){
+            cliente = element;
+    }
+        String correo_cliente=cliente.getCorreo();
+        return correo_cliente;
+    }
+    //Conseguimos el telefono del cliente
+    public String telefonoCliente (){
+        Cliente cliente=null;
+       for(Cliente element:clienteRepository.findAll()){
+            cliente = element;
+    }
+        String telefono_cliente=cliente.getTelefono();
+        return telefono_cliente;
+    }
+    //Conseguimos el numero de pedidos
+    public int numPedidos (){
+    Cliente cliente=null;
+    for(Cliente element:clienteRepository.findAll()){
+        cliente = element;
+    }
+    int num=cliente.getNum_pedidos();
+    return num;
+    }
 }

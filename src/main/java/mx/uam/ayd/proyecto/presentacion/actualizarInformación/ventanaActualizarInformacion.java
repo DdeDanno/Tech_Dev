@@ -24,6 +24,7 @@ public class ventanaActualizarInformacion extends JFrame{
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField textField_3;
 
     public ventanaActualizarInformacion() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,12 +74,12 @@ public class ventanaActualizarInformacion extends JFrame{
 		
 		JLabel lblDatosDeContacto_1_1 = new JLabel("Correo");
 		lblDatosDeContacto_1_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblDatosDeContacto_1_1.setBounds(10, 131, 187, 36);
+		lblDatosDeContacto_1_1.setBounds(10, 167, 187, 36);
 		contentPane.add(lblDatosDeContacto_1_1);
 		
 		JLabel lblDatosDeContacto_1_2 = new JLabel("Teléfono");
 		lblDatosDeContacto_1_2.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblDatosDeContacto_1_2.setBounds(10, 154, 187, 36);
+		lblDatosDeContacto_1_2.setBounds(10, 198, 187, 36);
 		contentPane.add(lblDatosDeContacto_1_2);
 		
 		textField = new JTextField();
@@ -88,17 +89,28 @@ public class ventanaActualizarInformacion extends JFrame{
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(90, 141, 181, 20);
+		textField_1.setBounds(90, 177, 181, 20);
 		contentPane.add(textField_1);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(90, 164, 181, 20);
+		textField_2.setBounds(90, 208, 181, 20);
 		contentPane.add(textField_2);
 		
 		JButton btnNewButton = new JButton("Guardar información");
-		btnNewButton.setBounds(75, 195, 153, 23);
+		btnNewButton.setBounds(308, 177, 153, 44);
 		contentPane.add(btnNewButton);
+		
+		
+		JLabel lblApellido = new JLabel("Apellido");
+		lblApellido.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblApellido.setBounds(10, 135, 187, 36);
+		contentPane.add(lblApellido);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(90, 146, 181, 20);
+		contentPane.add(textField_3);
 		
 		//Para cambiar tipo de correo
 		JComboBox correo = new JComboBox();
@@ -106,7 +118,7 @@ public class ventanaActualizarInformacion extends JFrame{
 		correo.addItem("@hotmail.com");
 		correo.addItem("@gmail.com");
 		correo.addItem("@outlook.es");
-		correo.setBounds(277, 141, 140, 20);
+		correo.setBounds(277, 146, 140, 20);
 		contentPane.add(correo);
 		
 	}
