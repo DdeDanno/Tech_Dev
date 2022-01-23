@@ -135,7 +135,7 @@ public class VentanaPerfil extends JFrame {
 	public void muestra (ControlPerfil control) {
 	this.control=control;
 	//Recupera el nombre del cliente y lo escribe
-	JLabel lblNewLabel_2 = new JLabel(control.conseguirNombre());
+	JLabel lblNewLabel_2 = new JLabel(control.conseguirNombre()+"!");
 	lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 	lblNewLabel_2.setBounds(110, 76, 70, 14);
 	

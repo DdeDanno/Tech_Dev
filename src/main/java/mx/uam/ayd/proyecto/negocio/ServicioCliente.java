@@ -17,7 +17,7 @@ public class ServicioCliente {
        for(Cliente element:clienteRepository.findAll()){
             cliente = element;
     }
-        String nombre_cliente=cliente.getNombre()+"!";
+        String nombre_cliente=cliente.getNombre();
         return nombre_cliente;
     }
 

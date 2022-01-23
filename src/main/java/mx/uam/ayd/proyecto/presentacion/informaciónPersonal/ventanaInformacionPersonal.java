@@ -63,11 +63,6 @@ public class ventanaInformacionPersonal extends JFrame{
 		menu4.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu4);
 		
-		JLabel lblInformacinPersonal = new JLabel("Información Personal ¡Hola Carlos!");
-		lblInformacinPersonal.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblInformacinPersonal.setBounds(10, 47, 361, 36);
-		contentPane.add(lblInformacinPersonal);
-		
 		JLabel lblDatosDeContacto = new JLabel("Datos de contacto");
 		lblDatosDeContacto.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblDatosDeContacto.setBounds(10, 74, 187, 36);
@@ -114,6 +109,11 @@ public class ventanaInformacionPersonal extends JFrame{
 	}
 	
 	public void muestra (controlInformacionPersonal control){
+		JLabel lblInformacinPersonal = new JLabel("Información Personal ¡Hola "+control.obtenerNombre()+"!");
+		lblInformacinPersonal.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblInformacinPersonal.setBounds(10, 47, 361, 36);
+		contentPane.add(lblInformacinPersonal);
+
 		this.control=control;
 		setVisible(true);
 	}
