@@ -21,10 +21,11 @@ import java.awt.Choice;
 public class ventanaActualizarInformacion extends JFrame{
     private JPanel contentPane;
 	private controlActualizarInformacion control;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField nombre;
+	private JTextField apellido;
+	private JTextField correo;
+	private JTextField telefono;
+
 
     public ventanaActualizarInformacion() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,61 +75,60 @@ public class ventanaActualizarInformacion extends JFrame{
 		
 		JLabel lblDatosDeContacto_1_1 = new JLabel("Correo");
 		lblDatosDeContacto_1_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblDatosDeContacto_1_1.setBounds(10, 167, 187, 36);
+		lblDatosDeContacto_1_1.setBounds(10, 142, 187, 36);
 		contentPane.add(lblDatosDeContacto_1_1);
 		
 		JLabel lblDatosDeContacto_1_2 = new JLabel("Teléfono");
 		lblDatosDeContacto_1_2.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblDatosDeContacto_1_2.setBounds(10, 198, 187, 36);
+		lblDatosDeContacto_1_2.setBounds(10, 179, 187, 36);
 		contentPane.add(lblDatosDeContacto_1_2);
 		
-		textField = new JTextField();
-		textField.setBounds(90, 117, 181, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(90, 177, 181, 20);
-		contentPane.add(textField_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(90, 208, 181, 20);
-		contentPane.add(textField_2);
-		
 		JButton btnNewButton = new JButton("Guardar información");
-		btnNewButton.setBounds(308, 177, 153, 44);
+		btnNewButton.setBounds(309, 186, 153, 44);
 		contentPane.add(btnNewButton);
-		
 		
 		JLabel lblApellido = new JLabel("Apellido");
 		lblApellido.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblApellido.setBounds(10, 135, 187, 36);
+		lblApellido.setBounds(248, 107, 187, 36);
 		contentPane.add(lblApellido);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(90, 146, 181, 20);
-		contentPane.add(textField_3);
-		
 		//Para cambiar tipo de correo
-		JComboBox correo = new JComboBox();
-		correo.addItem("Seleccionar correo");
-		correo.addItem("@hotmail.com");
-		correo.addItem("@gmail.com");
-		correo.addItem("@outlook.es");
-		correo.setBounds(277, 146, 140, 20);
-		contentPane.add(correo);
+		JComboBox correo_actualizar = new JComboBox();
+		correo_actualizar.addItem("Seleccionar correo");
+		correo_actualizar.addItem("@hotmail.com");
+		correo_actualizar.addItem("@gmail.com");
+		correo_actualizar.addItem("@outlook.es");
+		correo_actualizar.setBounds(237, 154, 140, 20);
+		contentPane.add(correo_actualizar);
 		
 	}
 
 	public void muestra (controlActualizarInformacion control){
+		//Recuperamos el nombre del cliente y lo escribimos como encabezado
 		JLabel lblInformacinPersonal = new JLabel("Información Personal ¡Hola "+control.obtenerNombre()+"!");
 		lblInformacinPersonal.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblInformacinPersonal.setBounds(10, 47, 361, 36);
 		contentPane.add(lblInformacinPersonal);
-		
+		//Recuperamos el nombre del cliente
+		nombre = new JTextField(control.obtenerNombre());
+		nombre.setBounds(90, 117, 139, 20);
+		contentPane.add(nombre);
+		nombre.setColumns(10);
+		//Recuperamos el apellido del cliente
+		apellido = new JTextField(control.obtenerApellido());
+		apellido.setColumns(10);
+		apellido.setBounds(323, 117, 139, 20);
+		contentPane.add(apellido);
+		//Recuperamos el correo del cliente
+		correo = new JTextField(control.obtenerCorreo());
+		correo.setColumns(10);
+		correo.setBounds(90, 154, 141, 20);
+		contentPane.add(correo);
+		//Recuperamos el telefono del cliente
+		telefono = new JTextField(control.obtenerTelefono());
+		telefono.setColumns(10);
+		telefono.setBounds(90, 189, 141, 20);
+		contentPane.add(telefono);
 		this.control=control;
 		setVisible(true);
 	}
