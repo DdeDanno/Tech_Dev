@@ -6,6 +6,8 @@ import javax.swing.border.EmptyBorder;
 
 import org.springframework.stereotype.Component;
 
+import mx.uam.ayd.proyecto.presentacion.modificarDiseño.ControlModificarDiseño;
+
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.FlowLayout;
@@ -106,6 +108,7 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				// Aqui poner el control para llamar a la ventana de los Diseños
+				control.modificarDiseños();
 				
 			}
 		});
