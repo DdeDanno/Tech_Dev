@@ -5,9 +5,11 @@ import org.springframework.stereotype.Component;
 
 import mx.uam.ayd.proyecto.negocio.ServicioCliente;
 import mx.uam.ayd.proyecto.negocio.ServicioPedido;
+import mx.uam.ayd.proyecto.presentacion.actualizarInformación.controlActualizarInformacion;
 import mx.uam.ayd.proyecto.presentacion.agregarUsuario.ControlAgregarUsuario;
 import mx.uam.ayd.proyecto.presentacion.catalogoDiseños.ControlCatalogoDiseños;
 import mx.uam.ayd.proyecto.presentacion.estatusPedido.ControlEstatusPedido;
+import mx.uam.ayd.proyecto.presentacion.informaciónPersonal.controlInformacionPersonal;
 
 @Component
 public class ControlPerfil {
@@ -24,6 +26,8 @@ public class ControlPerfil {
 	private ControlCatalogoDiseños controlCatalogoDiseños;
 	@Autowired
 	private ControlAgregarUsuario controlAgregarUsuario;
+	@Autowired
+	private controlInformacionPersonal controlInformacionPersonal;
 
 	public void inicia() {
 		ventana.muestra(this);
@@ -61,5 +65,10 @@ public class ControlPerfil {
 	 */
 	public void visualizarDiseños() {
 		controlCatalogoDiseños.inicia();
+	}
+
+	//Inicia HU 9
+	public void actualizarInformación (){
+		controlInformacionPersonal.inicia();
 	}
 }

@@ -1,21 +1,26 @@
 package mx.uam.ayd.proyecto.presentacion.actualizarInformación;
 
-import java.awt.BorderLayout;
 import java.awt.Cursor;
-import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import org.springframework.stereotype.Component;
+
 import javax.swing.JTextField;
 import java.awt.Choice;
 
+@SuppressWarnings ("serial")
+@Component
 public class ventanaActualizarInformacion extends JFrame{
     private JPanel contentPane;
+	private controlActualizarInformacion control;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -46,7 +51,7 @@ public class ventanaActualizarInformacion extends JFrame{
 		menu2=new JButton("Productos");
 		menu2.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu2);
-		menu3=new JButton("DiseÃ±os");
+		menu3=new JButton("Diseños");
 		menu3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu3);
 		iniSesion = new JButton("Registrarse");
@@ -56,7 +61,7 @@ public class ventanaActualizarInformacion extends JFrame{
 		menu4.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu4);
 		
-		JLabel lblInformacinPersonal = new JLabel("Informaci\u00F3n Personal \u00A1Hola Carlos!");
+		JLabel lblInformacinPersonal = new JLabel("Información Personal ¡Hola Carlos!");
 		lblInformacinPersonal.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblInformacinPersonal.setBounds(10, 47, 361, 36);
 		contentPane.add(lblInformacinPersonal);
@@ -76,7 +81,7 @@ public class ventanaActualizarInformacion extends JFrame{
 		lblDatosDeContacto_1_1.setBounds(10, 131, 187, 36);
 		contentPane.add(lblDatosDeContacto_1_1);
 		
-		JLabel lblDatosDeContacto_1_2 = new JLabel("Tel\u00E9fono");
+		JLabel lblDatosDeContacto_1_2 = new JLabel("Teléfono");
 		lblDatosDeContacto_1_2.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblDatosDeContacto_1_2.setBounds(10, 154, 187, 36);
 		contentPane.add(lblDatosDeContacto_1_2);
@@ -96,13 +101,23 @@ public class ventanaActualizarInformacion extends JFrame{
 		textField_2.setBounds(90, 164, 181, 20);
 		contentPane.add(textField_2);
 		
-		JButton btnNewButton = new JButton("Guardar informaci\u00F3n");
+		JButton btnNewButton = new JButton("Guardar información");
 		btnNewButton.setBounds(75, 195, 153, 23);
 		contentPane.add(btnNewButton);
 		
-		Choice choice = new Choice();
-		choice.setBounds(277, 141, 83, 20);
-		contentPane.add(choice);
+		//Para cambiar tipo de correo
+		JComboBox correo = new JComboBox();
+		correo.addItem("Seleccionar correo");
+		correo.addItem("@hotmail.com");
+		correo.addItem("@gmail.com");
+		correo.addItem("@outlook.es");
+		correo.setBounds(277, 141, 140, 20);
+		contentPane.add(correo);
 		
+	}
+
+	public void muestra (controlActualizarInformacion control){
+		this.control=control;
+		setVisible(true);
 	}
 }

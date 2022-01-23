@@ -116,6 +116,11 @@ public class VentanaPerfil extends JFrame {
 		
 		//Botones de informacion
 		JButton btnNewButton = new JButton("Informacion Personal");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				control.actualizarInformación();
+			}
+		});
 		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
 		btnNewButton.setBounds(235, 131, 174, 23);
 		contentPane.add(btnNewButton);

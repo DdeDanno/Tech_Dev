@@ -1,18 +1,28 @@
 package mx.uam.ayd.proyecto.presentacion.informaciónPersonal;
 
-import java.awt.Cursor;
-import java.awt.Font;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import org.springframework.stereotype.Component;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JMenuBar;
+
+import java.awt.Font;
+import java.awt.Cursor;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 import javax.swing.JTextField;
 
+
+@SuppressWarnings ("serial")
+@Component
 public class ventanaInformacionPersonal extends JFrame{
     private JPanel contentPane;
+	private controlInformacionPersonal control;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -43,7 +53,7 @@ public class ventanaInformacionPersonal extends JFrame{
 		menu2=new JButton("Productos");
 		menu2.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu2);
-		menu3=new JButton("DiseÃ±os");
+		menu3=new JButton("Diseños");
 		menu3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu3);
 		iniSesion = new JButton("Registrarse");
@@ -53,7 +63,7 @@ public class ventanaInformacionPersonal extends JFrame{
 		menu4.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu4);
 		
-		JLabel lblInformacinPersonal = new JLabel("Informaci\u00F3n Personal \u00A1Hola Carlos!");
+		JLabel lblInformacinPersonal = new JLabel("Información Personal ¡Hola Carlos!");
 		lblInformacinPersonal.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblInformacinPersonal.setBounds(10, 47, 361, 36);
 		contentPane.add(lblInformacinPersonal);
@@ -73,7 +83,7 @@ public class ventanaInformacionPersonal extends JFrame{
 		lblDatosDeContacto_1_1.setBounds(10, 131, 187, 36);
 		contentPane.add(lblDatosDeContacto_1_1);
 		
-		JLabel lblDatosDeContacto_1_2 = new JLabel("Tel\u00E9fono");
+		JLabel lblDatosDeContacto_1_2 = new JLabel("Teléfono");
 		lblDatosDeContacto_1_2.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblDatosDeContacto_1_2.setBounds(10, 154, 187, 36);
 		contentPane.add(lblDatosDeContacto_1_2);
@@ -93,9 +103,18 @@ public class ventanaInformacionPersonal extends JFrame{
 		textField_2.setBounds(95, 164, 164, 20);
 		contentPane.add(textField_2);
 		
-		JButton btnNewButton = new JButton("Actualizar informaci\u00F3n");
-		btnNewButton.setBounds(20, 201, 155, 23);
-		contentPane.add(btnNewButton);
-				
+		JButton btnNewButton = new JButton("Actualizar información");
+		btnNewButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+				control.actualizarInformación();
+			}
+		});
+		btnNewButton.setBounds(20, 201, 170, 23);
+		contentPane.add(btnNewButton);			
+	}
+	
+	public void muestra (controlInformacionPersonal control){
+		this.control=control;
+		setVisible(true);
 	}
 }
