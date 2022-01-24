@@ -67,10 +67,9 @@ public class ServicioCliente {
         //Inicializamos al cliente
         Cliente cliente=null;
          //Buscamos al cliente en la base de datos
-        for(Cliente element:clienteRepository.findAll()){
-            if (element.getNombre()==nombre)
-             cliente = element;
-        }
+         for(Cliente element:clienteRepository.findAll()){
+            cliente = element;
+    }
         //Verificamos que el nombre y apellido sean validos
         if (nombre.length()<4){
             throw new IllegalArgumentException("El nombre es demasiado corto \n ingrese un nombre valido");
