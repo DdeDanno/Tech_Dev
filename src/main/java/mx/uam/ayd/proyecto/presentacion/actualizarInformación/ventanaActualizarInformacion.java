@@ -83,23 +83,10 @@ public class ventanaActualizarInformacion extends JFrame{
 		lblDatosDeContacto_1_2.setBounds(10, 179, 187, 36);
 		contentPane.add(lblDatosDeContacto_1_2);
 		
-		JButton btnNewButton = new JButton("Guardar información");
-		btnNewButton.setBounds(309, 186, 153, 44);
-		contentPane.add(btnNewButton);
-		
 		JLabel lblApellido = new JLabel("Apellido");
 		lblApellido.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblApellido.setBounds(248, 107, 187, 36);
 		contentPane.add(lblApellido);
-		
-		//Para cambiar tipo de correo
-		JComboBox correo_actualizar = new JComboBox();
-		correo_actualizar.addItem("Seleccionar correo");
-		correo_actualizar.addItem("@hotmail.com");
-		correo_actualizar.addItem("@gmail.com");
-		correo_actualizar.addItem("@outlook.es");
-		correo_actualizar.setBounds(237, 154, 140, 20);
-		contentPane.add(correo_actualizar);
 		
 	}
 
@@ -120,7 +107,7 @@ public class ventanaActualizarInformacion extends JFrame{
 		apellido.setBounds(323, 117, 139, 20);
 		contentPane.add(apellido);
 		//Recuperamos el correo del cliente
-		correo = new JTextField(control.obtenerCorreo());
+		correo = new JTextField(control.obtenerCorreopart1());
 		correo.setColumns(10);
 		correo.setBounds(90, 154, 141, 20);
 		contentPane.add(correo);
@@ -129,6 +116,20 @@ public class ventanaActualizarInformacion extends JFrame{
 		telefono.setColumns(10);
 		telefono.setBounds(90, 189, 141, 20);
 		contentPane.add(telefono);
+		//Para cambiar tipo de correo
+		JComboBox correo_actualizar = new JComboBox();
+		correo_actualizar.addItem("Seleccionar correo...");
+		correo_actualizar.addItem("@hotmail.com");
+		correo_actualizar.addItem("@gmail.com");
+		correo_actualizar.addItem("@outlook.es");
+		correo_actualizar.setBounds(237, 154, 160, 20);
+		contentPane.add(correo_actualizar);
+
+		//Boton para guardar informacion
+		JButton btnNewButton = new JButton("Guardar información");
+		btnNewButton.setBounds(309, 186, 153, 44);
+		contentPane.add(btnNewButton);
+				
 		this.control=control;
 		setVisible(true);
 	}

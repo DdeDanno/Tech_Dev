@@ -23,9 +23,19 @@ public class controlActualizarInformacion {
     public String obtenerApellido(){
         return servicioCliente.apellidoCliente();
     }
-    public String obtenerCorreo(){
-        return servicioCliente.correoCliente();
+    public String obtenerCorreopart1(){
+        String correo=servicioCliente.correoCliente();
+        String [] correoSolo=correo.split("@");
+        String correoSolo1=correoSolo[0];
+        return correoSolo1;
     }
+    public String obtenerCorreopart2(){
+        String correo=servicioCliente.correoCliente();
+        String [] correoSolo=correo.split("@");
+        String correoSolo2=correoSolo[1];
+        return correoSolo2;
+    }
+
     public String obtenerTelefono(){
         return servicioCliente.telefonoCliente();
     }
