@@ -132,27 +132,32 @@ public class ventanaActualizarInformacion extends JFrame{
 		JButton btnGuardar = new JButton("Guardar información");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				boolean verificador=true;
 				//Verificamos que el nombre no este vacio
-				if (nombre.getText().isEmpty() || apellido.getText().isEmpty())
+				if (nombre.getText().isEmpty() || apellido.getText().isEmpty()){
 				JOptionPane.showMessageDialog(null,"Por favor, verifique que el nombre y apellido no estén vacios");
+				verificador=false;
+				}
 				//Verificamos que el correo no este vacio
-				if (correo.getText().isEmpty())
+				if (correo.getText().isEmpty()){
 				JOptionPane.showMessageDialog(null,"Por favor, verifique que el correo no esté vacio");
+				verificador=false;
+				}
 				//Verificamos que se haya seleccionado un correo valido
-				if (correo_actualizar.getSelectedItem().toString()=="Seleccionar correo...")
+				if (correo_actualizar.getSelectedItem().toString()=="Seleccionar correo..."){
 				JOptionPane.showMessageDialog(null,"Por favor, verifique que haya seleccionado un correo valido");
+				verificador=false;
+				}
 				//Verificamos que el telefono no este vacio
-				if (telefono.getText().isEmpty())
+				if (telefono.getText().isEmpty()){
 				JOptionPane.showMessageDialog(null,"Por favor, verifique que el numero no esté vacio");
-				
-				//Si los campos no estan vacios comenzamos a actualizar
-				control.actualizarNombre(nombre.getText(), apellido.getText());
-				/*
-				control.actualizarCorreo(nombre.getText(),correo.getText()+correo_actualizar);
-				control.actualizarTelefono(nombre.getText(), telefono.getText());
-				else
-				JOptionPane.showMessageDialog(null,"Se guardó con exito");
-				*/
+				verificador=false;
+				}
+				//Si los campos no estan vacios, actualizamos
+				if (verificador==true){
+				control.actualizarDatos(nombre.getText(), apellido.getText(),correo.getText(),
+				correo_actualizar.getSelectedItem().toString(),telefono.getText());
+				}
 			}
 		});
 		btnGuardar.setBounds(309, 186, 153, 44);

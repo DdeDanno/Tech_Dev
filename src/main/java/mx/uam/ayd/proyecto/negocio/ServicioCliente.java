@@ -63,61 +63,40 @@ public class ServicioCliente {
  */
 
     //Verificamos para guardar los datos del nombre y apellido
-    public Cliente actualizarNombre(String nombre, String apellido){
+    public Cliente actualizarDatos(String nombre, String apellido, String correo1, 
+    String correo2, String telefono){
+        int tam=correo1.length();
+        char caracteres[]=correo1.toCharArray();
         //Inicializamos al cliente
         Cliente cliente=null;
          //Buscamos al cliente en la base de datos
          for(Cliente element:clienteRepository.findAll()){
             cliente = element;
-    }
-        //Verificamos que el nombre y apellido sean validos
+        }
+        //Verificamos que los datos no sean invalidos
+        //Verificamos que el nombre no sea demasiado corto
         if (nombre.length()<4){
-            throw new IllegalArgumentException("El nombre es demasiado corto \n ingrese un nombre valido");
+            throw new IllegalArgumentException("El nombre es demasiado corto ingrese un nombre valido");
         }
+        //Verificamos que el apellido no sea demasiado corto
         if (apellido.length()<4){
-            throw new IllegalArgumentException("El apellido es demasiado corto \n ingrese un apellido valido");
+            throw new IllegalArgumentException("El apellido es demasiado corto ingrese un apellido valido");
         }
-
-        cliente.setNombre(nombre);
-        cliente.setApellido(apellido);
-        clienteRepository.save(cliente);
-        return cliente;
-    }
-
-    //Verificamos para guardar los datos del correo
-    public void actualizarCorreo(String nombre,String correo){
-        //Inicializamos al cliente
-        Cliente cliente=null;
-         //Buscamos al cliente en la base de datos
-        for(Cliente element:clienteRepository.findAll()){
-            if (element.getNombre()==nombre)
-             cliente = element;
-        }
-        String [] correoSolo=correo.split("@");
-        String correoSolo1=correoSolo[0];
-   
-        int tam=correoSolo1.length();
-        char caracteres[]=correoSolo1.toCharArray();
         //Verificamos que la primera parte del correo no contenga @
         for (int i=0;i<tam;i++){
             if (caracteres[i]== '@')
-            System.out.println("No debe contener @");
+            throw new IllegalArgumentException("Por favor, evite el uso de @ en su correo");
         }
-
-        cliente.setCorreo(correo);
-        clienteRepository.save(cliente);
-    }
-
-    public void actualizarTelefono(String nombre, String telefono){
-        //Inicializamos al cliente
-        Cliente cliente=null;
-        //Buscamos al cliente en la base de datos
-        for(Cliente element:clienteRepository.findAll()){
-            if (element.getNombre()==nombre)
-            cliente = element;
+        //Verificamos que el numero sea valido (10 digitos)
+        if (telefono.length()!=10){
+            throw new IllegalArgumentException("Por favor, ingrese un numero valido (10 digitos)");
         }
+        
+        cliente.setNombre(nombre);
+        cliente.setApellido(apellido);
+        cliente.setCorreo(correo1+correo2);
         cliente.setTelefono(telefono);
         clienteRepository.save(cliente);
-    }
-   
+        return cliente;
+    }   
 }

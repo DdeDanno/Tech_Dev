@@ -38,23 +38,15 @@ public class controlActualizarInformacion {
         return servicioCliente.telefonoCliente();
     }
     //Metodos para actualizar los datos
-    public void actualizarNombre(String nombre, String apellido){
+    public void actualizarDatos(String nombre, String apellido, String correo1,String correo2,String telefono){
         try{
-            servicioCliente.actualizarNombre(nombre,apellido);
+            servicioCliente.actualizarDatos(nombre,apellido,correo1,correo2,telefono);
+            ventana.muestraDialogoConMensaje("Actualizado con éxito");
+            termina();
         }
         catch(Exception exception){
         ventana.muestraDialogoConMensaje(exception.getMessage());
         }
-        
-        termina();
-    }
-
-    public void actualizarCorreo(String nombre, String correo){
-        servicioCliente.actualizarCorreo(nombre, correo);
-    }
-
-    public void actualizarTelefono(String nombre, String telefono){
-        servicioCliente.actualizarTelefono(nombre, telefono);
     }
 
     public void termina() {

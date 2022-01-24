@@ -42,18 +42,46 @@ public class ServicioClienteTest {
 
     @Test
     void actualizarNombre() throws Exception{
-
         //Probamos que se actualiza el nombre de manera satisfactoria
-        Cliente cliente= servicio.actualizarNombre("Carlos", "Hernandez Perez");
+        Cliente cliente= servicio.actualizarDatos("Carlos", "Hernandez Perez","CarlosHS","@hotmail.com","5519895131");
         assertNotNull(cliente);
         //Probamos que no se puede actualizar un nombre de longitud menor que 4
         Exception error = Assertions.assertThrows(Exception.class, () -> {
-        servicio.actualizarNombre("h", "Hernandez Perez");
+        servicio.actualizarDatos("h", "Hernandez Perez","CarlosHS","@hotmail.com","5519895131");
         });
-        System.out.println(error);
+        System.out.println("error1"+error);
         //Probamos que no se puede actualizar un apellido de longitud menor que 4
         Exception error2 = Assertions.assertThrows(Exception.class, () -> {
-            servicio.actualizarNombre("Daniel", "H");
+            servicio.actualizarDatos("Daniel", "H","CarlosHS","@hotmail.com","5519895131");
+            });
+            System.out.println("error2"+error2);
+        }
+
+        @Test
+        void actualizarCorreo() throws Exception{
+        //Probamos que se actualiza el correo de manera satisfactoria
+        Cliente cliente=servicio.actualizarDatos("Carlos", "Hernandez Perez","Carlos_123","@gmail.com","5519895131");
+        assertNotNull(cliente);
+        //Probamos que no se puede agregar @ en la primera parte del correo
+        Exception error = Assertions.assertThrows(Exception.class, () -> {
+            servicio.actualizarDatos("Carlos", "Hernandez Perez","Carlos_@HS","@hotmail.com","5519895131");
+            });
+            System.out.println(error);
+        }
+
+        @Test
+        void actualizarTelefono() throws Exception{
+        //Probamos que se actualiza el numero de manera satisfactoria
+        Cliente cliente=servicio.actualizarDatos("Carlos", "Hernandez Perez","Carlos_123","@gmail.com","5591861879");
+        assertNotNull(cliente);
+        //Probamos que no podemos agregar un numero mayor que 10
+        Exception error = Assertions.assertThrows(Exception.class, () -> {
+            servicio.actualizarDatos("Carlos", "Hernandez Perez","Carlos_HS","@hotmail.com","55198951311");
+            });
+            System.out.println(error);
+        //Probamos que no podemos agregar un numero menor que 10
+        Exception error2 = Assertions.assertThrows(Exception.class, () -> {
+            servicio.actualizarDatos("Carlos", "Hernandez Perez","Carlos_HS","@hotmail.com","1");
             });
             System.out.println(error2);
         }
