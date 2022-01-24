@@ -1,7 +1,6 @@
 package mx.uam.ayd.proyecto.presentacion.actualizarInformación;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.stereotype.Component;
 
 import mx.uam.ayd.proyecto.negocio.ServicioCliente;
@@ -16,7 +15,7 @@ public class controlActualizarInformacion {
     public void inicia (){
         ventana.muestra(this);
     }
-
+    //Metodos para obtener los datos
     public String obtenerNombre(){
         return servicioCliente.nombreCliente();
     }
@@ -35,8 +34,30 @@ public class controlActualizarInformacion {
         String correoSolo2=correoSolo[1];
         return correoSolo2;
     }
-
     public String obtenerTelefono(){
         return servicioCliente.telefonoCliente();
     }
+    //Metodos para actualizar los datos
+    public void actualizarNombre(String nombre, String apellido){
+        try{
+            servicioCliente.actualizarNombre(nombre,apellido);
+        }
+        catch(Exception exception){
+        ventana.muestraDialogoConMensaje(exception.getMessage());
+        }
+        
+        termina();
+    }
+
+    public void actualizarCorreo(String nombre, String correo){
+        servicioCliente.actualizarCorreo(nombre, correo);
+    }
+
+    public void actualizarTelefono(String nombre, String telefono){
+        servicioCliente.actualizarTelefono(nombre, telefono);
+    }
+
+    public void termina() {
+		ventana.setVisible(false);
+	}
 }

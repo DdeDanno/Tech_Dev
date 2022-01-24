@@ -56,4 +56,69 @@ public class ServicioCliente {
     int num=cliente.getNum_pedidos();
     return num;
     }
+/**
+ * 
+ * Comienzan los metodos par actualizar los datos
+ * 
+ */
+
+    //Verificamos para guardar los datos del nombre y apellido
+    public Cliente actualizarNombre(String nombre, String apellido){
+        //Inicializamos al cliente
+        Cliente cliente=null;
+         //Buscamos al cliente en la base de datos
+        for(Cliente element:clienteRepository.findAll()){
+            if (element.getNombre()==nombre)
+             cliente = element;
+        }
+        //Verificamos que el nombre y apellido sean validos
+        if (nombre.length()<4){
+            throw new IllegalArgumentException("El nombre es demasiado corto \n ingrese un nombre valido");
+        }
+        if (apellido.length()<4){
+            throw new IllegalArgumentException("El apellido es demasiado corto \n ingrese un apellido valido");
+        }
+
+        cliente.setNombre(nombre);
+        cliente.setApellido(apellido);
+        clienteRepository.save(cliente);
+        return cliente;
+    }
+
+    //Verificamos para guardar los datos del correo
+    public void actualizarCorreo(String nombre,String correo){
+        //Inicializamos al cliente
+        Cliente cliente=null;
+         //Buscamos al cliente en la base de datos
+        for(Cliente element:clienteRepository.findAll()){
+            if (element.getNombre()==nombre)
+             cliente = element;
+        }
+        String [] correoSolo=correo.split("@");
+        String correoSolo1=correoSolo[0];
+   
+        int tam=correoSolo1.length();
+        char caracteres[]=correoSolo1.toCharArray();
+        //Verificamos que la primera parte del correo no contenga @
+        for (int i=0;i<tam;i++){
+            if (caracteres[i]== '@')
+            System.out.println("No debe contener @");
+        }
+
+        cliente.setCorreo(correo);
+        clienteRepository.save(cliente);
+    }
+
+    public void actualizarTelefono(String nombre, String telefono){
+        //Inicializamos al cliente
+        Cliente cliente=null;
+        //Buscamos al cliente en la base de datos
+        for(Cliente element:clienteRepository.findAll()){
+            if (element.getNombre()==nombre)
+            cliente = element;
+        }
+        cliente.setTelefono(telefono);
+        clienteRepository.save(cliente);
+    }
+   
 }

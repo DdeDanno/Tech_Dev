@@ -2,19 +2,22 @@ package mx.uam.ayd.proyecto.presentacion.actualizarInformación;
 
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import org.springframework.stereotype.Component;
 
 import javax.swing.JTextField;
-import java.awt.Choice;
 
 @SuppressWarnings ("serial")
 @Component
@@ -126,11 +129,39 @@ public class ventanaActualizarInformacion extends JFrame{
 		contentPane.add(correo_actualizar);
 
 		//Boton para guardar informacion
-		JButton btnNewButton = new JButton("Guardar información");
-		btnNewButton.setBounds(309, 186, 153, 44);
-		contentPane.add(btnNewButton);
+		JButton btnGuardar = new JButton("Guardar información");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Verificamos que el nombre no este vacio
+				if (nombre.getText().isEmpty() || apellido.getText().isEmpty())
+				JOptionPane.showMessageDialog(null,"Por favor, verifique que el nombre y apellido no estén vacios");
+				//Verificamos que el correo no este vacio
+				if (correo.getText().isEmpty())
+				JOptionPane.showMessageDialog(null,"Por favor, verifique que el correo no esté vacio");
+				//Verificamos que se haya seleccionado un correo valido
+				if (correo_actualizar.getSelectedItem().toString()=="Seleccionar correo...")
+				JOptionPane.showMessageDialog(null,"Por favor, verifique que haya seleccionado un correo valido");
+				//Verificamos que el telefono no este vacio
+				if (telefono.getText().isEmpty())
+				JOptionPane.showMessageDialog(null,"Por favor, verifique que el numero no esté vacio");
+				
+				//Si los campos no estan vacios comenzamos a actualizar
+				control.actualizarNombre(nombre.getText(), apellido.getText());
+				/*
+				control.actualizarCorreo(nombre.getText(),correo.getText()+correo_actualizar);
+				control.actualizarTelefono(nombre.getText(), telefono.getText());
+				else
+				JOptionPane.showMessageDialog(null,"Se guardó con exito");
+				*/
+			}
+		});
+		btnGuardar.setBounds(309, 186, 153, 44);
+		contentPane.add(btnGuardar);
 				
 		this.control=control;
 		setVisible(true);
+	}
+	public void muestraDialogoConMensaje(String mensaje) {
+		JOptionPane.showMessageDialog(this, mensaje);
 	}
 }
