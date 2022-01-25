@@ -66,6 +66,7 @@ public class VentanaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaPrincipal() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 300, 600, 280);
