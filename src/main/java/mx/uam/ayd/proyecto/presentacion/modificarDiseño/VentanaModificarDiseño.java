@@ -25,16 +25,12 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 
-import mx.uam.ayd.proyecto.presentacion.agregarUsuario.ControlAgregarUsuario;
-
 @SuppressWarnings("serial")
 @Component
 public class VentanaModificarDiseño extends JFrame {
     private JPanel contentPane;
     @Autowired
     private ControlModificarDiseño control;
-    @Autowired
-    private ControlAgregarUsuario controlAgregarUsuario;
 
     ArrayList<BufferedImage> img = new ArrayList<BufferedImage>();
 	ArrayList<JLabel> p = new ArrayList<JLabel>();
@@ -47,47 +43,23 @@ public class VentanaModificarDiseño extends JFrame {
 
     public VentanaModificarDiseño(){
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(500, 300, 500, 380);
+		setBounds(400, 300, 600, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblMiAplicacin = new JLabel("Modificar Diseño");
-		lblMiAplicacin.setBounds(200, 5, 440, 16);
-		contentPane.add(lblMiAplicacin);
+		JLabel lblMiAplicacion = new JLabel("Diseños JEHC");
+		lblMiAplicacion.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblMiAplicacion.setBounds(227, 0, 141, 36);
+		contentPane.add(lblMiAplicacion);
 
-		JMenuBar menuNav= new JMenuBar ();
-		menuNav.setBounds(10, 23, 500, 30);
-		contentPane.add(menuNav);
-		JButton menu1,menu2,menu3,menu4,iniSesion;
+		//titulo Ventas
+		JLabel lblNewLabel = new JLabel("Modificar Diseño");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel.setBounds(10, 25, 190, 25);
+		contentPane.add(lblNewLabel);
 		
-		menu1=new JButton("Inicio");
-		menu1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		menuNav.add(menu1);
-		menu2=new JButton("Productos");
-		menu2.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		menuNav.add(menu2);
-		menu3=new JButton("Diseños");
-		menu3.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		menuNav.add(menu3);
-		iniSesion = new JButton("Registrarse");
-		iniSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		menuNav.add(iniSesion);
-		menu4=new JButton("Carrito");
-		menu4.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		menuNav.add(menu4);
-
-		menu3.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try{
-					control.inicia();
-				} catch(Exception error){
-					System.out.println("Error");	
-				}
-            }
-		});
 
 		// Boton diseño cliente
 		JButton btnDiseñoCliente = new JButton("Añadir diseño");
@@ -102,39 +74,14 @@ public class VentanaModificarDiseño extends JFrame {
 				}
 			}
 		});
-		btnDiseñoCliente.setBounds(330, 320, 130, 20);	
+		btnDiseñoCliente.setBounds(420, 335, 130, 20);	
 		contentPane.add(btnDiseñoCliente);
-          
-
-		//Boton perfil NECESARIO PARA HU:ESTATUS DEL PEDIDO NO BORRAR
-		JButton btnPerfil = new JButton("Perfil");
-		btnPerfil.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				control.perfil();
-			}
-		});
-		btnPerfil.setBounds(414, 23, 65, 30);
-		btnPerfil.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		menuNav.add(btnPerfil);
-
-		// Listenes para mandar a llamar al controlAgregarUsuario
-		iniSesion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				controlAgregarUsuario.inicia();
-
-			}
-		});
        
 		try {
             acomodaDiseños();
         } catch (IOException e1) {
             e1.printStackTrace();
         }
-        // reescalarImagen();
-        // inciaJlabel();
-        // btnBorrar();
-        // btnCambiar();
 
     }
 
@@ -163,7 +110,7 @@ public class VentanaModificarDiseño extends JFrame {
 
 	public void inciaJlabel(){
 		p.clear();
-		labelX = 30; labelY = 60;
+		labelX = 60; labelY = 60;
 		int	cuenta = 0;
 		for( int i = 0; i < img.size(); i++){
 			cuenta = cuenta + 1;
@@ -171,9 +118,9 @@ public class VentanaModificarDiseño extends JFrame {
 			p.add(jlablel);
 			p.get(i).setBounds(labelX, labelY, 130, 100);
 			contentPane.add(p.get(i));
-			labelX = labelX + 150;
-			if(labelX == 480){
-				labelX = 30;
+			labelX = labelX + 160;
+			if(labelX == 540){
+				labelX = 60;
 				if((cuenta % 3) == 0)
 					labelY = labelY + 138;
 			}
@@ -183,7 +130,7 @@ public class VentanaModificarDiseño extends JFrame {
 
 	public void btnBorrar() {
 		borrar.clear();	
-		borrarX = 30; borrarY = 160;
+		borrarX = 60; borrarY = 160;
 		int	cuenta = 0;
 		for( int i = 0; i < img.size(); i++){
 			cuenta = cuenta + 1;
@@ -192,9 +139,9 @@ public class VentanaModificarDiseño extends JFrame {
 			borrar.get(i).setBounds(borrarX, borrarY, 60, 18);
 			borrar.get(i).setFont(new Font("Tahoma", Font.PLAIN, 9));
 			contentPane.add(borrar.get(i));
-			borrarX = borrarX + 150;
-			if(borrarX == 480){
-				borrarX = 30;
+			borrarX = borrarX + 160;
+			if(borrarX == 540){
+				borrarX = 60;
 				if((cuenta % 3) == 0)
 					borrarY = borrarY + 138;
 			}
@@ -215,7 +162,7 @@ public class VentanaModificarDiseño extends JFrame {
 
 	public void btnCambiar() {
 		cambiar.clear();
-		cambiarX = 90; cambiarY = 160;
+		cambiarX = 120; cambiarY = 160;
 		int	cuenta = 0;
 		for( int i = 0; i < img.size(); i++){
 			cuenta = cuenta + 1;
@@ -224,9 +171,9 @@ public class VentanaModificarDiseño extends JFrame {
 			cambiar.get(i).setBounds(cambiarX, cambiarY, 70, 18);
 			cambiar.get(i).setFont(new Font("Tahoma", Font.PLAIN, 9));
 			contentPane.add(cambiar.get(i));
-			cambiarX = cambiarX + 150;
-			if(cambiarX == 540){
-				cambiarX = 90;
+			cambiarX = cambiarX + 160;
+			if(cambiarX == 600){
+				cambiarX = 120;
 				if((cuenta % 3) == 0)
 					cambiarY = cambiarY + 138;
 			}

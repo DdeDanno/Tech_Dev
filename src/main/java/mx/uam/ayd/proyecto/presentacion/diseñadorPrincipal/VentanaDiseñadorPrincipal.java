@@ -120,7 +120,7 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 		btnVentas.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Aqui poner el control para llamar a la ventana de las ventas
+				control.mostrarVentas();
 			}
 		});
 		btnVentas.setBounds(20, 195, 117, 35);
