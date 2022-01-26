@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import mx.uam.ayd.proyecto.presentacion.diseñadorPedidos.ControlDiseñadorPedidos;
 import mx.uam.ayd.proyecto.presentacion.modificarDiseño.ControlModificarDiseño;
+import mx.uam.ayd.proyecto.presentacion.mostrarVentas.ControlMostrarVentas;
 
 @Component
 public class ControlDiseñadorPrincipal {
@@ -15,6 +16,8 @@ public class ControlDiseñadorPrincipal {
     private ControlDiseñadorPedidos controlDiseñadorPedidos;
     @Autowired
     private ControlModificarDiseño controlModificarDiseño;
+    @Autowired
+    private ControlMostrarVentas controlMostrarVentas;
 
     public void inicia(){
         ventana.muestra(this);
@@ -26,6 +29,10 @@ public class ControlDiseñadorPrincipal {
 
     public void modificarDiseños(){
         controlModificarDiseño.inicia();
+    }
+
+    public void mostrarVentas(){
+        controlMostrarVentas.inicia();
     }
 
 }
