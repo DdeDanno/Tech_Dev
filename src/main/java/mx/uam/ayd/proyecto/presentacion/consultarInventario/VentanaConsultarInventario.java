@@ -99,6 +99,46 @@ public class VentanaConsultarInventario extends JFrame {
         btnActualizar.setBounds(350, 200, 117, 29);
         contentPane.add(btnActualizar);
 
+        // Listeners para los botones
+        // botón crear
+        btnCrear.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                if (textFieldNombreArticulo.getText().equals("") || textFieldTotalPiezas.getText().equals("")) {
+                    muestraDialogoConMensaje("Los Campos de texto NO deben estar vacios. ");
+                } else {
+                    control.CrearArticulo(textFieldNombreArticulo.getText(), textFieldTotalPiezas.getText());
+
+                }
+            }
+        });
+
+        // Botón Borrar
+        btnBorrar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                if (textFieldNombreArticulo.getText().equals("")) {
+                    muestraDialogoConMensaje("El Campo de Nombre NO debe esta vacio. ");
+                } else {
+                    control.BorraArticulo(textFieldNombreArticulo.getText());
+                }
+
+            }
+        });
+
+        // Botón Actualizar
+        btnActualizar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                if (textFieldNombreArticulo.getText().equals("") || textFieldTotalPiezas.getText().equals("")) {
+                    muestraDialogoConMensaje("Los Campos de texto NO deben estar vacios. ");
+                } else {
+                    control.ActualizaArticulo(textFieldNombreArticulo.getText(), textFieldTotalPiezas.getText());
+                }
+
+            }
+        });
+
     }
 
     public void muestraDialogoConMensaje(String mensaje) {
