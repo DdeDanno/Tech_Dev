@@ -45,10 +45,12 @@ public class ServicioArticulo {
 
     public Articulo BorraArticulo(String NombreArticulo) {
         Articulo articulo = new Articulo();
-        List<Articulo> articulos = recuperaArticulos();
+        // List<Articulo> articulos = recuperaArticulos();
         if (articulo.getNombreArticulo() == NombreArticulo) {
             articuloRepository.delete(articulo);
 
+        } else {
+            // throw new IllegalArgumentException("Este articulo no existe");
         }
         System.out.println("nombre del articulo: " + articulo.getNombreArticulo() + "   " + "Piezas: "
                 + articulo.getTotalPiezas());

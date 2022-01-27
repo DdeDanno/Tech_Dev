@@ -108,6 +108,8 @@ public class VentanaConsultarInventario extends JFrame {
                     muestraDialogoConMensaje("Los Campos de texto NO deben estar vacios. ");
                 } else {
                     control.CrearArticulo(textFieldNombreArticulo.getText(), textFieldTotalPiezas.getText());
+                    textFieldNombreArticulo.setText("");
+                    textFieldTotalPiezas.setText("");
 
                 }
             }
@@ -121,6 +123,8 @@ public class VentanaConsultarInventario extends JFrame {
                     muestraDialogoConMensaje("El Campo de Nombre NO debe esta vacio. ");
                 } else {
                     control.BorraArticulo(textFieldNombreArticulo.getText());
+                    textFieldNombreArticulo.setText("");
+                    textFieldTotalPiezas.setText("");
                 }
 
             }
@@ -134,6 +138,8 @@ public class VentanaConsultarInventario extends JFrame {
                     muestraDialogoConMensaje("Los Campos de texto NO deben estar vacios. ");
                 } else {
                     control.ActualizaArticulo(textFieldNombreArticulo.getText(), textFieldTotalPiezas.getText());
+                    textFieldNombreArticulo.setText("");
+                    textFieldTotalPiezas.setText("");
                 }
 
             }
