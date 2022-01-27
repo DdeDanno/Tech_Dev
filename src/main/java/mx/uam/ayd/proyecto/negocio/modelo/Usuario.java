@@ -26,7 +26,7 @@ public class Usuario {
 
 	private String correo;
 
-	private String Contraseña;
+	private String contraseña;
 
 	private String Contraseña2;
 
