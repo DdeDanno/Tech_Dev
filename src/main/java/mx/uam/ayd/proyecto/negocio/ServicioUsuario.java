@@ -107,6 +107,15 @@ public class ServicioUsuario {
 		} else {
 			verificador = true;
 		}
+		/*
+		 * Usuario contraseña = usuarioRepository.findByContraseña(Contraseña);
+		 * if (contraseña != null) {
+		 * verificador = true;
+		 * } else {
+		 * verificador = false;
+		 * throw new IllegalArgumentException("La contraseña es incorrecta");
+		 * }
+		 */
 
 		/*
 		 * Usuario usuario = usuarioRepository.findByCorreo(correo);

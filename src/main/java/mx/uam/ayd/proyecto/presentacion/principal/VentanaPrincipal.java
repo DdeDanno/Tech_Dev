@@ -42,7 +42,8 @@ public class VentanaPrincipal extends JFrame {
 	@Autowired
 	private ControlAgregarUsuario controlAgregarUsuario;
 
-	@Autowired ControlMostrarOfertas controlMostrarOfertas;
+	@Autowired
+	ControlMostrarOfertas controlMostrarOfertas;
 
 	/**
 	 * Launch the application.
@@ -65,6 +66,7 @@ public class VentanaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaPrincipal() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 300, 600, 280);
@@ -92,44 +94,44 @@ public class VentanaPrincipal extends JFrame {
 		spinnerCant2.setBounds(265, 210, 60, 29);
 		contentPane.add(spinnerCant2);
 		// Menu Navegacion
-		JMenuBar menuNav= new JMenuBar ();
+		JMenuBar menuNav = new JMenuBar();
 		menuNav.setBounds(10, 23, 600, 30);
 		contentPane.add(menuNav);
-		JButton menu1,menu2,menu3,menu4,menu5,iniSesion;
-		
-		menu1=new JButton("Inicio");
+		JButton menu1, menu2, menu3, menu4, menu5, iniSesion;
+
+		menu1 = new JButton("Inicio");
 		menu1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu1);
-		menu2=new JButton("Productos");
+		menu2 = new JButton("Productos");
 		menu2.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu2);
-		menu3=new JButton("Diseños");
+		menu3 = new JButton("Diseños");
 		menu3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu3);
 		iniSesion = new JButton("Registrarse");
 		iniSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(iniSesion);
-		menu4=new JButton("Carrito");
+		menu4 = new JButton("Carrito");
 		menu4.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu4);
-		menu5=new JButton("Ofertas");
+		menu5 = new JButton("Ofertas");
 		menu5.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuNav.add(menu5);
 
-		//Boto que abre el catalogo de diseños
-		menu3.addActionListener(new ActionListener(){
+		// Boto que abre el catalogo de diseños
+		menu3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try{
+				try {
 					control.visualizarDiseños();
-				} catch(Exception error){
-					muestraDialogoConMensaje(error.getMessage());	
+				} catch (Exception error) {
+					muestraDialogoConMensaje(error.getMessage());
 				}
 			}
 		});
 
 		// Estoy haciendo una prueba de la rama - Daniel
 
-		//Boton perfil NECESARIO PARA HU:ESTATUS DEL PEDIDO NO BORRAR
+		// Boton perfil NECESARIO PARA HU:ESTATUS DEL PEDIDO NO BORRAR
 		JButton btnPerfil = new JButton("Perfil");
 		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -190,14 +192,14 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(btnListarUsuarios);
 
 		/*
-		*	Botón que despliega las ofertas actuales
-		*/
-		menu5.addActionListener(new ActionListener(){
+		 * Botón que despliega todas las ofertas actuales
+		 */
+		menu5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try{
+				try {
 					controlMostrarOfertas.inicia();
-				} catch(Exception error){
-					muestraDialogoConMensaje(error.getMessage());	
+				} catch (Exception error) {
+					muestraDialogoConMensaje(error.getMessage());
 				}
 			}
 		});
