@@ -32,19 +32,20 @@ public class VentanaCatalogoDiseños extends JFrame{
 	JLabel ineg1, ineg2, ieven1, ieven2, iotr1, iotr2;
 
     public VentanaCatalogoDiseños (){
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 300, 500, 380);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(400, 300, 600, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblMiAplicacin = new JLabel("Diseños JEHC");
-		lblMiAplicacin.setBounds(200, 5, 440, 16);
-		contentPane.add(lblMiAplicacin);
+		JLabel lblMiAplicacion = new JLabel("Diseños JEHC");
+		lblMiAplicacion.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblMiAplicacion.setBounds(227, 0, 141, 36);
+		contentPane.add(lblMiAplicacion);
 
 		JMenuBar menuNav= new JMenuBar ();
-		menuNav.setBounds(10, 23, 500, 30);
+		menuNav.setBounds(45, 27, 500, 30);
 		contentPane.add(menuNav);
 		JButton menu1,menu2,menu3,menu4,iniSesion;
 		
@@ -65,7 +66,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 		menuNav.add(menu4);
 
 		JMenuBar menuClasificacion= new JMenuBar ();
-		menuClasificacion.setBounds(90, 50, 500, 30);
+		menuClasificacion.setBounds(115, 57, 500, 25);
 		contentPane.add(menuClasificacion);
 		JButton m1,m2,m3,m4;
 		m1=new JButton("Todos");
@@ -125,18 +126,18 @@ public class VentanaCatalogoDiseños extends JFrame{
 				control.carritoDeCompras();
 			}
 		});
-        btnDiseñoCliente.setBounds(273, 310, 210, 29);
+        btnDiseñoCliente.setBounds(360, 330, 210, 29);
 		contentPane.add(btnDiseñoCliente);
 
         // Imagen
 		BufferedImage n1,n2,ev1,ev2,o1,o2;
 		
 		try {
-			n1 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\2.png"));
-			Image neg1 = n1.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+			n1 = ImageIO.read(new File("src\\main\\resources\\imgDiseños\\2.png"));
+			Image neg1 = n1.getScaledInstance(130, 100, Image.SCALE_DEFAULT);
 			ineg1= new JLabel(new ImageIcon(neg1));
 			ineg1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			ineg1.setBounds(50, 85, 100, 100);
+			ineg1.setBounds(50, 100, 130, 100);
 			contentPane.add(ineg1);
 			ineg1.addMouseListener(new MouseListener() {
 				@Override
@@ -160,11 +161,11 @@ public class VentanaCatalogoDiseños extends JFrame{
 				}
 			});
 
-			n2 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\3.png"));
-			Image neg2 = n2.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+			n2 = ImageIO.read(new File("src\\main\\resources\\imgDiseños\\3.png"));
+			Image neg2 = n2.getScaledInstance(130, 100, Image.SCALE_DEFAULT);
 			ineg2= new JLabel(new ImageIcon(neg2));
 			ineg2.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			ineg2.setBounds(200, 85, 100, 100);
+			ineg2.setBounds(200, 100, 130, 100);
 			contentPane.add(ineg2);
 			ineg2.addMouseListener(new MouseListener() {
 				@Override
@@ -188,11 +189,11 @@ public class VentanaCatalogoDiseños extends JFrame{
 				}
 			});
 
-			ev1 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\4.png"));
-			Image even1 = ev1.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+			ev1 = ImageIO.read(new File("src\\main\\resources\\imgDiseños\\4.png"));
+			Image even1 = ev1.getScaledInstance(130, 100, Image.SCALE_DEFAULT);
 			ieven1= new JLabel(new ImageIcon(even1));
 			ieven1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			ieven1.setBounds(350, 85, 100, 100);
+			ieven1.setBounds(350, 100, 130, 100);
 			contentPane.add(ieven1);
 			ieven1.addMouseListener(new MouseListener() {
 				@Override
@@ -216,11 +217,11 @@ public class VentanaCatalogoDiseños extends JFrame{
 				}
 			});
 
-			ev2 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\5.png"));
-			Image even2 = ev2.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+			ev2 = ImageIO.read(new File("src\\main\\resources\\imgDiseños\\5.png"));
+			Image even2 = ev2.getScaledInstance(130, 100, Image.SCALE_DEFAULT);
 			ieven2= new JLabel(new ImageIcon(even2));
 			ieven2.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			ieven2.setBounds(50, 200, 100, 100);
+			ieven2.setBounds(50, 215, 130, 100);
 			contentPane.add(ieven2);
 			ieven2.addMouseListener(new MouseListener() {
 				@Override
@@ -244,11 +245,11 @@ public class VentanaCatalogoDiseños extends JFrame{
 				}
 			});
 
-			o1 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\1.png"));
-			Image otr1 = o1.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+			o1 = ImageIO.read(new File("src\\main\\resources\\imgDiseños\\1.png"));
+			Image otr1 = o1.getScaledInstance(130, 100, Image.SCALE_DEFAULT);
 			iotr1= new JLabel(new ImageIcon(otr1));
 			iotr1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			iotr1.setBounds(200, 200, 100, 100);
+			iotr1.setBounds(200, 215, 130, 100);
 			contentPane.add(iotr1);
 			iotr1.addMouseListener(new MouseListener() {
 				@Override
@@ -272,11 +273,11 @@ public class VentanaCatalogoDiseños extends JFrame{
 				}
 			});
 
-			o2 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\6.png"));
-			Image otr2 = o2.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+			o2 = ImageIO.read(new File("src\\main\\resources\\imgDiseños\\6.png"));
+			Image otr2 = o2.getScaledInstance(130, 100, Image.SCALE_DEFAULT);
 			iotr2= new JLabel(new ImageIcon(otr2));
 			iotr2.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			iotr2.setBounds(350, 200, 100, 100);
+			iotr2.setBounds(350, 215, 130, 100);
 			contentPane.add(iotr2);
 			iotr2.addMouseListener(new MouseListener() {
 				@Override
@@ -316,12 +317,12 @@ public class VentanaCatalogoDiseños extends JFrame{
 				iotr1.setVisible(false);
 				iotr2.setVisible(false);
 
-				ineg1.setBounds(50, 85, 100, 100);
-				ineg2.setBounds(200, 85, 100, 100);
-				ieven1.setBounds(350, 85, 100, 100);
-				ieven2.setBounds(50, 200, 100, 100);
-				iotr1.setBounds(200, 200, 100, 100);
-				iotr2.setBounds(350, 200, 100, 100);
+				ineg1.setBounds(50, 100, 130, 100);
+				ineg2.setBounds(200, 100, 130, 100);
+				ieven1.setBounds(350, 100, 130, 100);
+				ieven2.setBounds(50, 215, 130, 100);
+				iotr1.setBounds(200, 215, 130, 100);
+				iotr2.setBounds(350, 215, 130, 100);
 
 				ineg1.setVisible(true);
 				ineg2.setVisible(true);
@@ -344,8 +345,8 @@ public class VentanaCatalogoDiseños extends JFrame{
 				iotr1.setVisible(false);
 				iotr2.setVisible(false);
 
-				ieven1.setBounds(50, 85, 100, 100);
-				ieven2.setBounds(200, 85, 100, 100);
+				ieven1.setBounds(50, 100, 130, 100);
+				ieven2.setBounds(200, 100, 130, 100);
 
 				ieven1.setVisible(true);
 				ieven2.setVisible(true);
@@ -363,8 +364,8 @@ public class VentanaCatalogoDiseños extends JFrame{
 				iotr1.setVisible(false);
 				iotr2.setVisible(false);
 
-				ineg1.setBounds(50, 85, 100, 100);
-				ineg2.setBounds(200, 85, 100, 100);
+				ineg1.setBounds(50, 100, 130, 100);
+				ineg2.setBounds(200, 100, 130, 100);
 
 				ineg1.setVisible(true);
 				ineg2.setVisible(true);

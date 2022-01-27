@@ -207,7 +207,7 @@ public class VentanaPrincipal extends JFrame {
 		// Inserta imagen producto 1
 		BufferedImage bfimgn1;
 		try {
-			bfimgn1 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\lona.jpg"));
+			bfimgn1 = ImageIO.read(new File("src\\main\\resources\\imgDiseños\\lona.jpg"));
 			JLabel imgn1 = new JLabel(new ImageIcon(bfimgn1));
 			imgn1.setBounds(50, 100, 200, 100);
 			contentPane.add(imgn1);
@@ -219,7 +219,7 @@ public class VentanaPrincipal extends JFrame {
 
 		BufferedImage bfimgn2;
 		try {
-			bfimgn2 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\tazas-impresas.jpg"));
+			bfimgn2 = ImageIO.read(new File("src\\main\\resources\\imgDiseños\\tazas-impresas.jpg"));
 			JLabel imgn2 = new JLabel(new ImageIcon(bfimgn2));
 			imgn2.setBounds(250, 100, 200, 100);
 			contentPane.add(imgn2);
