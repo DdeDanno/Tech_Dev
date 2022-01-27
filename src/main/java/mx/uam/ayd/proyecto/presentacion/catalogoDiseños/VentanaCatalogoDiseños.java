@@ -133,7 +133,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 		BufferedImage n1,n2,ev1,ev2,o1,o2;
 		
 		try {
-			n1 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\2.png"));
+			n1 = ImageIO.read(new File("src\\main\\resources\\imgDiseños\\2.png"));
 			Image neg1 = n1.getScaledInstance(130, 100, Image.SCALE_DEFAULT);
 			ineg1= new JLabel(new ImageIcon(neg1));
 			ineg1.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -161,7 +161,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 				}
 			});
 
-			n2 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\3.png"));
+			n2 = ImageIO.read(new File("src\\main\\resources\\imgDiseños\\3.png"));
 			Image neg2 = n2.getScaledInstance(130, 100, Image.SCALE_DEFAULT);
 			ineg2= new JLabel(new ImageIcon(neg2));
 			ineg2.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -189,7 +189,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 				}
 			});
 
-			ev1 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\4.png"));
+			ev1 = ImageIO.read(new File("src\\main\\resources\\imgDiseños\\4.png"));
 			Image even1 = ev1.getScaledInstance(130, 100, Image.SCALE_DEFAULT);
 			ieven1= new JLabel(new ImageIcon(even1));
 			ieven1.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -217,7 +217,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 				}
 			});
 
-			ev2 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\5.png"));
+			ev2 = ImageIO.read(new File("src\\main\\resources\\imgDiseños\\5.png"));
 			Image even2 = ev2.getScaledInstance(130, 100, Image.SCALE_DEFAULT);
 			ieven2= new JLabel(new ImageIcon(even2));
 			ieven2.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -245,7 +245,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 				}
 			});
 
-			o1 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\1.png"));
+			o1 = ImageIO.read(new File("src\\main\\resources\\imgDiseños\\1.png"));
 			Image otr1 = o1.getScaledInstance(130, 100, Image.SCALE_DEFAULT);
 			iotr1= new JLabel(new ImageIcon(otr1));
 			iotr1.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -273,7 +273,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 				}
 			});
 
-			o2 = ImageIO.read(new File("D:\\ESCUELA\\UAM\\Ingenieria de Software\\6.png"));
+			o2 = ImageIO.read(new File("src\\main\\resources\\imgDiseños\\6.png"));
 			Image otr2 = o2.getScaledInstance(130, 100, Image.SCALE_DEFAULT);
 			iotr2= new JLabel(new ImageIcon(otr2));
 			iotr2.setCursor(new Cursor(Cursor.HAND_CURSOR));
