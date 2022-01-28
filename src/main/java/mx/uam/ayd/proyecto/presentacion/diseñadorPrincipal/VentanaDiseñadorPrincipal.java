@@ -2,6 +2,7 @@ package mx.uam.ayd.proyecto.presentacion.diseñadorPrincipal;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JComboBox;
 import javax.swing.border.EmptyBorder;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,18 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import mx.uam.ayd.proyecto.presentacion.diseñadorOfertas.ControlAltaOfertas;
+import mx.uam.ayd.proyecto.presentacion.diseñadorOfertas.ControlBajaOfertas;
+
 @Component
 public class VentanaDiseñadorPrincipal extends JFrame {
+
+	@Autowired
+	private ControlAltaOfertas controlAltaOfertas;
+
+	@Autowired
+	private ControlBajaOfertas controlBajaOfertas;
+
 	private JPanel contentPane;
 	private ControlDiseñadorPrincipal control;
 
@@ -135,15 +146,36 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 		contentPane.add(btnVentas);
 
 		// Boton para ver las Ofertas de la sucursal
-		JButton btnOfertas = new JButton("¡OFERTAS!");
+		JComboBox comboBoxOfertas = new JComboBox();
+		comboBoxOfertas.addItem("Ofertas");
+		comboBoxOfertas.addItem("Agregar");
+		comboBoxOfertas.addItem("Eliminar");
+
+		comboBoxOfertas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				if((String)comboBoxOfertas.getSelectedItem()=="Agregar"){
+					//Se eligió la opción de agregar una oferta
+					controlAltaOfertas.inicia();
+				} else if ((String)comboBoxOfertas.getSelectedItem()=="Eliminar"){
+					//Se eligió la opción de Eliminar una oferta
+					controlBajaOfertas.inicia();
+				}//Fin del if-else
+			}//Fin del ActionPerformed
+		});//Fin de ActionListener
+		comboBoxOfertas.setBounds(180, 195, 117, 35);
+		contentPane.add(comboBoxOfertas);
+		/*
+		JButton btnOfertas = new JButton("Ofertas");
 		btnOfertas.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnOfertas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Aqui poner el control para llamar a la ventana de las ofertas
+				controlABOfertas.inicia();
 			}
 		});
 		btnOfertas.setBounds(180, 195, 117, 35);
 		contentPane.add(btnOfertas);
+		*/
 
 		// Boton para ver las Compras de la sucursal
 		JButton btnCompras = new JButton("Compras");

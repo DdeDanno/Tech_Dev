@@ -42,8 +42,8 @@ public class VentanaPrincipal extends JFrame {
 	@Autowired
 	private ControlAgregarUsuario controlAgregarUsuario;
 
-	@Autowired
-	ControlMostrarOfertas controlMostrarOfertas;
+	@Autowired 
+	private ControlMostrarOfertas controlMostrarOfertas;
 
 	/**
 	 * Launch the application.
