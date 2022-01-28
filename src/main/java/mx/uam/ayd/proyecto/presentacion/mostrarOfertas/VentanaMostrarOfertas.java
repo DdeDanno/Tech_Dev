@@ -106,7 +106,7 @@ public class VentanaMostrarOfertas extends JFrame{
         derecha.addActionListener(new ActionListener(){
             public void actionPerformed (ActionEvent e){
                 try {
-                    if(contador == numImagenes-2){
+                    if(contador == numImagenes-1){
                         contador = 0;
                     }//Fin del if
 
@@ -128,11 +128,9 @@ public class VentanaMostrarOfertas extends JFrame{
         derecha.setBounds(530, 130, 50, 50);
         contentPane.add(derecha);
 
-
-
     }//Fin del constructor
 
-    //Método para mostrar la vista previa del total de la compra
+    //Método para mostrar la ventana de las ofertas
     public void muestra (ControlMostrarOfertas control){
         this.control=control;
         setVisible(true);
