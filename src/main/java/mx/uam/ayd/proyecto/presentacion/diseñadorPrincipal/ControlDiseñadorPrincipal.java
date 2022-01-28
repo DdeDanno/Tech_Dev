@@ -16,9 +16,8 @@ public class ControlDiseñadorPrincipal {
     @Autowired
     private ControlDiseñadorPedidos controlDiseñadorPedidos;
     @Autowired
-
     private ControlConsultarInventario controlConsultarInventario;
-
+    @Autowired
     private ControlModificarDiseño controlModificarDiseño;
     @Autowired
     private ControlMostrarVentas controlMostrarVentas;
