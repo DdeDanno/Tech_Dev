@@ -8,6 +8,12 @@ import javax.swing.border.EmptyBorder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+// HU-10-Inventario
+import mx.uam.ayd.proyecto.presentacion.consultarInventario.ControlConsultarInventario;
+
+import mx.uam.ayd.proyecto.presentacion.modificarDiseño.ControlModificarDiseño;
+
+
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.FlowLayout;
@@ -32,8 +38,11 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 	private JPanel contentPane;
 	private ControlDiseñadorPrincipal control;
 
+	@Autowired
+	private ControlConsultarInventario controlConsultarInventario;
+
 	public VentanaDiseñadorPrincipal() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(500, 300, 500, 280);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -41,7 +50,7 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 		contentPane.setLayout(null);
 
 		// Nombre del personal
-		JLabel lblName = new JLabel("Name");
+		JLabel lblName = new JLabel("Nombre");
 		lblName.setForeground(Color.WHITE);
 		lblName.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblName.setBounds(330, 1, 144, 35);
@@ -96,13 +105,13 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 		btnNewButton.setBounds(20, 139, 117, 35);
 		contentPane.add(btnNewButton);
 
-    // HU-06-iniciar-sesión
+		// HU-06-iniciar-sesión
 		// Boton para ver el Inventario de la sucursal
 		JButton btnInventario = new JButton("Inventario");
 		btnInventario.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnInventario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Aqui poner el control para llamar a la ventana del inventario
+				control.consultarInventario();
 			}
 		});
 		btnInventario.setBounds(180, 139, 117, 35);
@@ -110,15 +119,16 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 
 		// Boton para ver los Diseños de la sucursal
 
-		//Boton para modificar los diseños
- 
+		// Boton para modificar los diseños
+
 		JButton btnDiseños = new JButton("Diseños");
 		btnDiseños.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnDiseños.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				// Aqui poner el control para llamar a la ventana de los Diseños
-				
+				control.modificarDiseños();			
+
 			}
 		});
 		btnDiseños.setBounds(340, 139, 117, 35);
@@ -129,7 +139,7 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 		btnVentas.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Aqui poner el control para llamar a la ventana de las ventas
+				control.mostrarVentas();
 			}
 		});
 		btnVentas.setBounds(20, 195, 117, 35);
