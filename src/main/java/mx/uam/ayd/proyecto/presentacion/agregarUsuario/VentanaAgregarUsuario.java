@@ -139,7 +139,7 @@ public class VentanaAgregarUsuario extends JFrame {
 		btnInicioSesion.setBounds(120, 110, 140, 29);
 		contentPane.add(btnInicioSesion);
 
-		JButton btnAgregar = new JButton(" REGISTRARME ");
+		JButton btnAgregar = new JButton(" Registrarme ");
 
 		btnAgregar.setBounds(28, 390, 140, 29);
 		contentPane.add(btnAgregar);
@@ -198,6 +198,8 @@ public class VentanaAgregarUsuario extends JFrame {
 
 				} else {
 					control.EncontrarAdmin(lblCorreoInicioSesion.getText(), lblContraseñaInicioSesion.getText());
+					textFieldContraseñaInicioSesion.setText("");
+					textFieldCorreoInicioSesion.setText("");
 				}
 
 				// control.EncontrarAdmin(lblCorreoInicioSesion.getText());
