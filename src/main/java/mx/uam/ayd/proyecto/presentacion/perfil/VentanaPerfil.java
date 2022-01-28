@@ -116,6 +116,11 @@ public class VentanaPerfil extends JFrame {
 		
 		//Botones de informacion
 		JButton btnNewButton = new JButton("Informacion Personal");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				control.actualizarInformación();
+			}
+		});
 		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
 		btnNewButton.setBounds(235, 131, 174, 23);
 		contentPane.add(btnNewButton);
@@ -130,7 +135,7 @@ public class VentanaPerfil extends JFrame {
 	public void muestra (ControlPerfil control) {
 	this.control=control;
 	//Recupera el nombre del cliente y lo escribe
-	JLabel lblNewLabel_2 = new JLabel(control.conseguirNombre());
+	JLabel lblNewLabel_2 = new JLabel(control.conseguirNombre()+"!");
 	lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 	lblNewLabel_2.setBounds(110, 76, 70, 14);
 	

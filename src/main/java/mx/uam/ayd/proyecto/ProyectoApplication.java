@@ -147,7 +147,8 @@ public class ProyectoApplication {
 		//Creamos un primer cliente
 		Cliente cliente1=new Cliente();
 		cliente1.setNombre("Daniel");
-		cliente1.setTelefono("55917842");
+		cliente1.setApellido("Perez Coapango");
+		cliente1.setTelefono("5591861879");
 		cliente1.setCorreo("cliente1@gmail.com");
 		cliente1.setNum_pedidos(2);
 		clienteRepository.save(cliente1);
