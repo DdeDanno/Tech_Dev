@@ -7,7 +7,11 @@ import javax.swing.border.EmptyBorder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+// HU-10-Inventario
 import mx.uam.ayd.proyecto.presentacion.consultarInventario.ControlConsultarInventario;
+
+import mx.uam.ayd.proyecto.presentacion.modificarDiseño.ControlModificarDiseño;
+
 
 import java.awt.Color;
 import java.awt.SystemColor;
@@ -112,6 +116,7 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				// Aqui poner el control para llamar a la ventana de los Diseños
+				control.modificarDiseños();			
 
 			}
 		});
@@ -123,7 +128,7 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 		btnVentas.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Aqui poner el control para llamar a la ventana de las ventas
+				control.mostrarVentas();
 			}
 		});
 		btnVentas.setBounds(20, 195, 117, 35);

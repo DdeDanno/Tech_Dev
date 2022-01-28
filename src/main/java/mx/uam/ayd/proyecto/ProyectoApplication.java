@@ -110,7 +110,7 @@ public class ProyectoApplication {
 
 		//Creamos un primer pedido
 		Pedido pedido1=new Pedido();
-		pedido1.setFolio("11111111");
+		pedido1.setFolio("111111111");
 		pedido1.setEstatus_pago(true);
 		pedido1.setEstatus_diseño(false);
 		pedido1.setEstatus_imprimiendo(false);
@@ -125,6 +125,24 @@ public class ProyectoApplication {
 		pedido2.setEstatus_imprimiendo(true);
 		pedido2.setEstatus_enviado(false);
 		pedidoRepository.save(pedido2);
+
+		//Creamos un tercer pedido
+		Pedido pedido3=new Pedido();
+		pedido3.setFolio("289467390");
+		pedido3.setEstatus_pago(true);
+		pedido3.setEstatus_diseño(true);
+		pedido3.setEstatus_imprimiendo(true);
+		pedido3.setEstatus_enviado(false);
+		pedidoRepository.save(pedido3);
+
+		//Creamos un cuarto pedido
+		Pedido pedido4=new Pedido();
+		pedido4.setFolio("893023023");
+		pedido4.setEstatus_pago(true);
+		pedido4.setEstatus_diseño(true);
+		pedido4.setEstatus_imprimiendo(true);
+		pedido4.setEstatus_enviado(false);
+		pedidoRepository.save(pedido4);
 
 		//Creamos un primer cliente
 		Cliente cliente1=new Cliente();
