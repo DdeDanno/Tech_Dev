@@ -43,33 +43,33 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 
 	public VentanaDiseñadorPrincipal() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(500, 300, 500, 280);
+		setBounds(400, 300, 600, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		// Nombre del personal
-		JLabel lblName = new JLabel("Nombre");
+		
+		//Nombre del personal
+		JLabel lblName = new JLabel("Carlos");
 		lblName.setForeground(Color.WHITE);
 		lblName.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblName.setBounds(330, 1, 144, 35);
+		lblName.setBounds(416, 2, 144, 35);
 		contentPane.add(lblName);
-
-		// Nombre de la empresa
+		
+		//Nombre de la empresa
 		JLabel lblMiAplicacin = new JLabel("Diseños JEHC");
-		lblMiAplicacin.setBounds(172, 0, 134, 36);
+		lblMiAplicacin.setBounds(207, 0, 134, 36);
 		contentPane.add(lblMiAplicacin);
 		lblMiAplicacin.setFont(new Font("Tahoma", Font.BOLD, 20));
-
-		// Panel de color y titulos
+		
+		//Panel de color y titulos
 		JPanel panel = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		panel.setBackground(SystemColor.inactiveCaption);
-		panel.setBounds(0, 1, 484, 38);
+		panel.setBounds(0, 1, 584, 38);
 		contentPane.add(panel);
-
+		
 		JLabel lblAdministrador = new JLabel("Administrador");
 		lblAdministrador.setForeground(SystemColor.text);
 		lblAdministrador.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -84,13 +84,13 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 		JLabel lblDiseador_1 = new JLabel("Suc. Av. Ermita #43");
 		lblDiseador_1.setForeground(Color.BLACK);
 		lblDiseador_1.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblDiseador_1.setBounds(10, 74, 256, 24);
+		lblDiseador_1.setBounds(10, 88, 256, 24);
 		contentPane.add(lblDiseador_1);
 
 		JLabel lblDiseador_2 = new JLabel("Visualizar pedidos");
 		lblDiseador_2.setForeground(Color.BLACK);
 		lblDiseador_2.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblDiseador_2.setBounds(10, 109, 256, 24);
+		lblDiseador_2.setBounds(10, 123, 172, 24);
 		contentPane.add(lblDiseador_2);
 		// Terminan
 
@@ -102,7 +102,7 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 				control.diseñadorPedidos();
 			}
 		});
-		btnNewButton.setBounds(20, 139, 117, 35);
+		btnNewButton.setBounds(38, 153, 117, 35);
 		contentPane.add(btnNewButton);
 
 		// HU-06-iniciar-sesión
@@ -114,7 +114,7 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 				control.consultarInventario();
 			}
 		});
-		btnInventario.setBounds(180, 139, 117, 35);
+		btnInventario.setBounds(231, 153, 117, 35);
 		contentPane.add(btnInventario);
 
 		// Boton para ver los Diseños de la sucursal
@@ -131,7 +131,7 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 
 			}
 		});
-		btnDiseños.setBounds(340, 139, 117, 35);
+		btnDiseños.setBounds(430, 153, 117, 35);
 		contentPane.add(btnDiseños);
 
 		// Boton para ver las Ventas de la sucursal
@@ -142,7 +142,7 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 				control.mostrarVentas();
 			}
 		});
-		btnVentas.setBounds(20, 195, 117, 35);
+		btnVentas.setBounds(38, 246, 117, 35);
 		contentPane.add(btnVentas);
 
 		// Boton para ver las Ofertas de la sucursal
@@ -162,7 +162,7 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 				}//Fin del if-else
 			}//Fin del ActionPerformed
 		});//Fin de ActionListener
-		comboBoxOfertas.setBounds(180, 195, 117, 35);
+		comboBoxOfertas.setBounds(231, 246, 117, 35);
 		contentPane.add(comboBoxOfertas);
 		/*
 		JButton btnOfertas = new JButton("Ofertas");
@@ -185,8 +185,38 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 				// Aqui poner el control para llamar a la ventana de las compras
 			}
 		});
-		btnCompras.setBounds(340, 195, 117, 35);
+		btnCompras.setBounds(430, 246, 117, 35);
 		contentPane.add(btnCompras);
+
+		JLabel lblDiseador_2_1 = new JLabel("Visualizar inventario");
+		lblDiseador_2_1.setForeground(Color.BLACK);
+		lblDiseador_2_1.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblDiseador_2_1.setBounds(192, 123, 194, 24);
+		contentPane.add(lblDiseador_2_1);
+		
+		JLabel lblDiseador_2_1_1 = new JLabel("Visualizar diseños");
+		lblDiseador_2_1_1.setForeground(Color.BLACK);
+		lblDiseador_2_1_1.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblDiseador_2_1_1.setBounds(406, 123, 165, 24);
+		contentPane.add(lblDiseador_2_1_1);
+		
+		JLabel lblDiseador_2_2 = new JLabel("Informe de ventas");
+		lblDiseador_2_2.setForeground(Color.BLACK);
+		lblDiseador_2_2.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblDiseador_2_2.setBounds(10, 211, 172, 24);
+		contentPane.add(lblDiseador_2_2);
+		
+		JLabel lblDiseador_2_2_1 = new JLabel("Administrar ofertas");
+		lblDiseador_2_2_1.setForeground(Color.BLACK);
+		lblDiseador_2_2_1.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblDiseador_2_2_1.setBounds(197, 211, 185, 24);
+		contentPane.add(lblDiseador_2_2_1);
+		
+		JLabel lblDiseador_2_2_2 = new JLabel("Informe de compras");
+		lblDiseador_2_2_2.setForeground(Color.BLACK);
+		lblDiseador_2_2_2.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblDiseador_2_2_2.setBounds(390, 211, 194, 24);
+		contentPane.add(lblDiseador_2_2_2);
 	}
 
 	public void muestra(ControlDiseñadorPrincipal control) {
