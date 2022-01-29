@@ -2,6 +2,7 @@ package mx.uam.ayd.proyecto.presentacion.generarTicket;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -26,7 +27,7 @@ public class VentanaGenerarTicket extends JFrame{
     private ControlGenerarTicket control;
 
     JRadioButton radio1, radio2;
-    JButton btn;
+    
     //Constructor de la clase
     public VentanaGenerarTicket(){
 
@@ -34,46 +35,57 @@ public class VentanaGenerarTicket extends JFrame{
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         //Panel
-        setBounds(500, 300, 500, 280);
+        setBounds(400, 300, 600, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
         //Titulo
-        JLabel lblDiseño=new JLabel("CARRITO");
-        lblDiseño.setBounds(5, 5, 160, 40);
-        contentPane.add(lblDiseño);
+        JLabel lblDiseno=new JLabel("Diseños JEHC");
+        lblDiseno.setFont(new Font("Tahoma", Font.BOLD, 20));
+        lblDiseno.setBounds(220, 5, 160, 40);
+        contentPane.add(lblDiseno);
 
         //Menu Navegacion
 		JMenuBar menuNav= new JMenuBar ();
-		menuNav.setBounds(5, 35, 500, 30);
+		menuNav.setBounds(1, 35, 590, 50);
 		contentPane.add(menuNav);
-		JMenu menu1,menu2,menu3,menu4,menu5;
-		menu1=new JMenu("Inicio");
-		menuNav.add(menu1);
-		menu2=new JMenu("Productos");
-		menuNav.add(menu2);
-		menu3=new JMenu("Diseños");
-		menuNav.add(menu3);
-		menu4=new JMenu("Nosotros");
-		menuNav.add(menu4);
-		menu5=new JMenu("Perfil");
-		menuNav.add(menu5);
+
+        JButton botonInicio = new JButton("Inicio");
+        botonInicio.setBounds(1, 35, 50, 40);
+        menuNav.add(botonInicio);
+
+        JButton botonProductos = new JButton("Productos");
+        botonProductos.setBounds(36, 35, 70, 40);
+        menuNav.add(botonProductos);
+
+        JButton botonDisenos = new JButton("Diseños");
+        botonDisenos.setBounds(71, 35, 60, 40);
+        menuNav.add(botonDisenos);
+
+        JButton botonNosotros = new JButton("Nosotros");
+        botonNosotros.setBounds(106, 35, 60, 40);
+        menuNav.add(botonNosotros);
+
+        JButton botonPerfil = new JButton("Perfil");
+        botonPerfil.setBounds(141, 35, 60, 40);
+        menuNav.add(botonPerfil);
+
 
         //Seleccionar forma de pago
         JLabel labelSucursal=new JLabel("Selecciona tu forma de pago");
-        labelSucursal.setBounds(35, 80, 200, 40);
+        labelSucursal.setBounds(35, 110, 200, 40);
         contentPane.add(labelSucursal);
 
         radio1=new JRadioButton();
         radio1.setText("Pago en línea");
-        radio1.setBounds(50,110,150,30);
+        radio1.setBounds(50,140,150,30);
         radio1.setEnabled(false);
         
         radio2=new JRadioButton();
         radio2.setText("Otro");
-        radio2.setBounds(50,140,120,30);
+        radio2.setBounds(50,170,120,30);
         
         add(radio1);
         add(radio2);
@@ -94,7 +106,7 @@ public class VentanaGenerarTicket extends JFrame{
 			}//Fin de actionPerformed
         });//Fin de addActionListener
 
-        btnFinalizarCompra.setBounds(165, 210, 150, 29);
+        btnFinalizarCompra.setBounds(270, 300, 150, 30);
 		contentPane.add(btnFinalizarCompra);
 
     }//Fin del Contructor
@@ -108,7 +120,7 @@ public class VentanaGenerarTicket extends JFrame{
         +"E-mail: \n"
         +"             Cotización\n" +control.muestraCarrito());
 
-        Cotizacion.setBounds(270, 60, 200, 300);
+        Cotizacion.setBounds(250, 100, 200, 150);
         Cotizacion.setEditable(false);
         contentPane.add(Cotizacion);
         setVisible(true);
