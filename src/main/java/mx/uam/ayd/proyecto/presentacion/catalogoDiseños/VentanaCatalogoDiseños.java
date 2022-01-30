@@ -118,7 +118,7 @@ public class VentanaCatalogoDiseños extends JFrame{
 		});
        
 		// Boton diseño cliente
-        JButton btnDiseñoCliente = new JButton("Deseo hacer mi propio diseño");
+        JButton btnDiseñoCliente = new JButton("Generar Ticket");
 		btnDiseñoCliente.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnDiseñoCliente.setBackground(Color.LIGHT_GRAY);
 		btnDiseñoCliente.addActionListener(new ActionListener() {

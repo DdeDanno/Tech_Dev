@@ -108,8 +108,8 @@ public class ProyectoApplication {
 
 		productoRepository.save(producto2);
 
-		//Creamos un primer pedido
-		Pedido pedido1=new Pedido();
+		// Creamos un primer pedido
+		Pedido pedido1 = new Pedido();
 		pedido1.setFolio("111111111");
 		pedido1.setEstatus_pago(true);
 		pedido1.setEstatus_diseño(false);
@@ -117,8 +117,8 @@ public class ProyectoApplication {
 		pedido1.setEstatus_enviado(false);
 		pedidoRepository.save(pedido1);
 
-		//Creamos un segundo pedido
-		Pedido pedido2=new Pedido();
+		// Creamos un segundo pedido
+		Pedido pedido2 = new Pedido();
 		pedido2.setFolio("729878950");
 		pedido2.setEstatus_pago(true);
 		pedido2.setEstatus_diseño(true);
@@ -126,8 +126,8 @@ public class ProyectoApplication {
 		pedido2.setEstatus_enviado(false);
 		pedidoRepository.save(pedido2);
 
-		//Creamos un tercer pedido
-		Pedido pedido3=new Pedido();
+		// Creamos un tercer pedido
+		Pedido pedido3 = new Pedido();
 		pedido3.setFolio("289467390");
 		pedido3.setEstatus_pago(true);
 		pedido3.setEstatus_diseño(true);
@@ -135,8 +135,8 @@ public class ProyectoApplication {
 		pedido3.setEstatus_enviado(false);
 		pedidoRepository.save(pedido3);
 
-		//Creamos un cuarto pedido
-		Pedido pedido4=new Pedido();
+		// Creamos un cuarto pedido
+		Pedido pedido4 = new Pedido();
 		pedido4.setFolio("893023023");
 		pedido4.setEstatus_pago(true);
 		pedido4.setEstatus_diseño(true);
@@ -144,10 +144,11 @@ public class ProyectoApplication {
 		pedido4.setEstatus_enviado(false);
 		pedidoRepository.save(pedido4);
 
-		//Creamos un primer cliente
-		Cliente cliente1=new Cliente();
+		// Creamos un primer cliente
+		Cliente cliente1 = new Cliente();
 		cliente1.setNombre("Daniel");
-		cliente1.setTelefono("55917842");
+		cliente1.setApellido("Perez Coapango");
+		cliente1.setTelefono("5591861879");
 		cliente1.setCorreo("cliente1@gmail.com");
 		cliente1.setNum_pedidos(2);
 		clienteRepository.save(cliente1);
@@ -160,8 +161,8 @@ public class ProyectoApplication {
 		grupoOps.setNombre("Operadores");
 		grupoRepository.save(grupoOps);
 
-		//Creamos un diseñador
-		Diseñador diseñador=new Diseñador();
+		// Creamos un diseñador
+		Diseñador diseñador = new Diseñador();
 		diseñador.setCorreo("Carlos@JEHC.mx");
 		diseñador.setContraseña("123");
 

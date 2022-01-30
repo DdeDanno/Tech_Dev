@@ -35,23 +35,23 @@ public class VentanaDiseñadorPedidos extends JFrame {
 
 	private ControlDiseñadorPedidos control;
 	public VentanaDiseñadorPedidos() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 300, 500, 280);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(400, 300, 600, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		//Nombre del personal
-		JLabel lblName = new JLabel("Name");
+		JLabel lblName = new JLabel("Carlos");
 		lblName.setForeground(Color.WHITE);
 		lblName.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblName.setBounds(330, 1, 144, 35);
+		lblName.setBounds(416, 2, 144, 35);
 		contentPane.add(lblName);
 		
 		//Nombre de la empresa
 		JLabel lblMiAplicacin = new JLabel("Diseños JEHC");
-		lblMiAplicacin.setBounds(172, 0, 134, 36);
+		lblMiAplicacin.setBounds(207, 0, 134, 36);
 		contentPane.add(lblMiAplicacin);
 		lblMiAplicacin.setFont(new Font("Tahoma", Font.BOLD, 20));
 		
@@ -60,7 +60,7 @@ public class VentanaDiseñadorPedidos extends JFrame {
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		panel.setBackground(SystemColor.inactiveCaption);
-		panel.setBounds(0, 1, 484, 38);
+		panel.setBounds(0, 1, 584, 38);
 		contentPane.add(panel);
 		
 		JLabel lblAdministrador = new JLabel("Administrador");
@@ -77,25 +77,25 @@ public class VentanaDiseñadorPedidos extends JFrame {
 		JLabel lblDiseador_1 = new JLabel("Folio");
 		lblDiseador_1.setForeground(Color.BLACK);
 		lblDiseador_1.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblDiseador_1.setBounds(10, 74, 34, 24);
+		lblDiseador_1.setBounds(10, 88, 34, 24);
 		contentPane.add(lblDiseador_1);
 		
 		JLabel lblDiseador_1_1 = new JLabel("Estatus de pago");
 		lblDiseador_1_1.setForeground(Color.BLACK);
 		lblDiseador_1_1.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblDiseador_1_1.setBounds(65, 74, 108, 24);
+		lblDiseador_1_1.setBounds(89, 88, 108, 24);
 		contentPane.add(lblDiseador_1_1);
 		
 		JLabel lblDiseador_1_2 = new JLabel("Estatus del diseño");
 		lblDiseador_1_2.setForeground(Color.BLACK);
 		lblDiseador_1_2.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblDiseador_1_2.setBounds(175, 74, 119, 24);
+		lblDiseador_1_2.setBounds(207, 88, 119, 24);
 		contentPane.add(lblDiseador_1_2);
 		
 		JLabel lblDiseador_1_2_1 = new JLabel("Estatus de la impresión");
 		lblDiseador_1_2_1.setForeground(Color.BLACK);
 		lblDiseador_1_2_1.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblDiseador_1_2_1.setBounds(292, 74, 144, 24);
+		lblDiseador_1_2_1.setBounds(336, 88, 144, 24);
 		contentPane.add(lblDiseador_1_2_1);
 
 		//Terminan
@@ -115,7 +115,7 @@ public class VentanaDiseñadorPedidos extends JFrame {
 				});
 			}
 		});
-		btnNewButton.setBounds(407, 102, 63, 24);
+		btnNewButton.setBounds(497, 111, 63, 35);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Abrir");
@@ -132,7 +132,7 @@ public class VentanaDiseñadorPedidos extends JFrame {
 				});
 			}
 		});
-		btnNewButton_1.setBounds(407, 137, 63, 24);
+		btnNewButton_1.setBounds(497, 160, 63, 35);
 		contentPane.add(btnNewButton_1);
 	}
 
@@ -144,7 +144,7 @@ public class VentanaDiseñadorPedidos extends JFrame {
 		// Econtramos el folio y lo escribimos
 		txtFolio1.setText(control.numpedido(1));
 		txtFolio1.setEditable(false);
-		txtFolio1.setBounds(4, 102, 70, 24);
+		txtFolio1.setBounds(10, 116, 70, 24);
 		contentPane.add(txtFolio1);
 		txtFolio1.setColumns(10);
 
@@ -153,7 +153,7 @@ public class VentanaDiseñadorPedidos extends JFrame {
 		txtEstatusPago1.setEditable(false);
 		txtEstatusPago1.setText(control.estatusPago(1));
 		txtEstatusPago1.setColumns(10);
-		txtEstatusPago1.setBounds(78, 102, 90, 24);
+		txtEstatusPago1.setBounds(98, 116, 90, 24);
 		contentPane.add(txtEstatusPago1);
 
 		//Ponemos el estatus del diseño 1
@@ -161,7 +161,7 @@ public class VentanaDiseñadorPedidos extends JFrame {
 		txtEstatusDiseño1.setEditable(false);
 		txtEstatusDiseño1.setText(control.estatusDis(1));
 		txtEstatusDiseño1.setColumns(10);
-		txtEstatusDiseño1.setBounds(190, 102, 90, 24);
+		txtEstatusDiseño1.setBounds(221, 116, 90, 24);
 		contentPane.add(txtEstatusDiseño1);
 	
 		//Ponemos el estauts de impresion
@@ -169,7 +169,7 @@ public class VentanaDiseñadorPedidos extends JFrame {
 		txtEstatusImpresion1.setEditable(false);
 		txtEstatusImpresion1.setText(control.estatusImpresion(1));
 		txtEstatusImpresion1.setColumns(10);
-		txtEstatusImpresion1.setBounds(307, 102, 90, 24);
+		txtEstatusImpresion1.setBounds(363, 116, 90, 24);
 		contentPane.add(txtEstatusImpresion1);
 		
 		//PEDIDO 2
@@ -177,28 +177,28 @@ public class VentanaDiseñadorPedidos extends JFrame {
 		txtFolio2.setEditable(false);
 		txtFolio2.setText(control.numpedido(2));
 		txtFolio2.setColumns(10);
-		txtFolio2.setBounds(4, 137, 70, 24);
+		txtFolio2.setBounds(10, 165, 70, 24);
 		contentPane.add(txtFolio2);
 		
 		txtEstatusPago2 = new JTextField();
 		txtEstatusPago2.setEditable(false);
 		txtEstatusPago2.setText(control.estatusPago(2));
 		txtEstatusPago2.setColumns(10);
-		txtEstatusPago2.setBounds(78, 137, 90, 24);
+		txtEstatusPago2.setBounds(98, 165, 90, 24);
 		contentPane.add(txtEstatusPago2);
 		
 		txtEstatusDiseño2 = new JTextField();
 		txtEstatusDiseño2.setEditable(false);
 		txtEstatusDiseño2.setText(control.estatusDis(2));
 		txtEstatusDiseño2.setColumns(10);
-		txtEstatusDiseño2.setBounds(190, 137, 90, 24);
+		txtEstatusDiseño2.setBounds(221, 165, 90, 24);
 		contentPane.add(txtEstatusDiseño2);
 		
 		txtEstatusImpresion2 = new JTextField();
 		txtEstatusImpresion2.setEditable(false);
 		txtEstatusImpresion2.setText(control.estatusImpresion(2));
 		txtEstatusImpresion2.setColumns(10);
-		txtEstatusImpresion2.setBounds(307, 137, 90, 24);
+		txtEstatusImpresion2.setBounds(363, 165, 90, 24);
 		contentPane.add(txtEstatusImpresion2);
 
 		this.control=control;

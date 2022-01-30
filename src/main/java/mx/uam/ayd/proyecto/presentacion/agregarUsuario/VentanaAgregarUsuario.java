@@ -198,8 +198,12 @@ public class VentanaAgregarUsuario extends JFrame {
 
 				} else {
 					control.EncontrarAdmin(lblCorreoInicioSesion.getText(), lblContraseñaInicioSesion.getText());
+
 					textFieldContraseñaInicioSesion.setText("");
 					textFieldCorreoInicioSesion.setText("");
+
+					setVisible(false);
+
 				}
 
 				// control.EncontrarAdmin(lblCorreoInicioSesion.getText());

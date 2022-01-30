@@ -28,9 +28,9 @@ import java.awt.event.ActionEvent;
 @SuppressWarnings("serial")
 @Component
 public class VentanaModificarDiseño extends JFrame {
+	@Autowired
+	private ControlModificarDiseño control;
     private JPanel contentPane;
-    @Autowired
-    private ControlModificarDiseño control;
 
     ArrayList<BufferedImage> img = new ArrayList<BufferedImage>();
 	ArrayList<JLabel> p = new ArrayList<JLabel>();
@@ -334,7 +334,7 @@ public class VentanaModificarDiseño extends JFrame {
 	}
 
 	public void muestra (ControlModificarDiseño control){
-        this.control=control;
+        this.control = control;
         setVisible(true);
     }
     
