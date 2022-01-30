@@ -146,6 +146,9 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 		contentPane.add(btnVentas);
 
 		// Boton para ver las Ofertas de la sucursal
+
+		JButton btnOfertas = new JButton("¡Ofertas!");
+
 		JComboBox comboBoxOfertas = new JComboBox();
 		comboBoxOfertas.addItem("Ofertas");
 		comboBoxOfertas.addItem("Agregar");
@@ -166,6 +169,7 @@ public class VentanaDiseñadorPrincipal extends JFrame {
 		contentPane.add(comboBoxOfertas);
 		/*
 		JButton btnOfertas = new JButton("Ofertas");
+
 		btnOfertas.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnOfertas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
